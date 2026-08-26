@@ -1,15 +1,16 @@
 import type { MetadataRoute } from "next";
 import { announcementPath, getPublishedAnnouncementSlugs } from "@/lib/education-announcements";
+import { contentPath, getPublishedContentSlugs } from "@/lib/education-content";
 import { getProgramSlugs } from "@/lib/education";
 import { site } from "@/lib/site";
 
 const hubRoutes = [
   "/religious-education",
+  "/religious-education/content",
+  "/religious-education/announcements",
   "/religious-education/schedules",
   "/religious-education/calendar",
-  "/religious-education/announcements",
   "/religious-education/handbook",
-  "/religious-education/learn",
 ];
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
   ...hubRoutes,
   ...getProgramSlugs().map((slug) => `/religious-education/${slug}`),
   ...getPublishedAnnouncementSlugs().map((slug) => announcementPath(slug)),
+  ...getPublishedContentSlugs().map((slug) => contentPath(slug)),
   "/schedule",
   "/topics",
   "/journey",

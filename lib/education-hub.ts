@@ -2,11 +2,11 @@ import type { EducationIcon } from "@/lib/education";
 
 export const educationNavItems = [
   { href: "/religious-education", label: "Overview" },
+  { href: "/religious-education/content", label: "Content & Videos" },
+  { href: "/religious-education/announcements", label: "Announcements" },
   { href: "/religious-education/schedules", label: "Class Schedules" },
   { href: "/religious-education/calendar", label: "Calendar" },
-  { href: "/religious-education/announcements", label: "Announcements" },
   { href: "/religious-education/handbook", label: "Handbook" },
-  { href: "/religious-education/learn", label: "Videos & Resources" },
 ] as const;
 
 export type HubCardItem = {
@@ -18,6 +18,20 @@ export type HubCardItem = {
 };
 
 export const educationHubCards: HubCardItem[] = [
+  {
+    href: "/religious-education/content",
+    title: "Content & Videos",
+    description: "Instructional videos, class lessons, and study materials — posted as the parish provides them.",
+    cta: "Explore content",
+    icon: "flame",
+  },
+  {
+    href: "/religious-education/announcements",
+    title: "Announcements",
+    description: "The most current notices for families and catechists.",
+    cta: "Read announcements",
+    icon: "question",
+  },
   {
     href: "/religious-education/schedules",
     title: "Class Schedules",
@@ -33,24 +47,10 @@ export const educationHubCards: HubCardItem[] = [
     icon: "cross",
   },
   {
-    href: "/religious-education/announcements",
-    title: "Announcements",
-    description: "The most current notices for families and catechists.",
-    cta: "Read announcements",
-    icon: "question",
-  },
-  {
     href: "/religious-education/handbook",
     title: "Handbook",
     description: "View or download the current Religious Education handbook.",
     cta: "View handbook",
     icon: "book",
-  },
-  {
-    href: "/religious-education/learn",
-    title: "Videos & Resources",
-    description: "Instructional videos, study materials, and other helps.",
-    cta: "Explore resources",
-    icon: "flame",
   },
 ];
