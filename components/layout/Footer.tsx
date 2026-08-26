@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { footerNavItems } from "@/lib/navigation";
+import { educationNavItems } from "@/lib/education-hub";
 import { contactPlaceholders, site } from "@/lib/site";
 import { StarOfTheSeaIcon } from "@/components/icons";
 import { Ornament } from "@/components/ui/Ornament";
@@ -12,7 +13,7 @@ export function Footer() {
       <div className="atmosphere atmosphere-navy" aria-hidden="true" />
       <div className="page-wrap relative py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
             <div className="flex items-center gap-3">
               <StarOfTheSeaIcon className="h-8 w-8 text-gold" />
               <div>
@@ -30,7 +31,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <p className="eyebrow mb-5">Explore</p>
             <ul className="space-y-3">
               {footerNavItems.map((item) => (
@@ -46,7 +47,23 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
+            <p className="eyebrow mb-5">Formation</p>
+            <ul className="space-y-3">
+              {educationNavItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-ivory/80 transition-colors hover:text-gold"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-3">
             <p className="eyebrow mb-5">Parish</p>
             <a
               href={site.parishUrl}

@@ -18,6 +18,9 @@ export type ScheduleEntry = {
   time: string;
   topic: string;
   location: string;
+  program?: string;
+  instructor?: string;
+  notes?: string;
 };
 
 export type ProgramTopic = {
@@ -145,6 +148,9 @@ const ociaSchedule: ScheduleEntry[] = classSchedule.map((session) => ({
   time: session.time,
   topic: session.topic,
   location: session.location,
+  program: "OCIA",
+  instructor: session.instructor,
+  notes: session.title,
 }));
 
 /*
@@ -238,7 +244,7 @@ export const educationPrograms: EducationProgram[] = [
       "A fuller topical outline lives on the Topics page. Replace this list in lib/education.ts when the official OCIA curriculum is confirmed.",
     schedule: ociaSchedule,
     scheduleNote:
-      "Placeholder sessions for a formation year. Dates, times, topics, and presenters will be replaced with the official parish calendar. See lib/schedule.ts.",
+      "Placeholder sessions for a formation year. Dates, times, topics, and presenters will be replaced with the official parish calendar.",
     scheduleComingSoon: false,
     location: contactPlaceholders.location,
     locationNote:

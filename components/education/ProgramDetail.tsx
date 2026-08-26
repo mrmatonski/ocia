@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ClassScheduleTable } from "@/components/education/ClassScheduleTable";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
+import { EducationSubnav } from "@/components/education/EducationSubnav";
 import { InstructorCard } from "@/components/education/InstructorCard";
 import { ProgramGlyph } from "@/components/education/ProgramGlyph";
 import { RegistrationCTA } from "@/components/education/RegistrationCTA";
@@ -42,6 +43,9 @@ export function ProgramDetail({ program }: { program: EducationProgram }) {
               { label: program.cardTitle },
             ]}
           />
+          <div className="mt-8">
+            <EducationSubnav light />
+          </div>
           <div className="mt-14 grid items-start gap-14 lg:grid-cols-2 lg:gap-20">
             <Reveal>
               <p className="eyebrow text-gold-dim">Program overview</p>

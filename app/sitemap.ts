@@ -2,10 +2,19 @@ import type { MetadataRoute } from "next";
 import { getProgramSlugs } from "@/lib/education";
 import { site } from "@/lib/site";
 
+const hubRoutes = [
+  "/religious-education",
+  "/religious-education/schedules",
+  "/religious-education/calendar",
+  "/religious-education/announcements",
+  "/religious-education/handbook",
+  "/religious-education/learn",
+];
+
 const routes = [
   "",
   "/about",
-  "/religious-education",
+  ...hubRoutes,
   ...getProgramSlugs().map((slug) => `/religious-education/${slug}`),
   "/schedule",
   "/topics",

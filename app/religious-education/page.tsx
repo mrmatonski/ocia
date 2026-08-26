@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
+import { EducationSubnav } from "@/components/education/EducationSubnav";
+import { HubGrid } from "@/components/education/HubGrid";
 import { ProgramGrid } from "@/components/education/ProgramGrid";
 import { RegistrationCTA } from "@/components/education/RegistrationCTA";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
@@ -8,12 +10,13 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { educationHubCards } from "@/lib/education-hub";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Religious Education",
   description:
-    "Religious education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon — OCIA, adult faith formation, youth and children's catechesis, and sacramental preparation.",
+    "Religious Education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon — class schedules, calendar, announcements, handbook, and learning resources.",
   keywords: [
     "St. Mary's Catholic Church",
     "Astoria Oregon",
@@ -42,6 +45,9 @@ export default function ReligiousEducationPage() {
               { label: "Religious Education" },
             ]}
           />
+          <div className="mt-8">
+            <EducationSubnav light />
+          </div>
           <div className="mt-14 grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
             <Reveal>
               <p className="eyebrow text-gold-dim">A parish that teaches</p>
@@ -57,15 +63,9 @@ export default function ReligiousEducationPage() {
                   Scripture, in the sacraments, and in the life of this parish.
                 </p>
                 <p>
-                  At St. Mary, Star of the Sea in Astoria, religious education
-                  is meant to be welcoming: for those who are new, those who are
-                  returning, and those who have belonged here for years.
-                </p>
-                <p>
-                  Some programs below already have a living home on this site —
-                  especially OCIA. Others are structured and ready, with
-                  placeholder details, until the parish publishes official
-                  schedules and contacts.
+                  Use this page as a central place for class schedules, the
+                  Religious Education calendar, announcements, the handbook, and
+                  learning materials — as the parish publishes them.
                 </p>
               </div>
             </Reveal>
@@ -83,6 +83,19 @@ export default function ReligiousEducationPage() {
       <Section tone="navy" className="py-24 md:py-32">
         <div className="page-wrap">
           <SectionHeading
+            eyebrow="For families & catechists"
+            title="Find what you need."
+            description="Schedules, the calendar, announcements, the handbook, and learning materials live here — so parents, students, and catechists have one place to look."
+          />
+          <div className="mt-16">
+            <HubGrid items={educationHubCards} />
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="dark" className="py-24 md:py-32">
+        <div className="page-wrap">
+          <SectionHeading
             eyebrow="Explore our programs"
             title="Paths of formation."
             description="Each card opens a dedicated page. Names and descriptions are pastoral categories; official class lists will replace placeholder details as they are confirmed."
@@ -93,7 +106,7 @@ export default function ReligiousEducationPage() {
         </div>
       </Section>
 
-      <Section tone="dark" className="py-24 md:py-32">
+      <Section tone="navy" className="py-24 md:py-32">
         <div className="page-wrap">
           <SectionHeading
             eyebrow="All are welcome"
