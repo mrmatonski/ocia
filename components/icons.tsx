@@ -183,3 +183,50 @@ export function CheckIcon({ className, ...props }: IconProps) {
     </svg>
   );
 }
+
+export function CrossIcon({ className, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" className={cn(base, className)} {...props}>
+      <path d="M16 5v22" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M9 12h14" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function ChaliceIcon({ className, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" className={cn(base, className)} {...props}>
+      <path
+        d="M8 7h16v3c0 5.2-3.4 9-8 10.5C11.4 19 8 15.2 8 10V7Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+      <path d="M16 20.5V25" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M11 27h10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function FamilyIcon({ className, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" className={cn(base, className)} {...props}>
+      <circle cx="11" cy="9.5" r="2.6" stroke="currentColor" strokeWidth="1.4" />
+      <circle cx="21" cy="9.5" r="2.6" stroke="currentColor" strokeWidth="1.4" />
+      <circle cx="16" cy="14.2" r="2.1" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M5.8 24.8c.9-3.4 3.2-5.1 5.8-5.1 1.4 0 2.6.5 3.6 1.4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M16.8 21.1c1 .9 2.2 1.4 3.6 1.4 2.6 0 4.9-1.7 5.8-5.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function UsersIcon({ className, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" className={cn(base, className)} {...props}>
+      <circle cx="12" cy="11" r="3.4" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M5.5 24.5c1.1-3.6 3.6-5.4 6.5-5.4s5.4 1.8 6.5 5.4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="21.5" cy="12" r="2.8" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M18.2 24.5c.8-2.4 2.4-3.7 4.4-3.7 2.2 0 3.9 1.4 4.8 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}

@@ -1,5 +1,6 @@
 export const navItems = [
   { href: "/", label: "Home", full: "Home" },
+  { href: "/religious-education", label: "Education", full: "Religious Education" },
   { href: "/about", label: "About", full: "About OCIA" },
   { href: "/schedule", label: "Schedule", full: "Class Schedule" },
   { href: "/topics", label: "Topics", full: "Topics" },
@@ -9,6 +10,7 @@ export const navItems = [
 ] as const;
 
 export const footerNavItems = [
+  { href: "/religious-education", label: "Religious Education" },
   { href: "/about", label: "About" },
   { href: "/schedule", label: "Schedule" },
   { href: "/topics", label: "Topics" },

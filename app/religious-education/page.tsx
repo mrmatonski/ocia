@@ -1,0 +1,139 @@
+import type { Metadata } from "next";
+import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
+import { ProgramGrid } from "@/components/education/ProgramGrid";
+import { RegistrationCTA } from "@/components/education/RegistrationCTA";
+import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { Ornament } from "@/components/ui/Ornament";
+import { PageHero } from "@/components/ui/PageHero";
+import { Reveal } from "@/components/ui/Reveal";
+import { Section } from "@/components/ui/Section";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Religious Education",
+  description:
+    "Religious education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon — OCIA, adult faith formation, youth and children's catechesis, and sacramental preparation.",
+  keywords: [
+    "St. Mary's Catholic Church",
+    "Astoria Oregon",
+    "Religious Education",
+    "OCIA",
+    "Catholic education",
+    "Faith formation",
+  ],
+};
+
+export default function ReligiousEducationPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Religious Education"
+        title="Grow in Faith. Deepen Your Knowledge. Draw Closer to Christ."
+        description={`St. Mary's offers opportunities for people of all ages to learn, grow, and live the Catholic faith — at ${site.parishFull} in ${site.city}.`}
+      />
+
+      <Section tone="ivory" className="py-20 md:py-28">
+        <div className="page-wrap">
+          <EducationBreadcrumbs
+            light
+            items={[
+              { href: "/", label: "Home" },
+              { label: "Religious Education" },
+            ]}
+          />
+          <div className="mt-14 grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <p className="eyebrow text-gold-dim">A parish that teaches</p>
+              <h2 className="mt-5 font-serif text-4xl leading-[1.12] font-medium text-ink italic md:text-5xl">
+                Formation for every season of life.
+              </h2>
+              <Ornament className="mt-7" light align="start" />
+              <div className="mt-8 space-y-5 text-base leading-8 text-ink/75">
+                <p>
+                  The Church does not ask us to finish learning. From a child&apos;s
+                  first Sign of the Cross to an adult&apos;s long search for truth,
+                  Catholic education is a way of remaining close to Christ — in
+                  Scripture, in the sacraments, and in the life of this parish.
+                </p>
+                <p>
+                  At St. Mary, Star of the Sea in Astoria, religious education
+                  is meant to be welcoming: for those who are new, those who are
+                  returning, and those who have belonged here for years.
+                </p>
+                <p>
+                  Some programs below already have a living home on this site —
+                  especially OCIA. Others are structured and ready, with
+                  placeholder details, until the parish publishes official
+                  schedules and contacts.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <ImagePlaceholder
+                label="Religious education photograph placeholder"
+                aspectRatio="4/5"
+                caption="A future photograph of formation at St. Mary, Star of the Sea."
+              />
+            </Reveal>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="navy" className="py-24 md:py-32">
+        <div className="page-wrap">
+          <SectionHeading
+            eyebrow="Explore our programs"
+            title="Paths of formation."
+            description="Each card opens a dedicated page. Names and descriptions are pastoral categories; official class lists will replace placeholder details as they are confirmed."
+          />
+          <div className="mt-16">
+            <ProgramGrid />
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="dark" className="py-24 md:py-32">
+        <div className="page-wrap">
+          <SectionHeading
+            eyebrow="All are welcome"
+            title="From first questions to a lifetime of faith."
+          />
+          <div className="mt-16 grid gap-10 md:grid-cols-3 md:divide-x md:divide-gold/15 md:gap-0">
+            {[
+              {
+                title: "Children & youth",
+                body: "Age-appropriate catechesis, sacramental preparation, and a place to grow in prayer among friends.",
+              },
+              {
+                title: "Adults",
+                body: "OCIA for those exploring the Church, and ongoing formation for those who already belong.",
+              },
+              {
+                title: "Families",
+                body: "Marriage and family formation, when offered — because the faith is first taught at home.",
+              },
+            ].map((item, index) => (
+              <Reveal key={item.title} delay={index * 0.08}>
+                <article className="h-full md:px-8">
+                  <p className="font-display text-xs tracking-[0.28em] text-gold">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-5 font-serif text-3xl text-ivory italic">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-stone-light">{item.body}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <RegistrationCTA
+        title="We would be glad to walk with you."
+        description="If you are unsure which program fits, begin with a conversation. The parish will help you find the right door."
+      />
+    </>
+  );
+}

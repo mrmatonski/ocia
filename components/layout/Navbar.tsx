@@ -91,7 +91,7 @@ export function Navbar() {
           </Link>
 
           <nav
-            className="hidden items-center gap-7 lg:flex"
+            className="hidden items-center gap-5 xl:gap-7 lg:flex"
             aria-label="Primary"
           >
             {navItems.map((item) => {
