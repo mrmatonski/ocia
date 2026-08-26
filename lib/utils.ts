@@ -10,6 +10,15 @@ export function formatClassDate(isoDate: string) {
   }).format(date);
 }
 
+export function formatFullDate(isoDate: string) {
+  const date = new Date(`${isoDate.slice(0, 10)}T12:00:00`);
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  }).format(date);
+}
+
 export function formatClassWeekday(isoDate: string) {
   const date = new Date(`${isoDate}T12:00:00`);
   return new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date);

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { announcementPath, getPublishedAnnouncementSlugs } from "@/lib/education-announcements";
 import { getProgramSlugs } from "@/lib/education";
 import { site } from "@/lib/site";
 
@@ -16,6 +17,7 @@ const routes = [
   "/about",
   ...hubRoutes,
   ...getProgramSlugs().map((slug) => `/religious-education/${slug}`),
+  ...getPublishedAnnouncementSlugs().map((slug) => announcementPath(slug)),
   "/schedule",
   "/topics",
   "/journey",

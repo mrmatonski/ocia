@@ -1,24 +1,27 @@
 import type { Metadata } from "next";
-import { AnnouncementList } from "@/components/education/AnnouncementList";
+import { AnnouncementFeed } from "@/components/education/AnnouncementFeed";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
 import { EducationSubnav } from "@/components/education/EducationSubnav";
 import { RegistrationCTA } from "@/components/education/RegistrationCTA";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
+import { getPublishedAnnouncements } from "@/lib/education-announcements";
 
 export const metadata: Metadata = {
-  title: "Religious Education Announcements",
+  title: "Announcements",
   description:
-    "Religious Education announcements for St. Mary, Star of the Sea Catholic Church in Astoria, Oregon — schedule updates, closures, and family notices.",
+    "Stay up to date with the latest news, schedule changes, reminders, and information from Religious Education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
 };
 
 export default function EducationAnnouncementsPage() {
+  const announcements = getPublishedAnnouncements();
+
   return (
     <>
       <PageHero
         eyebrow="Religious Education"
-        title="What families need to know."
-        description="The most current notices for students, parents, and catechists. Check here if the calendar has not yet been updated."
+        title="Announcements"
+        description="Stay up to date with the latest news, schedule changes, reminders, and information from Religious Education."
       />
       <Section tone="ivory" className="py-12 md:py-16">
         <div className="page-wrap">
@@ -37,7 +40,7 @@ export default function EducationAnnouncementsPage() {
       </Section>
       <Section tone="navy" className="py-20 md:py-28">
         <div className="page-wrap max-w-3xl">
-          <AnnouncementList />
+          <AnnouncementFeed items={announcements} />
         </div>
       </Section>
       <RegistrationCTA
