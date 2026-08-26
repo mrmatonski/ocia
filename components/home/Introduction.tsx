@@ -14,7 +14,6 @@ export function Introduction() {
             What is OCIA?
           </h2>
           <Ornament className="mt-7" light align="start" />
-          {/* TODO: Replace with official parish OCIA description */}
           <div className="mt-8 space-y-5 text-base leading-8 text-ink/72 md:text-lg">
             <p>
               OCIA — the Order of Christian Initiation of Adults — is the
@@ -32,7 +31,8 @@ export function Introduction() {
               Some who come are unbaptized. Some were baptized in another
               Christian tradition. Some are Catholic already and wish to
               complete the sacraments, or simply to understand the faith more
-              deeply. All are welcome to begin.
+              deeply. All are welcome to begin. At St. Mary, classes are weekly
+              and begin in the Fall.
             </p>
           </div>
           <div className="mt-10">
@@ -44,9 +44,11 @@ export function Introduction() {
 
         <Reveal delay={0.12}>
           <ImagePlaceholder
-            label="Parish Photograph Placeholder"
+            label="St. Mary, Star of the Sea"
             aspectRatio="4/5"
-            caption="A future photograph of the church, the font, or the people of St. Mary."
+            src="/images/parish/church-exterior.jpg"
+            alt="St. Mary, Star of the Sea Catholic Church in Astoria, Oregon"
+            caption="St. Mary, Star of the Sea — 1465 Grand Avenue, Astoria."
           />
         </Reveal>
       </div>

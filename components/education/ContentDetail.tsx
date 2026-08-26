@@ -92,7 +92,7 @@ function ContentPlayer({ item }: { item: EducationContent }) {
     return (
       <div className="mb-10">
         <ImagePlaceholder
-          label="Video content coming soon"
+          label={item.title}
           aspectRatio="16/9"
           alt=""
         />
@@ -187,8 +187,8 @@ export function ContentDetail({ item }: { item: EducationContent }) {
           ) : (
             <p className="mt-10 text-[0.65rem] tracking-[0.18em] text-stone uppercase">
               {isVisualContent(item.type)
-                ? "Video content coming soon"
-                : "Additional Religious Education resources will be posted here"}
+                ? "Open the related parish page from the button above"
+                : "See the parish website for further materials"}
             </p>
           )}
           {related.length > 0 ? (

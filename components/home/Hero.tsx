@@ -13,7 +13,6 @@ const fade = (delay: number) => ({
 export function Hero() {
   return (
     <section className="relative isolate flex min-h-svh items-center overflow-hidden">
-      {/* TODO: Replace atmospheric placeholder with cathedral / sacred photography. */}
       <div className="atmosphere atmosphere-hero" aria-hidden="true">
         <div className="light-shaft absolute inset-x-[8%] top-0 h-[78%] opacity-80" />
         <CathedralVault className="absolute inset-x-[-8%] top-[-6%] h-[92%] w-[116%] opacity-90" />

@@ -4,7 +4,7 @@ import { MailIcon, PersonIcon, PhoneIcon, PinIcon } from "@/components/icons";
 const details = [
   {
     icon: PersonIcon,
-    label: "OCIA Coordinator",
+    label: contactPlaceholders.coordinatorTitle,
     value: contactPlaceholders.coordinatorName,
   },
   {
@@ -32,9 +32,9 @@ export function ContactDetails() {
         We would be glad to hear from you.
       </h2>
       <p className="mt-6 max-w-md text-sm leading-7 text-stone-light md:text-base">
-        {/* TODO: Replace contact placeholders with official parish OCIA contacts. */}
-        Share your name and a little of your story. Someone from the OCIA team
-        will respond as soon as the official contact details are in place.
+        Share your name and a little of your story. Call the parish office at{" "}
+        {contactPlaceholders.phone}, write to {contactPlaceholders.email}, or
+        use the form. Office hours: {contactPlaceholders.officeHours}.
       </p>
       <ul className="mt-10 space-y-5">
         {details.map((item) => (

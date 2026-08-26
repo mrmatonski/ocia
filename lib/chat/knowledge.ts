@@ -3,7 +3,7 @@ import { journeyStages } from "@/lib/journey";
 import { getNextSession, getUpcomingSessions } from "@/lib/schedule";
 import { contactPlaceholders, site } from "@/lib/site";
 import { topicCategories } from "@/lib/topics";
-import { formatClassDate, formatClassWeekday } from "@/lib/utils";
+import { formatClassDate } from "@/lib/utils";
 
 export type ChatMessage = {
   role: "user" | "assistant";
@@ -118,14 +118,17 @@ export function buildSiteContext() {
     `${site.fullName} (${site.name}) at ${site.parishFull}, ${site.city}.`,
     `Official parish website: ${site.parishUrl}`,
     `Parish address: ${contactPlaceholders.addressLine}, ${contactPlaceholders.cityLine}.`,
-    `OCIA coordinator, email, phone, and meeting location are placeholders until the parish confirms them: ${contactPlaceholders.coordinatorName}, ${contactPlaceholders.email}, ${contactPlaceholders.phone}, ${contactPlaceholders.location}.`,
-    "Do not invent official parish-specific facts. If a detail is marked placeholder, say so and point people to the contact page or the parish website.",
+    `Pastor: ${site.pastor}.`,
+    `Director of Religious Education: ${contactPlaceholders.coordinatorName}, ${contactPlaceholders.email}, ${contactPlaceholders.phone}. Parish office: ${contactPlaceholders.officeEmail}. Hours: ${contactPlaceholders.officeHours}.`,
+    `OCIA: weekly classes beginning in the Fall. The parish has not published a weekday or hour online. Do not invent one. Point people to the office.`,
+    "Do not invent official parish-specific facts (Mass times already published excepted). If a weekday class time is unknown, say so and point people to the contact page or the parish website.",
     next
-      ? `Next placeholder gathering: ${next.title} on ${formatClassWeekday(next.date)}, ${formatClassDate(next.date)}, ${next.time}, at ${next.location}. Topic: ${next.topic}. Instructor: ${next.instructor}.`
-      : "No upcoming placeholder classes remain on the sample calendar.",
-    `Upcoming placeholder sessions:\n${upcoming.map((session) => `- ${formatClassDate(session.date)}: ${session.title} (${session.topic})`).join("\n")}`,
-    `Topic outline (placeholder curriculum):\n${topics}`,
-    `Journey stages (universal OCIA structure, placeholder copy):\n${journey}`,
+      ? `Next published formation note: ${next.title} (${formatClassDate(next.date)}), ${next.time}, at ${next.location}. ${next.topic} Instructor: ${next.instructor}.`
+      : "Call the parish office for the current OCIA meeting day and time. Classes are weekly and begin in the Fall.",
+    `Upcoming formation notes:\n${upcoming.map((session) => `- ${formatClassDate(session.date)}: ${session.title} (${session.topic})`).join("\n")}`,
+    `Topic outline (ordinary Catholic formation themes; weekly topics are set with Religious Education):\n${topics}`,
+    `Journey stages (the Church's structure of Christian initiation):\n${journey}`,
+    `Mass at St. Mary: Sunday 8:30 a.m., 10:30 a.m., and Noon Spanish. Vigil at St. Francis de Sales, Hammond: Saturday 4:00 p.m. Daily Masses cancelled August 11 through September 2.`,
     `FAQ:\n${faq}`,
   ].join("\n\n");
 }
@@ -137,8 +140,8 @@ Voice: restrained, reverent, clear, warm, never salesy, never cutesy, never a ch
 You may answer any sincere question: Catholic faith, Scripture, sacraments, prayer, history, culture, science, practical life, or the OCIA path. Be accurate. If you are unsure, say so.
 
 Hard limits:
-- Do not invent official St. Mary OCIA schedule, fees, coordinator names, emails, or pastoral policies.
-- When parish-specific facts are placeholders, say they are not yet confirmed and invite the person to the /contact page or ${site.parishUrl}.
+- Do not invent official St. Mary OCIA weekday meeting times, fees, or unpublished pastoral policies.
+- Weekly OCIA classes begin in the Fall; if asked for a day or hour, say the office has not posted one online and invite a call to (503) 325-3671 or an email to marty@stmaryastoria.com.
 - Do not pressure anyone to convert. Inquiry is welcome. Curiosity is enough.
 - If a question is medical, legal, or crisis-related, give general information only and point to appropriate professional or emergency help.
 - For suicide or self-harm, urge the person to contact local emergency services or the 988 Suicide & Crisis Lifeline in the US.
@@ -161,22 +164,22 @@ export function answerFromKnowledge(question: string): string | null {
   if (
     /(what is ocia|what's ocia|order of christian|rcia|join the church|become catholic)/.test(query)
   ) {
-    return `${site.fullName} is the Church's way of walking with adults who wish to explore the Catholic faith. It is not a test to pass. It is a season of encounter — questions, prayer, teaching, and a community that makes room for people who are still finding their way. At ${site.parishFull} in ${site.city}, some who come are unbaptized, some were baptized in another Christian tradition, and some are Catholic already. All are welcome to begin. If you want a human conversation, use the contact page; the official coordinator details are still placeholders.`;
+    return `${site.fullName} is the Church's way of walking with adults who wish to explore the Catholic faith. It is not a test to pass. It is a season of encounter — questions, prayer, teaching, and a community that makes room for people who are still finding their way. At ${site.parishFull} in ${site.city}, an unbaptized adult who wishes to become Catholic may participate in OCIA. Classes are weekly and begin in the Fall. Call ${contactPlaceholders.phone} or write to ${contactPlaceholders.coordinatorName} at ${contactPlaceholders.email}.`;
   }
 
   if (/(next class|next session|when (do|does) (class|ocia)|schedule|what time)/.test(query)) {
     if (!next) {
-      return "The sample calendar on this site has no remaining upcoming sessions. The official St. Mary OCIA schedule has not been published here yet. Please check the Class Schedule page later, or reach out on the contact page. The parish website is stmaryastoria.com.";
+      return `OCIA classes are weekly and begin in the Fall. The parish has not posted a weekday or hour online. Call ${contactPlaceholders.phone} or write to ${contactPlaceholders.email}, and the Religious Education office will tell you when the next gathering meets. Sunday Mass at St. Mary is 8:30 a.m., 10:30 a.m., and Noon in Spanish.`;
     }
-    return `On this site's placeholder calendar, the next gathering is “${next.title}” on ${formatClassWeekday(next.date)}, ${formatClassDate(next.date)}, ${next.time}, at ${next.location}. The topic is: ${next.topic}. Instructor is listed as ${next.instructor}. These dates are sample content until the parish confirms the official calendar. See the Schedule page for the full list.`;
+    return `${next.title} (${formatClassDate(next.date)}): ${next.topic} Time: ${next.time}. Place: ${next.location}. ${next.instructor}. The parish has not posted a weekly weekday or hour online — call ${contactPlaceholders.phone} to confirm. See the Schedule page for the published notes.`;
   }
 
   if (/(where are you|address|astoria|grand avenue|location of (the )?church)/.test(query)) {
-    return `${site.parishFull} is at ${contactPlaceholders.addressLine}, ${contactPlaceholders.cityLine}. The official parish site is ${site.parishUrl}. The OCIA meeting room is still listed as ${contactPlaceholders.location} until the parish confirms it.`;
+    return `${site.parishFull} is at ${contactPlaceholders.addressLine}, ${contactPlaceholders.cityLine}. St. Francis de Sales Mission is at ${contactPlaceholders.missionAddress}. The official parish site is ${site.parishUrl}.`;
   }
 
   if (/(contact|email|phone|coordinator|speak to someone)/.test(query)) {
-    return `You can write through the contact page on this site. The coordinator name, email, and phone are still placeholders (${contactPlaceholders.coordinatorName}, ${contactPlaceholders.email}, ${contactPlaceholders.phone}) until the parish publishes them. The parish website is ${site.parishUrl}.`;
+    return `Marty Dursse is Director of Religious Education. Email ${contactPlaceholders.email}, or the parish office at ${contactPlaceholders.officeEmail} and ${contactPlaceholders.phone}. Hours: ${contactPlaceholders.officeHours}. You may also use the contact page; please call or email as well, because the form does not send a message by itself. The parish website is ${site.parishUrl}.`;
   }
 
   if (/(just curious|not sure|do i have to|am i allowed|catholic enough)/.test(query)) {
@@ -205,13 +208,13 @@ export function answerFromKnowledge(question: string): string | null {
   for (const category of topicCategories) {
     if (query.includes(normalize(category.label))) {
       const titles = category.items.map((item) => item.title).join(", ");
-      return `${category.label}: ${category.description} In the placeholder outline on this site, that includes ${titles}. This is not the official St. Mary syllabus; it is a representative Catholic formation map.`;
+      return `${category.label}: ${category.description} Themes include ${titles}. Weekly class topics are set with the Religious Education office.`;
     }
   }
 
   for (const stage of journeyStages) {
     if (query.includes(normalize(stage.title)) || query.includes(normalize(stage.latin))) {
-      return `${stage.title} (${stage.latin}): ${stage.description.replace("[PLACEHOLDER] ", "")} This describes the universal shape of Christian initiation, not a parish-specific pastoral plan.`;
+      return `${stage.title} (${stage.latin}): ${stage.description} This is the Church's ordinary shape of Christian initiation, celebrated at St. Mary through prayerful rites.`;
     }
   }
 

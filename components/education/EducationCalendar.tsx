@@ -146,8 +146,8 @@ export function EducationCalendar() {
         <p className="eyebrow mb-5">This month</p>
         {monthEvents.length === 0 ? (
           <p className="border-y border-gold/15 py-8 text-sm leading-7 text-stone-light">
-            No dated events are published for this month. Official dates will appear on
-            the calendar when the parish provides them.
+            No dated events are listed for this month. Seasonal notes appear
+            below.
           </p>
         ) : (
           <EventList events={monthEvents} />
@@ -156,7 +156,7 @@ export function EducationCalendar() {
 
       {undated.length > 0 ? (
         <div className="mt-14">
-          <p className="eyebrow mb-5">Dates to be announced</p>
+          <p className="eyebrow mb-5">Seasonal notes</p>
           <EventList events={undated} />
         </div>
       ) : null}

@@ -3,12 +3,6 @@ export type FaqItem = {
   answer: string;
 };
 
-/*
- * PLACEHOLDER FAQ CONTENT
- * TODO: Replace answers with official parish guidance where pastoral
- * practice (sponsors, paperwork, baptismal records, etc.) is specific
- * to St. Mary, Star of the Sea.
- */
 export const faqItems: FaqItem[] = [
   {
     question: "Am I Catholic enough to attend?",
@@ -18,7 +12,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Do I need to know anything about Catholicism?",
     answer:
-      "No. Some people arrive having grown up around the Church. Others have never opened a Bible or stepped into a Catholic Mass. Both are welcome. The sessions are designed to meet you where you are — and to move at a human pace.",
+      "No. Some people arrive having grown up around the Church. Others have never opened a Bible or stepped into a Catholic Mass. Both are welcome. Formation is meant to meet you where you are — and to move at a human pace.",
   },
   {
     question: "What if I'm just curious?",
@@ -38,7 +32,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "How long does the process take?",
     answer:
-      "[PLACEHOLDER] The length of OCIA varies with each person. Some walk a full liturgical year; others, depending on their background, may follow a different timeline. No one is rushed. We will talk with you about what makes sense for your life.",
+      "The length of OCIA varies with each person. The parish describes it as a formation process focused on conversion, with the Church celebrating that conversion through prayerful rites. Classes are weekly and begin in the Fall. No one is rushed; the Religious Education office will talk with you about what makes sense for your life.",
   },
   {
     question: "Will I have to speak in front of people?",
@@ -48,17 +42,17 @@ export const faqItems: FaqItem[] = [
   {
     question: "Is there a cost to attend?",
     answer:
-      "[PLACEHOLDER] There is no tuition for exploring the Catholic faith. If materials are ever needed, the parish will make that clear. No one should stay away because of money.",
+      "The parish has not published a tuition for exploring the Catholic faith. If materials are ever needed, the office will make that clear. No one should stay away because of money — call (503) 325-3671 or write to marty@stmaryastoria.com.",
   },
   {
     question: "Can I bring my spouse, family, or a friend?",
     answer:
-      "Yes. Those who love you are welcome to accompany you. If you are unsure what would be helpful, reach out and we can talk through it together.",
+      "Yes. Those who love you are welcome to accompany you. If you are unsure what would be helpful, reach out to the Religious Education office and we can talk through it together.",
   },
   {
     question: "What happens after I reach out?",
     answer:
-      "[PLACEHOLDER] Someone from the OCIA team will respond, listen to your story, and help you take a first step — often by inviting you to a session or a conversation. You will not be added to anything without your knowledge. The first move is simply human: a welcome.",
+      "Call the parish office at (503) 325-3671, write to Marty Dursse at marty@stmaryastoria.com, or use the contact page. Someone from Religious Education will listen to your story and help you take a first step. The first move is simply human: a welcome.",
   },
 ];
 

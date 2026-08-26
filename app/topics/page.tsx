@@ -16,7 +16,7 @@ export default function TopicsPage() {
       <PageHero
         eyebrow="What we'll explore"
         title="The mysteries the Church has loved for centuries."
-        description="This outline is representative, not official. It will be replaced with the parish's confirmed OCIA curriculum."
+        description="Themes Catholics ordinarily study in OCIA. Weekly class topics are set with the Religious Education office."
       />
       <Section tone="navy" className="py-20 md:py-28">
         <div className="page-wrap">

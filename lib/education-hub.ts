@@ -21,7 +21,7 @@ export const educationHubCards: HubCardItem[] = [
   {
     href: "/religious-education/content",
     title: "Content & Videos",
-    description: "Instructional videos, class lessons, and study materials — posted as the parish provides them.",
+    description: "Articles and lessons on OCIA, children's formation, Confirmation, and the worship of the Church.",
     cta: "Explore content",
     icon: "flame",
   },
@@ -35,7 +35,7 @@ export const educationHubCards: HubCardItem[] = [
   {
     href: "/religious-education/schedules",
     title: "Class Schedules",
-    description: "Weekly gatherings by program, as they are published.",
+    description: "Registration begins in August. Weekly OCIA classes begin in the Fall.",
     cta: "View class schedule",
     icon: "book",
   },
@@ -49,7 +49,7 @@ export const educationHubCards: HubCardItem[] = [
   {
     href: "/religious-education/handbook",
     title: "Handbook",
-    description: "View or download the current Religious Education handbook.",
+    description: "How to register and how to reach Marty Dursse, Director of Religious Education.",
     cta: "View handbook",
     icon: "book",
   },

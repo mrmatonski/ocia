@@ -29,7 +29,9 @@ export function FeaturedSession({ session }: { session: Session }) {
           {session.title}
         </h3>
         <p className="mt-4 font-serif text-xl text-gold/90 md:text-2xl">
-          {formatClassWeekday(session.date)} · {formatClassDate(session.date)}
+          {formatClassWeekday(session.date)
+            ? `${formatClassWeekday(session.date)} · ${formatClassDate(session.date)}`
+            : formatClassDate(session.date)}
         </p>
         <p className="mt-2 text-sm tracking-[0.12em] text-stone-light uppercase">
           {session.time}
@@ -82,9 +84,11 @@ export function OrdoRow({
     >
       <div>
         <p className="font-serif text-xl text-ivory">{formatClassDate(session.date)}</p>
-        <p className="mt-0.5 text-[0.62rem] tracking-[0.16em] text-gold uppercase">
-          {formatClassWeekday(session.date)}
-        </p>
+        {formatClassWeekday(session.date) ? (
+          <p className="mt-0.5 text-[0.62rem] tracking-[0.16em] text-gold uppercase">
+            {formatClassWeekday(session.date)}
+          </p>
+        ) : null}
       </div>
       <div className="mt-3 md:mt-0">
         <h3 className="font-serif text-2xl leading-snug text-ivory italic md:text-[1.7rem]">

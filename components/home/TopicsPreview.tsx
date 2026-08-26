@@ -11,7 +11,7 @@ export function TopicsPreview() {
           light
           eyebrow="What we'll explore"
           title="The faith, unfolded with care."
-          description="A representative outline of Catholic formation — not the official St. Mary OCIA curriculum. Topics will be confirmed with the parish."
+          description="Themes Catholics ordinarily study in OCIA. Weekly class topics are set with the Religious Education office."
         />
         <div className="mt-14">
           <TopicAccordion compact tone="light" />

@@ -36,8 +36,8 @@ export function ClassScheduleTable({
     <div>
       {comingSoon ? (
         <p className="mb-8 border border-gold/20 bg-navy-lift/30 px-5 py-4 text-sm leading-7 text-stone-light">
-          Schedule information coming soon. The rows below are placeholders
-          until the parish publishes official times.
+          Weekly meeting days and hours are arranged through the Religious
+          Education office. Call (503) 325-3671 for the current gathering time.
         </p>
       ) : null}
       {note ? (

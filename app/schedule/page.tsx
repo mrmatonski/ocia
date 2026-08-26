@@ -16,11 +16,10 @@ export default function SchedulePage() {
       <PageHero
         eyebrow="Class schedule"
         title="Week by week, into the heart of the faith."
-        description="Placeholder sessions for a full formation year. Dates, times, topics, and presenters will be replaced with the official parish calendar."
+        description="Registration begins in August. Weekly OCIA classes begin in the Fall. Call (503) 325-3671 for the current meeting day and time."
       />
       <Section tone="navy" className="py-20 md:py-28">
         <div className="page-wrap">
-          {/* PLACEHOLDER DATA: see lib/schedule.ts */}
           <ScheduleTimeline />
         </div>
       </Section>

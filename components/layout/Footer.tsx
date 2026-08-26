@@ -77,8 +77,9 @@ export function Footer() {
               {contactPlaceholders.addressLine}
               <br />
               {contactPlaceholders.cityLine}
+              <br />
+              {contactPlaceholders.phone}
             </p>
-            {/* TODO: Add official parish social links when they are confirmed. */}
           </div>
         </div>
 

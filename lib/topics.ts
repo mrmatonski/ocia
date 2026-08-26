@@ -11,10 +11,9 @@ export type TopicCategory = {
 };
 
 /*
- * PLACEHOLDER TOPIC DATA
- * TODO: Replace with the official St. Mary OCIA curriculum.
- * These categories reflect a typical Catholic formation outline and
- * are not the parish's published syllabus.
+ * Formation themes for OCIA inquiry. These follow the Church's ordinary
+ * outline of the faith; weekly class topics are set with the Religious
+ * Education office.
  */
 export const topicCategories: TopicCategory[] = [
   {
@@ -25,22 +24,22 @@ export const topicCategories: TopicCategory[] = [
       {
         title: "Who is God?",
         summary:
-          "[PLACEHOLDER TOPIC] An introduction to the God who reveals Himself — not as an idea, but as a living mystery who seeks communion with us.",
+          "An introduction to the God who reveals Himself — not as an idea, but as a living mystery who seeks communion with us.",
       },
       {
         title: "Who is Jesus Christ?",
         summary:
-          "[PLACEHOLDER TOPIC] The Incarnation, the Cross, and the Resurrection: why the Church proclaims Jesus as Lord.",
+          "The Incarnation, the Cross, and the Resurrection: why the Church proclaims Jesus as Lord.",
       },
       {
         title: "The Trinity",
         summary:
-          "[PLACEHOLDER TOPIC] Father, Son, and Holy Spirit — one God in three Persons, the central mystery of Christian faith.",
+          "Father, Son, and Holy Spirit — one God in three Persons, the central mystery of Christian faith.",
       },
       {
         title: "The Holy Spirit",
         summary:
-          "[PLACEHOLDER TOPIC] The Spirit who gives life, dwells in the Church, and leads each person into truth.",
+          "The Spirit who gives life, dwells in the Church, and leads each person into truth.",
       },
     ],
   },
@@ -52,17 +51,17 @@ export const topicCategories: TopicCategory[] = [
       {
         title: "The Bible",
         summary:
-          "[PLACEHOLDER TOPIC] What the Scriptures are, how they came to us, and why Catholics call them the Word of God.",
+          "What the Scriptures are, how they came to us, and why Catholics call them the Word of God.",
       },
       {
         title: "Old and New Testament",
         summary:
-          "[PLACEHOLDER TOPIC] The one story of salvation — promise, fulfillment, and the covenant that holds them together.",
+          "The one story of salvation — promise, fulfillment, and the covenant that holds them together.",
       },
       {
         title: "How Catholics interpret Scripture",
         summary:
-          "[PLACEHOLDER TOPIC] Reading with the Church: tradition, context, and the living voice of the Magisterium.",
+          "Reading with the Church: tradition, context, and the living voice of the Magisterium.",
       },
     ],
   },
@@ -74,22 +73,22 @@ export const topicCategories: TopicCategory[] = [
       {
         title: "What is the Church?",
         summary:
-          "[PLACEHOLDER TOPIC] More than a building or a gathering — the Church as mystery, communion, and sacrament of salvation.",
+          "More than a building or a gathering — the Church as mystery, communion, and sacrament of salvation.",
       },
       {
         title: "The Apostolic Tradition",
         summary:
-          "[PLACEHOLDER TOPIC] What has been handed down from the apostles, and why it still lives in the Church today.",
+          "What has been handed down from the apostles, and why it still lives in the Church today.",
       },
       {
         title: "The Magisterium",
         summary:
-          "[PLACEHOLDER TOPIC] How the Church teaches with authority — and why that authority is meant to serve the truth.",
+          "How the Church teaches with authority — and why that authority is meant to serve the truth.",
       },
       {
         title: "The Sacraments",
         summary:
-          "[PLACEHOLDER TOPIC] Visible signs of invisible grace: an overview of the sacramental economy.",
+          "Visible signs of invisible grace: an overview of the sacramental economy.",
       },
     ],
   },
@@ -101,37 +100,37 @@ export const topicCategories: TopicCategory[] = [
       {
         title: "Baptism",
         summary:
-          "[PLACEHOLDER TOPIC] New birth in Christ, the doorway of the Christian life, and the forgiveness of sin.",
+          "New birth in Christ, the doorway of the Christian life, and the forgiveness of sin.",
       },
       {
         title: "Confirmation",
         summary:
-          "[PLACEHOLDER TOPIC] Strengthened by the Holy Spirit for witness, mission, and a mature Christian life.",
+          "Strengthened by the Holy Spirit for witness, mission, and a mature Christian life.",
       },
       {
         title: "Eucharist",
         summary:
-          "[PLACEHOLDER TOPIC] The Real Presence, the sacrifice of the Mass, and holy communion with Christ and His Church.",
+          "The Real Presence, the sacrifice of the Mass, and holy communion with Christ and His Church.",
       },
       {
         title: "Reconciliation",
         summary:
-          "[PLACEHOLDER TOPIC] Confession as healing, mercy, and the restoration of baptismal grace.",
+          "Confession as healing, mercy, and the restoration of baptismal grace.",
       },
       {
         title: "Anointing of the Sick",
         summary:
-          "[PLACEHOLDER TOPIC] Christ's tenderness toward the suffering, and the sacrament of strength in illness.",
+          "Christ's tenderness toward the suffering, and the sacrament of strength in illness.",
       },
       {
         title: "Holy Orders",
         summary:
-          "[PLACEHOLDER TOPIC] The priesthood, diaconate, and episcopacy as a gift for the Church's life.",
+          "The priesthood, diaconate, and episcopacy as a gift for the Church's life.",
       },
       {
         title: "Marriage",
         summary:
-          "[PLACEHOLDER TOPIC] The covenant of man and woman as a living sign of Christ's love for the Church.",
+          "The covenant of man and woman as a living sign of Christ's love for the Church.",
       },
     ],
   },
@@ -143,27 +142,27 @@ export const topicCategories: TopicCategory[] = [
       {
         title: "The Ten Commandments",
         summary:
-          "[PLACEHOLDER TOPIC] Not a list of burdens, but a path of freedom and love of God and neighbor.",
+          "Not a list of burdens, but a path of freedom and love of God and neighbor.",
       },
       {
         title: "Virtue",
         summary:
-          "[PLACEHOLDER TOPIC] The cardinal and theological virtues as habits that form a holy life.",
+          "The cardinal and theological virtues as habits that form a holy life.",
       },
       {
         title: "Sin",
         summary:
-          "[PLACEHOLDER TOPIC] What sin is, what it does, and why the Church speaks of it with both honesty and hope.",
+          "What sin is, what it does, and why the Church speaks of it with both honesty and hope.",
       },
       {
         title: "Grace",
         summary:
-          "[PLACEHOLDER TOPIC] God's own life offered to us — unearned, transforming, and always first.",
+          "God's own life offered to us — unearned, transforming, and always first.",
       },
       {
         title: "Christian discipleship",
         summary:
-          "[PLACEHOLDER TOPIC] Following Christ in ordinary life: work, family, charity, and the call to holiness.",
+          "Following Christ in ordinary life: work, family, charity, and the call to holiness.",
       },
     ],
   },
@@ -175,22 +174,22 @@ export const topicCategories: TopicCategory[] = [
       {
         title: "How Catholics Pray",
         summary:
-          "[PLACEHOLDER TOPIC] Vocal prayer, meditation, and contemplation — a simple map of the interior life.",
+          "Vocal prayer, meditation, and contemplation — a simple map of the interior life.",
       },
       {
         title: "The Mass",
         summary:
-          "[PLACEHOLDER TOPIC] The highest prayer of the Church, and how to enter it more fully.",
+          "The highest prayer of the Church, and how to enter it more fully.",
       },
       {
         title: "The Our Father",
         summary:
-          "[PLACEHOLDER TOPIC] The prayer Jesus taught, and what each petition reveals about the Christian life.",
+          "The prayer Jesus taught, and what each petition reveals about the Christian life.",
       },
       {
         title: "Devotional Prayer",
         summary:
-          "[PLACEHOLDER TOPIC] The Rosary, Eucharistic Adoration, and the quiet practices that sustain faith.",
+          "The Rosary, Eucharistic Adoration, and the quiet practices that sustain faith.",
       },
     ],
   },
@@ -202,22 +201,22 @@ export const topicCategories: TopicCategory[] = [
       {
         title: "Mary",
         summary:
-          "[PLACEHOLDER TOPIC] The Mother of God, the first disciple, and her place in Catholic faith and devotion.",
+          "The Mother of God, the first disciple, and her place in Catholic faith and devotion.",
       },
       {
         title: "The Communion of Saints",
         summary:
-          "[PLACEHOLDER TOPIC] Why Catholics believe the Church includes the living and the dead in one communion.",
+          "Why Catholics believe the Church includes the living and the dead in one communion.",
       },
       {
         title: "Intercession",
         summary:
-          "[PLACEHOLDER TOPIC] Asking the saints to pray with us — not instead of Christ, but in Him.",
+          "Asking the saints to pray with us — not instead of Christ, but in Him.",
       },
       {
         title: "Catholic devotion",
         summary:
-          "[PLACEHOLDER TOPIC] Icons, feast days, and the texture of a faith that is both ancient and alive.",
+          "Icons, feast days, and the texture of a faith that is both ancient and alive.",
       },
     ],
   },

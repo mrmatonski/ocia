@@ -10,7 +10,7 @@ export function JourneyPreview() {
         <SectionHeading
           eyebrow="Your journey"
           title="A path walked with the Church."
-          description="These stages describe the universal shape of Christian initiation. The parish's official explanation will replace this placeholder outline."
+          description="The Church's path of initiation — inquiry, catechumenate, purification, and the sacraments — walked with a parish that makes room for questions."
         />
         <div className="mt-16">
           <JourneyTimeline />

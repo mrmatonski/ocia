@@ -13,7 +13,7 @@ export function SchedulePreview() {
         <SectionHeading
           eyebrow="Class schedule"
           title="A place at the table, week by week."
-          description="Placeholder dates for a full formation year. The official calendar will replace this list when it is confirmed."
+          description="Registration begins in August. Weekly OCIA classes begin in the Fall. Call the parish office for the current meeting day and time."
         />
         <div className="mt-16">
           <ScheduleTimeline limit={upcoming.length || 4} />

@@ -23,7 +23,7 @@ export default function EducationSchedulesPage() {
       <PageHero
         eyebrow="Religious Education"
         title="Class schedules."
-        description="Gatherings by program, as they are published. Official times and locations will replace placeholder rows when the parish confirms them."
+        description="Registration begins in August. Weekly OCIA classes begin in the Fall. Call the parish office for the current meeting day and time."
       />
       <Section tone="ivory" className="py-12 md:py-16">
         <div className="page-wrap">
@@ -73,7 +73,7 @@ export default function EducationSchedulesPage() {
       </Section>
       <RegistrationCTA
         title="Questions about a class?"
-        description="If a time or location is still listed as coming soon, write to the parish and we will help you."
+        description="Call (503) 325-3671 or write to marty@stmaryastoria.com. If you are new to the parish, please call the office."
       />
     </>
   );

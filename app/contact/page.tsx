@@ -28,9 +28,11 @@ export default function ContactPage() {
       <Section tone="dark" className="pb-24">
         <div className="page-wrap">
           <ImagePlaceholder
-            label="Church Exterior Placeholder"
+            label="St. Mary, Star of the Sea"
             aspectRatio="21/9"
-            caption="A future photograph of St. Mary, Star of the Sea — Astoria, Oregon."
+            src="/images/parish/church-farley.jpg"
+            alt="St. Mary, Star of the Sea, photograph by Michael Farley, Jr."
+            caption="St. Mary, Star of the Sea — 1465 Grand Avenue, Astoria, Oregon. Photograph by Michael Farley, Jr."
           />
         </div>
       </Section>

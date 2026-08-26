@@ -36,7 +36,7 @@ function FeaturedContent({ item }: { item: EducationContent }) {
         ) : (
           <Link href={href} aria-label={item.title} className="block h-full">
             <ImagePlaceholder
-              label="Featured lesson coming soon"
+              label={item.title}
               aspectRatio="16/9"
               alt=""
               className="h-full"
@@ -116,7 +116,7 @@ export function ContentLibrary({
           <SectionHeading
             eyebrow="Featured"
             title="Begin here."
-            description="A highlighted lesson or recording will be shown here when the parish posts it."
+            description="A highlighted lesson from Religious Education at St. Mary, Star of the Sea."
           />
           <div className="mt-14">
             <FeaturedContent item={featured} />
@@ -129,7 +129,7 @@ export function ContentLibrary({
           <SectionHeading
             eyebrow="Library"
             title="Browse content."
-            description="Videos, lessons, and study materials — clearly marked as samples until official materials are posted."
+            description="Articles and lessons drawn from the life of this parish — OCIA, children's formation, Confirmation, and the worship of the Church."
           />
           <ul className="mt-14 grid gap-5 sm:grid-cols-2">
             {items.map((item) => (

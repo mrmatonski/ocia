@@ -22,7 +22,7 @@ export default function EducationContentPage() {
       <PageHero
         eyebrow="Religious Education"
         title="Content & Videos"
-        description="Continue learning and growing in the Catholic faith. Recorded lessons, study guides, and other helps will be posted here as the parish provides them."
+        description="Articles and lessons from Religious Education at St. Mary — OCIA, children's formation, Confirmation, and the worship of the Church."
       />
       <Section tone="ivory" className="py-12 md:py-16">
         <div className="page-wrap">
@@ -46,7 +46,7 @@ export default function EducationContentPage() {
       </Section>
       <RegistrationCTA
         title="Looking for something specific?"
-        description="If a lesson or handout has not been posted yet, the parish can point you to what is available."
+        description="If you need a printed handout or a class time, call the parish office or write to Marty Dursse."
       />
     </>
   );

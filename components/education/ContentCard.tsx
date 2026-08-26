@@ -46,7 +46,7 @@ function Thumbnail({
       className="block"
     >
       <ImagePlaceholder
-        label={`${item.type} placeholder`}
+        label={item.title}
         aspectRatio="16/9"
         alt=""
       />

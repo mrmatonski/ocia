@@ -9,7 +9,7 @@ import { Section } from "@/components/ui/Section";
 export const metadata: Metadata = {
   title: "Religious Education Handbook",
   description:
-    "Religious Education handbook for St. Mary, Star of the Sea Catholic Church in Astoria, Oregon. The official PDF will be posted here when provided.",
+    "Religious Education registration for St. Mary, Star of the Sea Catholic Church in Astoria, Oregon. Contact Marty Dursse or the parish office.",
 };
 
 export default function EducationHandbookPage() {
@@ -17,8 +17,8 @@ export default function EducationHandbookPage() {
     <>
       <PageHero
         eyebrow="Religious Education"
-        title="The handbook."
-        description="View or download the current Religious Education Handbook when the parish posts the official file."
+        title="Registration."
+        description="Marty Dursse, Director of Religious Education, coordinates formation for the parish. Registration begins in August."
       />
       <Section tone="ivory" className="py-12 md:py-16">
         <div className="page-wrap">
@@ -42,7 +42,7 @@ export default function EducationHandbookPage() {
       </Section>
       <RegistrationCTA
         title="Need a printed copy?"
-        description="Until the file is posted here, the parish office can help you obtain the current handbook."
+        description="Call (503) 325-3671 or write to marty@stmaryastoria.com. Office hours are Tuesday–Friday, 9:00 a.m. – 4:00 p.m."
       />
     </>
   );

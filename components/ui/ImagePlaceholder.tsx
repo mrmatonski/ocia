@@ -51,7 +51,7 @@ export function ImagePlaceholder({
                 {label}
               </span>
               <span className="max-w-[16rem] text-xs leading-relaxed text-stone-light/80">
-                Photography placeholder — replace this frame with a final image.
+                St. Mary, Star of the Sea — Astoria, Oregon.
               </span>
             </div>
           </div>

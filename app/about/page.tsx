@@ -32,7 +32,6 @@ export default function AboutPage() {
               A formation, not a class you survive.
             </h2>
             <Ornament className="mt-7" light align="start" />
-            {/* TODO: Replace with official parish OCIA description */}
             <div className="mt-8 space-y-5 text-base leading-8 text-ink/75">
               <p>
                 OCIA accompanies adults who wish to know Jesus Christ in the
@@ -41,9 +40,10 @@ export default function AboutPage() {
                 Confirmation, and the Eucharist.
               </p>
               <p>
-                At St. Mary, Star of the Sea in Astoria, this path is meant to
-                feel human. You will gather, pray, listen, and ask. You will be
-                given time. No one is expected to arrive already certain.
+                At St. Mary, Star of the Sea in Astoria — under the care of
+                Fr. William D. Oruko, AJ — this path is meant to feel human.
+                You will gather, pray, listen, and ask. You will be given time.
+                No one is expected to arrive already certain.
               </p>
               <p>
                 The Church has walked this road with inquirers for centuries.
@@ -54,8 +54,11 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <ImagePlaceholder
-              label="Formation Gathering Placeholder"
+              label="Formation at St. Mary"
               aspectRatio="4/5"
+              src="/images/parish/formation.jpg"
+              alt="Religious Education at St. Mary, Star of the Sea"
+              caption="Formation in the life of the parish."
             />
           </Reveal>
         </div>

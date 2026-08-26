@@ -27,12 +27,12 @@ export function HandbookPanel() {
       </dl>
       <div className="mt-10">
         {ready && handbook.href ? (
-          <Button href={handbook.href} ariaLabel="Download Religious Education handbook">
-            Download handbook
+          <Button href={handbook.href} ariaLabel={handbook.ctaLabel ?? "Download Religious Education handbook"}>
+            {handbook.ctaLabel ?? "Download handbook"}
           </Button>
         ) : (
           <p className="text-[0.7rem] tracking-[0.2em] text-stone uppercase">
-            Download handbook — file not yet posted
+            Call the parish office at (503) 325-3671
           </p>
         )}
       </div>

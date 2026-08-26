@@ -1,17 +1,11 @@
-/*
- * RELIGIOUS EDUCATION HANDBOOK
- * TODO: When the parish provides the official PDF, place it in
- * public/documents/ and set `href` to that path, for example:
- *   href: "/documents/religious-education-handbook.pdf"
- * Do not link to a file that does not yet exist.
- */
 export const educationHandbook = {
-  title: "Religious Education Handbook",
+  title: "Religious Education registration",
   description:
-    "View or download the current Religious Education Handbook for St. Mary, Star of the Sea.",
+    "Formation at St. Mary is coordinated by Marty Dursse, Director of Religious Education. Registration for the year begins in August. If you are new to the parish, please call the office.",
   comingSoon:
-    "Current handbook will be available here. The parish will provide the official PDF, and it will be linked from this page.",
-  href: null as string | null,
-  fileLabel: "PDF",
-  updated: "Date to be announced",
+    "Parish office: Tuesday–Friday, 9:00 a.m. – 4:00 p.m. Telephone (503) 325-3671. Email marty@stmaryastoria.com or office@stmaryastoria.com.",
+  href: "mailto:marty@stmaryastoria.com",
+  ctaLabel: "Email Religious Education",
+  fileLabel: "Parish office",
+  updated: "August 2026",
 };

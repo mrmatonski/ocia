@@ -9,8 +9,6 @@ export function ContactForm() {
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // Frontend placeholder only — this form does not submit to a server yet.
-    // TODO: Connect to parish email / form backend.
     setSubmitted(true);
   }
 
@@ -26,9 +24,9 @@ export function ContactForm() {
         </span>
         <h3 className="mt-6 font-serif text-3xl text-ivory">Message received.</h3>
         <p className="mt-4 max-w-md text-sm leading-7 text-stone-light">
-          Thank you. This is a frontend confirmation only — the form is not yet
-          connected. When the parish contact is in place, this message will
-          reach the OCIA team.
+          Thank you. This form does not send email by itself. Please also call
+          the parish office at (503) 325-3671 or write to
+          marty@stmaryastoria.com so we can reply.
         </p>
         <button
           type="button"

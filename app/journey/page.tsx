@@ -24,10 +24,9 @@ export default function JourneyPage() {
       <Section tone="navy" className="py-20 md:py-28">
         <div className="page-wrap">
           <p className="mb-14 max-w-2xl text-sm leading-7 text-stone-light">
-            {/* TODO: Replace with the parish's official explanation of the OCIA process. */}
-            The stages below follow the universal structure of Christian
-            initiation. They are placeholder descriptions and will be rewritten
-            in the parish&apos;s own voice.
+            The stages below follow the Church&apos;s structure of Christian
+            initiation. At St. Mary, OCIA is conversion-focused, and the Church
+            celebrates that conversion through prayerful rites.
           </p>
           <JourneyTimeline />
         </div>
@@ -49,8 +48,10 @@ export default function JourneyPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <ImagePlaceholder
-              label="Easter Vigil Placeholder"
+              label="The sanctuary at St. Mary"
               aspectRatio="16/10"
+              src="/images/parish/crucifix.jpg"
+              alt="Crucifix at St. Mary, Star of the Sea"
             />
           </Reveal>
         </div>

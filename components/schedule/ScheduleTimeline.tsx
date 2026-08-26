@@ -88,7 +88,8 @@ export function ScheduleTimeline({ limit }: { limit?: number }) {
 
       {sessions.length === 0 ? (
         <p className="border-y border-gold/15 py-14 text-center text-stone-light">
-          No classes match this filter. The official schedule will be published here.
+          No classes match this filter. Call the parish office at (503) 325-3671
+          for the current gathering time.
         </p>
       ) : (
         <div>

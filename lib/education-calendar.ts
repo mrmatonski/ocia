@@ -33,61 +33,60 @@ export const calendarCategoryLabels: Record<CalendarCategory, string> = {
 export const calendarGuideline =
   "Please note: The Religious Education calendar is a general guideline and may be subject to change. Please check announcements for the most current information.";
 
-/*
- * PLACEHOLDER CALENDAR EVENTS
- * TODO: Replace with the official parish Religious Education calendar.
- * Dates, times, and titles below are structural examples only.
- * They are not published parish events.
- */
 export const educationCalendarEvents: CalendarEvent[] = [
   {
-    id: "placeholder-registration",
-    title: "Registration period",
-    date: "TBD",
+    id: "re-registration",
+    title: "Religious Education registration",
+    date: "August",
     category: "registration",
+    location: "Parish Office, 1465 Grand Avenue",
     notes:
-      "[PLACEHOLDER] Registration dates will be published here when the parish confirms them.",
+      "Registration begins in August. Call (503) 325-3671 or write to Marty Dursse at marty@stmaryastoria.com. If you are new to the parish, please call the office.",
   },
   {
-    id: "placeholder-class-year",
-    title: "Formation year gatherings",
-    date: "TBD",
+    id: "ocia-fall",
+    title: "OCIA weekly classes",
+    date: "Fall",
     category: "class",
-    time: "Details coming soon",
-    location: "[LOCATION PLACEHOLDER]",
+    time: "Weekly",
+    location: "St. Mary, Star of the Sea",
     notes:
-      "[PLACEHOLDER] Weekly class dates will follow the official schedule. See Class Schedules.",
+      "An adult who has not been baptized and wishes to learn about becoming Catholic may participate in OCIA. Classes are weekly and begin in the Fall. Call the parish office for the current meeting day and time.",
   },
   {
-    id: "placeholder-parent",
-    title: "Parent meeting",
-    date: "TBD",
-    category: "parent",
-    time: "Details coming soon",
-    location: "[LOCATION PLACEHOLDER]",
-    notes: "[PLACEHOLDER] Parent meeting details will be updated soon.",
+    id: "daily-mass-pause",
+    title: "Daily Masses paused",
+    date: "2026-08-11",
+    endDate: "2026-09-02",
+    category: "break",
+    location: "St. Mary, Star of the Sea",
+    notes:
+      "The parish has announced that daily Masses are cancelled from August 11 through September 2. Sunday Mass continues as published. See announcements for the latest word.",
   },
   {
-    id: "placeholder-sacrament",
-    title: "Sacramental preparation",
-    date: "TBD",
+    id: "sunday-mass",
+    title: "Sunday Mass at St. Mary",
+    date: "Sundays",
+    time: "8:30 a.m., 10:30 a.m., and Noon (Spanish)",
+    category: "other",
+    location: "St. Mary, Star of the Sea, 1465 Grand Avenue",
+    notes: "Wheelchair accessible through the 15th Street side door.",
+  },
+  {
+    id: "vigil-mass",
+    title: "Saturday Vigil Mass",
+    date: "Saturdays",
+    time: "4:00 p.m.",
+    category: "other",
+    location: "St. Francis de Sales Mission, Hammond",
+    notes: "The Rosary is prayed a half hour before the 4:00 p.m. Vigil Mass.",
+  },
+  {
+    id: "confirmation-cycle",
+    title: "Confirmation",
+    date: "Every two years",
     category: "sacrament",
     notes:
-      "[PLACEHOLDER] First Communion, Confirmation, and related dates will appear here when confirmed.",
-  },
-  {
-    id: "placeholder-break",
-    title: "Seasonal break",
-    date: "TBD",
-    category: "break",
-    notes: "[PLACEHOLDER] Breaks in the formation year will be listed when the parish calendar is set.",
-  },
-  {
-    id: "placeholder-holiday",
-    title: "Holy day / holiday",
-    date: "TBD",
-    category: "holiday",
-    notes:
-      "[PLACEHOLDER] Holy days and holidays that affect Religious Education will be noted here.",
+      "Religious Education coordinates sacramental preparation for Confirmation. The Rite of Confirmation occurs every two years. Ask the Religious Education office for the current cycle.",
   },
 ];

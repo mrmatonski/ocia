@@ -2,7 +2,12 @@ export function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
 
+function isIsoDate(value: string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value);
+}
+
 export function formatClassDate(isoDate: string) {
+  if (!isIsoDate(isoDate)) return isoDate;
   const date = new Date(`${isoDate}T12:00:00`);
   return new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -20,6 +25,7 @@ export function formatFullDate(isoDate: string) {
 }
 
 export function formatClassWeekday(isoDate: string) {
+  if (!isIsoDate(isoDate)) return "";
   const date = new Date(`${isoDate}T12:00:00`);
   return new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date);
 }

@@ -1,6 +1,6 @@
 import { faqItems, type FaqItem } from "@/lib/faq";
 import { classSchedule } from "@/lib/schedule";
-import { contactPlaceholders } from "@/lib/site";
+import { contactPlaceholders, parishImages } from "@/lib/site";
 
 export type EducationIcon =
   | "church"
@@ -76,70 +76,68 @@ export type EducationProgram = {
   seoDescription: string;
   icon: EducationIcon;
   relatedLinks?: RelatedLink[];
+  image?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  };
 };
 
-const comingSoonSchedule: ScheduleEntry[] = [
+const parishLocation = contactPlaceholders.location;
+const officeHours = contactPlaceholders.officeHours;
+
+const dre: Instructor = {
+  name: contactPlaceholders.coordinatorName,
+  title: contactPlaceholders.coordinatorTitle,
+  note: `Marty coordinates Religious Education for the parish. Call ${contactPlaceholders.phone} or write to ${contactPlaceholders.email}. Office hours: ${officeHours}.`,
+};
+
+const registrationSeason: ScheduleEntry[] = [
   {
-    date: "TBD",
-    time: "Details coming soon",
-    topic: "Class schedule coming soon",
-    location: "[LOCATION PLACEHOLDER]",
-  },
-  {
-    date: "TBD",
-    time: "Details coming soon",
-    topic: "Program information will be updated soon",
-    location: "[LOCATION PLACEHOLDER]",
-  },
-  {
-    date: "TBD",
-    time: "Details coming soon",
-    topic: "Official dates will be published here",
-    location: "[LOCATION PLACEHOLDER]",
+    date: "August",
+    time: officeHours,
+    topic: "Registration begins in August",
+    location: "Parish Office, 1465 Grand Avenue",
+    instructor: dre.name,
+    notes: `Call ${contactPlaceholders.phone} or write to ${contactPlaceholders.email}. If you are new to the parish, please call the office.`,
   },
 ];
 
-const placeholderInstructor: Instructor = {
-  name: "[NAME PLACEHOLDER]",
-  title: "[TITLE PLACEHOLDER]",
-  note: "Instructor information will be updated soon. Please contact the parish office for the current catechist or coordinator.",
-};
-
-const placeholderDates: ImportantDate[] = [
+const seasonalDates: ImportantDate[] = [
   {
     label: "Registration",
-    detail: "Details coming soon.",
+    detail: "Registration begins in August. Call (503) 325-3671 or write to marty@stmaryastoria.com.",
   },
   {
-    label: "First gathering",
-    detail: "Class schedule coming soon.",
+    label: "Office hours",
+    detail: "Tuesday–Friday, 9:00 a.m. – 4:00 p.m. (closed Mondays).",
   },
   {
-    label: "Program year",
-    detail: "Program information will be updated soon.",
+    label: "New to the parish",
+    detail: "Please call the parish office so we can welcome you and help you register.",
   },
 ];
 
-const genericFaqs: FaqItem[] = [
+const parishFaqs: FaqItem[] = [
   {
     question: "How do I register?",
     answer:
-      "[PLACEHOLDER] Registration details will be published here. Until then, please use the contact page and a member of the parish team will help you take the next step.",
+      "Registration for Religious Education begins in August. Call the parish office at (503) 325-3671, write to Marty Dursse at marty@stmaryastoria.com, or use the contact page. If you are new to the parish, please call the office.",
   },
   {
     question: "Is there a cost?",
     answer:
-      "[PLACEHOLDER] Cost, materials, and any fees have not yet been published. No one should stay away from formation because of money. Contact the parish if this is a concern.",
+      "The parish has not published a fee for these programs. Ask the Religious Education office. No one should stay away from formation because of money.",
   },
   {
     question: "When and where does this program meet?",
     answer:
-      "[PLACEHOLDER] The official class schedule, time, and location will be updated soon. Placeholder sessions below are structural examples only.",
+      "Weekly OCIA classes begin in the Fall; the parish has not published a weekday or hour online. Children's and youth gatherings are arranged through the Religious Education office. Call (503) 325-3671 for the current time and place.",
   },
   {
     question: "Who should I contact with questions?",
     answer:
-      "[PLACEHOLDER] Coordinator names and direct parish contacts will be added when they are confirmed. You are welcome to reach out through the contact page in the meantime.",
+      "Marty Dursse, Director of Religious Education, at marty@stmaryastoria.com, or the parish office at office@stmaryastoria.com and (503) 325-3671. Office hours are Tuesday–Friday, 9:00 a.m. – 4:00 p.m. (closed Mondays).",
   },
 ];
 
@@ -154,11 +152,8 @@ const ociaSchedule: ScheduleEntry[] = classSchedule.map((session) => ({
 }));
 
 /*
- * PLACEHOLDER PROGRAM DATA
- * TODO: Replace names, schedules, instructors, locations, dates, and
- * parish-specific descriptions with official St. Mary, Star of the Sea
- * Religious Education information. Do not treat this file as a published
- * parish catalog until those details are confirmed.
+ * Formation programs as published by St. Mary, Star of the Sea.
+ * Weekly class days and hours are not posted online; do not invent them.
  */
 export const educationPrograms: EducationProgram[] = [
   {
@@ -171,7 +166,7 @@ export const educationPrograms: EducationProgram[] = [
     overview: [
       "OCIA — the Order of Christian Initiation of Adults — is the Church's way of walking with adults who wish to know Jesus Christ in the Catholic Church. It is ordered toward conversion, and toward the sacraments of initiation: Baptism, Confirmation, and the Eucharist.",
       "At St. Mary, Star of the Sea in Astoria, this path is meant to feel human. You will gather, pray, listen, and ask. You will be given time. No one is expected to arrive already certain.",
-      "This page is an introduction. The existing OCIA pages on this site — About, Schedule, Topics, and Journey — remain the fuller account of the process.",
+      "An adult who has not been baptized and wishes to learn about becoming Catholic may participate in OCIA. Classes are weekly and begin in the Fall. Call the parish office for the current meeting day and time.",
     ],
     audience: "Adults interested in learning about Catholicism.",
     audienceGroups: [
@@ -189,90 +184,86 @@ export const educationPrograms: EducationProgram[] = [
       },
     ],
     learnIntro:
-      "The outline below is representative of Catholic adult initiation. It is not the parish's published syllabus.",
+      "OCIA at St. Mary is conversion-focused. The Church celebrates that conversion through prayerful rites. Classes are weekly and begin in the Fall.",
     topics: [
       {
         title: "The Bible",
-        summary: "[PLACEHOLDER TOPIC] How Catholics receive Sacred Scripture as the Word of God.",
+        summary: "How Catholics receive Sacred Scripture as the Word of God.",
       },
       {
         title: "The Person of Jesus Christ",
-        summary: "[PLACEHOLDER TOPIC] The Incarnation, the Cross, and the Resurrection.",
+        summary: "The Incarnation, the Cross, and the Resurrection.",
       },
       {
         title: "The Trinity",
-        summary: "[PLACEHOLDER TOPIC] Father, Son, and Holy Spirit — one God in three Persons.",
+        summary: "Father, Son, and Holy Spirit — one God in three Persons.",
       },
       {
         title: "The Sacraments",
-        summary: "[PLACEHOLDER TOPIC] Visible signs of invisible grace.",
+        summary: "Visible signs of invisible grace.",
       },
       {
         title: "The Eucharist",
-        summary: "[PLACEHOLDER TOPIC] The source and summit of the Christian life.",
+        summary: "The source and summit of the Christian life.",
       },
       {
         title: "The Mass",
-        summary: "[PLACEHOLDER TOPIC] How the Church prays the sacred liturgy.",
+        summary: "How the Church prays the sacred liturgy.",
       },
       {
         title: "Prayer",
-        summary: "[PLACEHOLDER TOPIC] Learning to speak with God as the Church speaks.",
+        summary: "Learning to speak with God as the Church speaks.",
       },
       {
         title: "Catholic moral teaching",
-        summary: "[PLACEHOLDER TOPIC] The shape of a life ordered toward God and neighbor.",
+        summary: "The shape of a life ordered toward God and neighbor.",
       },
       {
         title: "The Church",
-        summary: "[PLACEHOLDER TOPIC] The Body of Christ in history, sacrament, and communion.",
+        summary: "The Body of Christ in history, sacrament, and communion.",
       },
       {
         title: "Mary and the Saints",
-        summary: "[PLACEHOLDER TOPIC] The family of God across heaven and earth.",
+        summary: "The family of God across heaven and earth.",
       },
       {
         title: "Salvation",
-        summary: "[PLACEHOLDER TOPIC] What Christ has done, and how we are drawn into His life.",
+        summary: "What Christ has done, and how we are drawn into His life.",
       },
       {
         title: "Christian discipleship",
-        summary: "[PLACEHOLDER TOPIC] Following Christ in ordinary life.",
+        summary: "Following Christ in ordinary life.",
       },
     ],
     topicsNote:
-      "A fuller topical outline lives on the Topics page. Replace this list in lib/education.ts when the official OCIA curriculum is confirmed.",
+      "A fuller topical outline lives on the Topics page. Weekly class topics are set with the Religious Education office.",
     schedule: ociaSchedule,
     scheduleNote:
-      "Placeholder sessions for a formation year. Dates, times, topics, and presenters will be replaced with the official parish calendar.",
+      "Classes are weekly and begin in the Fall. Call (503) 325-3671 for the current meeting day and time.",
     scheduleComingSoon: false,
     location: contactPlaceholders.location,
     locationNote:
-      "The regular gathering place will be confirmed with the official calendar. Until then, this field remains a placeholder.",
-    instructor: {
-      name: contactPlaceholders.coordinatorName,
-      title: contactPlaceholders.coordinatorTitle,
-      note: "Replace coordinator details in lib/site.ts when official parish contacts are confirmed.",
-    },
+      "OCIA gathers at St. Mary, Star of the Sea, 1465 Grand Avenue. Ask the office for the current room.",
+    instructor: dre,
     importantDates: [
       {
         label: "Inquiry",
         detail: "You may begin with a conversation at any time. No one is rushed.",
       },
       {
-        label: "Formation year",
-        detail: "[PLACEHOLDER] Official dates will follow the parish calendar.",
+        label: "Weekly classes",
+        detail: "Classes are weekly and begin in the Fall.",
       },
       {
-        label: "Easter Vigil",
-        detail: "[PLACEHOLDER] Those who are ready may receive the sacraments of initiation at Easter.",
+        label: "The rites",
+        detail: "The Church celebrates conversion through prayerful rites along the way.",
       },
     ],
     registration:
-      "There is no application to survive. Begin with a conversation on the contact page, or come to an inquiry gathering when the official schedule is posted.",
+      "Call the parish office at (503) 325-3671, write to Marty Dursse at marty@stmaryastoria.com, or use the contact page. Registration for Religious Education begins in August.",
     faqs: faqItems,
     contactNote:
-      "Someone from the OCIA team will respond, listen to your story, and help you take a first step.",
+      "Marty Dursse, Director of Religious Education, or the parish office will listen to your story and help you take a first step.",
     cardCta: "Explore OCIA",
     seoTitle: "OCIA",
     seoDescription:
@@ -286,6 +277,7 @@ export const educationPrograms: EducationProgram[] = [
       { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Begin your journey" },
     ],
+    image: parishImages.formation,
   },
   {
     slug: "adult-faith-formation",
@@ -295,8 +287,8 @@ export const educationPrograms: EducationProgram[] = [
     description:
       "Bible studies, Catholic teaching, theology, apologetics, and discussion for adults who wish to keep growing.",
     overview: [
-      "Adult faith formation is for Catholics — and for anyone drawn to the Church — who want to keep learning after the first questions have been asked. It may include Scripture study, the Catechism, theology, apologetics, and conversation in community.",
-      "Program information will be updated soon. The descriptions, topics, and gatherings below are structural placeholders so the parish can publish official offerings without rebuilding this page.",
+      "Adult faith formation is listed among the ministries of St. Mary, Star of the Sea. It is for Catholics — and for anyone drawn to the Church — who want to keep learning after the first questions have been asked.",
+      "Ask the Religious Education office about current studies, conversation groups, and how they relate to OCIA. Adult Education – OCIA is the parish's published path for unbaptized adults wishing to become Catholic.",
     ],
     audience: "Adults seeking ongoing Catholic formation.",
     audienceGroups: [
@@ -314,32 +306,33 @@ export const educationPrograms: EducationProgram[] = [
       },
     ],
     learnIntro:
-      "Example themes only. Do not treat this list as the parish's official adult-formation syllabus.",
+      "Themes Catholics ordinarily study as they grow in the faith. Current offerings are arranged through Religious Education.",
     topics: [
-      { title: "Sacred Scripture", summary: "[PLACEHOLDER TOPIC] Reading the Bible with the Church." },
-      { title: "The Catechism", summary: "[PLACEHOLDER TOPIC] A map of Catholic belief and life." },
-      { title: "Prayer and the interior life", summary: "[PLACEHOLDER TOPIC] Habits that sustain faith." },
-      { title: "Catholic moral teaching", summary: "[PLACEHOLDER TOPIC] Conscience, virtue, and charity." },
-      { title: "The Church in the world", summary: "[PLACEHOLDER TOPIC] Catholic social teaching in outline." },
-      { title: "Apologetics", summary: "[PLACEHOLDER TOPIC] Giving a reason for the hope that is in you." },
+      { title: "Sacred Scripture", summary: "Reading the Bible with the Church." },
+      { title: "The Catechism", summary: "A map of Catholic belief and life." },
+      { title: "Prayer and the interior life", summary: "Habits that sustain faith." },
+      { title: "Catholic moral teaching", summary: "Conscience, virtue, and charity." },
+      { title: "The Church in the world", summary: "Catholic social teaching in outline." },
+      { title: "Apologetics", summary: "Giving a reason for the hope that is in you." },
     ],
-    topicsNote: "Replace these topics in lib/education.ts when official studies are announced.",
-    schedule: comingSoonSchedule,
-    scheduleNote: "Class schedule coming soon. Placeholder rows only.",
-    scheduleComingSoon: true,
-    location: "[LOCATION PLACEHOLDER]",
-    locationNote: "Details coming soon.",
-    instructor: placeholderInstructor,
-    importantDates: placeholderDates,
+    topicsNote: "Ask the office which studies are meeting this year.",
+    schedule: registrationSeason,
+    scheduleNote: "Registration begins in August. Call the office for current adult gatherings.",
+    scheduleComingSoon: false,
+    location: parishLocation,
+    locationNote: "Gatherings take place at St. Mary, Star of the Sea, 1465 Grand Avenue. Call the office for the current room.",
+    instructor: dre,
+    importantDates: seasonalDates,
     registration:
-      "Registration information will be updated soon. Use the contact page to express interest in adult formation.",
-    faqs: genericFaqs,
-    contactNote: "A parish contact for adult formation will be listed here when confirmed.",
+      "Registration begins in August. Call (503) 325-3671 or write to marty@stmaryastoria.com to ask about adult formation.",
+    faqs: parishFaqs,
+    contactNote: "Marty Dursse coordinates Religious Education, including adult formation.",
     cardCta: "Learn more",
     seoTitle: "Adult Faith Formation",
     seoDescription:
-      "Adult faith formation at St. Mary, Star of the Sea in Astoria, Oregon — Bible study, Catholic teaching, and ongoing discipleship. Details coming soon.",
+      "Adult faith formation at St. Mary, Star of the Sea in Astoria, Oregon — ongoing Catholic learning alongside OCIA.",
     icon: "book",
+    image: parishImages.statue,
   },
   {
     slug: "youth",
@@ -349,8 +342,8 @@ export const educationPrograms: EducationProgram[] = [
     description:
       "Religious education for young people growing in friendship with Christ and His Church.",
     overview: [
-      "Youth religious education accompanies children and teenagers as they learn the faith, practice prayer, and take their place in the life of the parish.",
-      "Ages, grade levels, curriculum, and meeting times have not yet been supplied. What follows is a clear structure the parish can fill in — not an official published program.",
+      "After First Holy Communion, young people at St. Mary are invited into Youth Group for grades 6 through high school — education, fellowship, and a place to grow in the faith among friends.",
+      "Religious Education coordinates sacramental preparation for Confirmation. The Rite of Confirmation occurs every two years. Call the office for the current cycle and gathering times.",
     ],
     audience: "Children and teenagers in the parish community.",
     audienceGroups: [
@@ -367,32 +360,33 @@ export const educationPrograms: EducationProgram[] = [
         body: "Deeper study, friendship, and preparation for a mature Catholic life — including Confirmation when that path applies.",
       },
     ],
-    learnIntro: "Representative youth-formation themes. Not an official St. Mary curriculum.",
+    learnIntro: "Youth Group at St. Mary is for grades 6 through high school: education and fellowship, with Confirmation every two years.",
     topics: [
-      { title: "The life of Jesus", summary: "[PLACEHOLDER TOPIC] Who Christ is, and why He matters." },
-      { title: "Prayer", summary: "[PLACEHOLDER TOPIC] Learning to speak with God." },
-      { title: "The Mass", summary: "[PLACEHOLDER TOPIC] How we worship as a Church." },
-      { title: "The sacraments", summary: "[PLACEHOLDER TOPIC] Meeting Christ in visible signs." },
-      { title: "Friendship and virtue", summary: "[PLACEHOLDER TOPIC] Living the faith among peers." },
-      { title: "Service", summary: "[PLACEHOLDER TOPIC] Faith that takes flesh in charity." },
+      { title: "The life of Jesus", summary: "Who Christ is, and why He matters." },
+      { title: "Prayer", summary: "Learning to speak with God." },
+      { title: "The Mass", summary: "How we worship as a Church." },
+      { title: "The sacraments", summary: "Meeting Christ in visible signs." },
+      { title: "Friendship and virtue", summary: "Living the faith among peers." },
+      { title: "Service", summary: "Faith that takes flesh in charity." },
     ],
-    topicsNote: "Replace with the parish youth curriculum when it is confirmed.",
-    schedule: comingSoonSchedule,
-    scheduleNote: "Class schedule coming soon.",
-    scheduleComingSoon: true,
-    location: "[LOCATION PLACEHOLDER]",
-    locationNote: "Details coming soon.",
-    instructor: placeholderInstructor,
-    importantDates: placeholderDates,
+    topicsNote: "Ask the Religious Education office about the current Youth Group year.",
+    schedule: registrationSeason,
+    scheduleNote: "Youth Group follows First Communion. Registration begins in August. Call the office for gathering times.",
+    scheduleComingSoon: false,
+    location: parishLocation,
+    locationNote: "Gatherings take place at St. Mary, Star of the Sea, 1465 Grand Avenue. Call the office for the current room.",
+    instructor: dre,
+    importantDates: seasonalDates,
     registration:
-      "Program information will be updated soon. Families may inquire through the contact page.",
-    faqs: genericFaqs,
-    contactNote: "Youth ministry contacts will be added when the parish confirms them.",
+      "Registration begins in August. Families may call (503) 325-3671 or write to marty@stmaryastoria.com.",
+    faqs: parishFaqs,
+    contactNote: "Marty Dursse, Director of Religious Education, coordinates youth formation.",
     cardCta: "Learn more",
     seoTitle: "Youth Religious Education",
     seoDescription:
-      "Youth religious education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon. Program details coming soon.",
+      "Youth Group for grades 6 through high school at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
     icon: "users",
+    image: parishImages.formation,
   },
   {
     slug: "sacramental-preparation",
@@ -403,7 +397,7 @@ export const educationPrograms: EducationProgram[] = [
       "Formation for children, teens, and adults preparing to receive the sacraments.",
     overview: [
       "Sacramental preparation helps the baptized — and those preparing for Baptism — enter more consciously into the mysteries of the Church: Reconciliation, Confirmation, the Eucharist, and, where applicable, other sacraments.",
-      "This page is an umbrella for parish sacramental formation. Dedicated pages for Confirmation and First Communion live beside it. Official requirements, ages, and paperwork will be published here when they are supplied.",
+      "At St. Mary, children in kindergarten through fifth grade prepare for Penance and First Holy Communion. Youth then continue in Youth Group, with Confirmation every two years. Adults seeking Baptism walk the OCIA path.",
     ],
     audience: "Children, teens, and adults preparing for the sacraments.",
     audienceGroups: [
@@ -417,47 +411,48 @@ export const educationPrograms: EducationProgram[] = [
       },
       {
         title: "Adults",
-        body: "Adults who need sacramental preparation outside the ordinary OCIA path — details coming soon.",
+        body: "Unbaptized adults ordinarily enter OCIA. Baptized adults completing a sacrament should speak with the Religious Education office.",
       },
     ],
-    learnIntro: "Example areas of preparation only. Not parish policy.",
+    learnIntro: "The sacraments of initiation and healing as the Church celebrates them in this parish.",
     topics: [
-      { title: "The meaning of a sacrament", summary: "[PLACEHOLDER TOPIC] Visible signs of invisible grace." },
-      { title: "Baptismal life", summary: "[PLACEHOLDER TOPIC] Living the gift already received, or preparing to receive it." },
-      { title: "Reconciliation", summary: "[PLACEHOLDER TOPIC] Mercy, conversion, and returning to God." },
-      { title: "The Eucharist", summary: "[PLACEHOLDER TOPIC] Christ truly present, and holy communion with His Church." },
-      { title: "Confirmation", summary: "[PLACEHOLDER TOPIC] Sealed with the Gift of the Holy Spirit." },
-      { title: "Prayer and Mass", summary: "[PLACEHOLDER TOPIC] Learning to worship with the parish." },
+      { title: "The meaning of a sacrament", summary: "Visible signs of invisible grace." },
+      { title: "Baptismal life", summary: "Living the gift already received, or preparing to receive it." },
+      { title: "Reconciliation", summary: "Mercy, conversion, and returning to God." },
+      { title: "The Eucharist", summary: "Christ truly present, and holy communion with His Church." },
+      { title: "Confirmation", summary: "Sealed with the Gift of the Holy Spirit." },
+      { title: "Prayer and Mass", summary: "Learning to worship with the parish." },
     ],
-    topicsNote: "See also Confirmation and First Communion for more specific placeholder pages.",
-    schedule: comingSoonSchedule,
-    scheduleNote: "Class schedule coming soon.",
-    scheduleComingSoon: true,
-    location: "[LOCATION PLACEHOLDER]",
-    locationNote: "Details coming soon.",
-    instructor: placeholderInstructor,
-    importantDates: placeholderDates,
+    topicsNote: "See also Confirmation, First Communion, and OCIA for the path that fits your household.",
+    schedule: registrationSeason,
+    scheduleNote: "Registration begins in August. Call the office for current sacramental-preparation gatherings.",
+    scheduleComingSoon: false,
+    location: parishLocation,
+    locationNote: "Gatherings take place at St. Mary, Star of the Sea, 1465 Grand Avenue. Call the office for the current room.",
+    instructor: dre,
+    importantDates: seasonalDates,
     registration:
-      "Registration information will be updated soon. Please contact the parish to ask about sacramental preparation.",
+      "Registration begins in August. Call (503) 325-3671 or write to marty@stmaryastoria.com.",
     faqs: [
-      ...genericFaqs,
+      ...parishFaqs,
       {
         question: "Is this the same as OCIA?",
         answer:
           "Not always. OCIA is the Church's path of initiation for adults (and, in some cases, children of catechetical age). Other sacramental preparation may serve families whose children are already baptized, or adults completing a sacrament. The parish will clarify which path fits your situation.",
       },
     ],
-    contactNote: "Sacramental-preparation contacts will be listed when confirmed.",
+    contactNote: "Marty Dursse coordinates sacramental preparation with the parish office.",
     cardCta: "Learn more",
     seoTitle: "Sacramental Preparation",
     seoDescription:
-      "Sacramental preparation at St. Mary, Star of the Sea in Astoria, Oregon — for children, teens, and adults. Details coming soon.",
+      "Sacramental preparation at St. Mary, Star of the Sea in Astoria, Oregon — First Communion, Confirmation, and OCIA.",
     icon: "chalice",
     relatedLinks: [
       { href: "/religious-education/confirmation", label: "Confirmation preparation" },
       { href: "/religious-education/first-communion", label: "First Communion preparation" },
       { href: "/religious-education/ocia", label: "OCIA" },
     ],
+    image: parishImages.crucifix,
   },
   {
     slug: "childrens-faith-formation",
@@ -467,14 +462,14 @@ export const educationPrograms: EducationProgram[] = [
     description:
       "Helping children know Jesus, love the Church, and grow in prayer at a pace meant for them.",
     overview: [
-      "Children's faith formation offers age-appropriate Catholic teaching for the youngest members of the parish — the stories of Scripture, the person of Jesus, the Mass, and the first habits of prayer.",
-      "Grade levels, textbooks, and class times are not yet published. Placeholder content below is easy to replace in lib/education.ts.",
+      "Religious Education for kindergarten through fifth grade prepares children for Penance and First Holy Communion.",
+      "After First Communion, children are invited into Youth Group. Registration begins in August. If you are new to the parish, please call the office.",
     ],
     audience: "Children and their families.",
     audienceGroups: [
       {
         title: "Young children",
-        body: "A first introduction to Jesus, prayer, and the life of the parish — details coming soon.",
+        body: "A first introduction to Jesus, prayer, and the life of the parish, leading toward Penance and First Holy Communion.",
       },
       {
         title: "Elementary ages",
@@ -485,32 +480,33 @@ export const educationPrograms: EducationProgram[] = [
         body: "The first teachers of the faith. Formation for children is meant to support, not replace, the home.",
       },
     ],
-    learnIntro: "Example children's themes only. Not an official published curriculum.",
+    learnIntro: "Kindergarten through fifth grade: the stories of Scripture, the person of Jesus, the Mass, and preparation for the sacraments.",
     topics: [
-      { title: "God the Father", summary: "[PLACEHOLDER TOPIC] Learning that we are loved by God." },
-      { title: "The life of Jesus", summary: "[PLACEHOLDER TOPIC] Stories of Christ told with care." },
-      { title: "Prayer", summary: "[PLACEHOLDER TOPIC] The Sign of the Cross, the Our Father, and simple prayer." },
-      { title: "The Mass", summary: "[PLACEHOLDER TOPIC] What we see and do when we worship together." },
-      { title: "Mary and the saints", summary: "[PLACEHOLDER TOPIC] Friends in heaven who pray for us." },
-      { title: "Kindness and love of neighbor", summary: "[PLACEHOLDER TOPIC] The beginnings of a Christian life." },
+      { title: "God the Father", summary: "Learning that we are loved by God." },
+      { title: "The life of Jesus", summary: "Stories of Christ told with care." },
+      { title: "Prayer", summary: "The Sign of the Cross, the Our Father, and simple prayer." },
+      { title: "The Mass", summary: "What we see and do when we worship together." },
+      { title: "Mary and the saints", summary: "Friends in heaven who pray for us." },
+      { title: "Kindness and love of neighbor", summary: "The beginnings of a Christian life." },
     ],
-    topicsNote: "Replace with the parish children's program when confirmed.",
-    schedule: comingSoonSchedule,
-    scheduleNote: "Class schedule coming soon.",
-    scheduleComingSoon: true,
-    location: "[LOCATION PLACEHOLDER]",
-    locationNote: "Details coming soon.",
-    instructor: placeholderInstructor,
-    importantDates: placeholderDates,
+    topicsNote: "Ask the Religious Education office about the current children's year.",
+    schedule: registrationSeason,
+    scheduleNote: "Registration begins in August. Call the office for class times.",
+    scheduleComingSoon: false,
+    location: parishLocation,
+    locationNote: "Gatherings take place at St. Mary, Star of the Sea, 1465 Grand Avenue. Call the office for the current room.",
+    instructor: dre,
+    importantDates: seasonalDates,
     registration:
-      "Program information will be updated soon. Families may reach out through the contact page.",
-    faqs: genericFaqs,
-    contactNote: "Children's formation contacts will be added when confirmed.",
+      "Registration begins in August. Call (503) 325-3671 or write to marty@stmaryastoria.com. If you are new to the parish, please call the office.",
+    faqs: parishFaqs,
+    contactNote: "Marty Dursse, Director of Religious Education, welcomes families.",
     cardCta: "Learn more",
     seoTitle: "Children's Faith Formation",
     seoDescription:
-      "Children's faith formation at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon. Details coming soon.",
+      "Kindergarten through fifth grade Religious Education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
     icon: "person",
+    image: parishImages.grotto,
   },
   {
     slug: "confirmation",
@@ -521,13 +517,13 @@ export const educationPrograms: EducationProgram[] = [
       "A dedicated path of preparation for the sacrament of Confirmation.",
     overview: [
       "Confirmation completes baptismal grace and strengthens the Christian for witness, mission, and a mature life in the Holy Spirit.",
-      "Sponsor requirements, age or grade expectations, retreats, and the date of Confirmation have not been supplied. This page holds a reverent structure until the parish publishes official preparation details.",
+      "At St. Mary, Religious Education coordinates sacramental preparation for Confirmation. The Rite of Confirmation occurs every two years. Ask the office for the current cycle.",
     ],
     audience: "Youth and adults preparing for Confirmation.",
     audienceGroups: [
       {
         title: "Teens",
-        body: "Young people preparing to be confirmed in the Catholic Church — requirements coming soon.",
+        body: "Young people in Youth Group preparing to be confirmed. Confirmation occurs every two years.",
       },
       {
         title: "Adults",
@@ -535,43 +531,44 @@ export const educationPrograms: EducationProgram[] = [
       },
       {
         title: "Sponsors and families",
-        body: "Those who accompany a candidate. Sponsor guidelines will be published here when confirmed.",
+        body: "Those who accompany a candidate. Ask the Religious Education office about sponsor guidelines.",
       },
     ],
-    learnIntro: "Representative Confirmation themes. Not the parish's official preparation outline.",
+    learnIntro: "Preparation for Confirmation includes the gifts of the Holy Spirit as the Church has received them.",
     topics: [
-      { title: "The Holy Spirit", summary: "[PLACEHOLDER TOPIC] The Lord and Giver of Life." },
-      { title: "Baptism and Confirmation", summary: "[PLACEHOLDER TOPIC] How the sacraments of initiation belong together." },
-      { title: "The gifts of the Spirit", summary: "[PLACEHOLDER TOPIC] Wisdom, understanding, and the rest — lived, not merely listed." },
-      { title: "Witness", summary: "[PLACEHOLDER TOPIC] What it means to be a disciple in public." },
-      { title: "The Church", summary: "[PLACEHOLDER TOPIC] Belonging to the Body of Christ." },
-      { title: "Prayer and the sacraments", summary: "[PLACEHOLDER TOPIC] A life that can be confirmed because it is already being lived." },
+      { title: "The Holy Spirit", summary: "The Lord and Giver of Life." },
+      { title: "Baptism and Confirmation", summary: "How the sacraments of initiation belong together." },
+      { title: "The gifts of the Spirit", summary: "Wisdom, understanding, and the rest — lived, not merely listed." },
+      { title: "Witness", summary: "What it means to be a disciple in public." },
+      { title: "The Church", summary: "Belonging to the Body of Christ." },
+      { title: "Prayer and the sacraments", summary: "A life that can be confirmed because it is already being lived." },
     ],
-    topicsNote: "Replace with official Confirmation preparation when the parish provides it.",
-    schedule: comingSoonSchedule,
-    scheduleNote: "Class schedule coming soon.",
-    scheduleComingSoon: true,
-    location: "[LOCATION PLACEHOLDER]",
-    locationNote: "Details coming soon.",
-    instructor: placeholderInstructor,
+    topicsNote: "The gifts of the Holy Spirit: wisdom, understanding, counsel, fortitude, knowledge, piety, and fear of the Lord.",
+    schedule: registrationSeason,
+    scheduleNote: "Confirmation occurs every two years. Registration begins in August. Call the office for the current cycle.",
+    scheduleComingSoon: false,
+    location: parishLocation,
+    locationNote: "Gatherings take place at St. Mary, Star of the Sea, 1465 Grand Avenue. Call the office for the current room.",
+    instructor: dre,
     importantDates: [
-      { label: "Registration", detail: "Details coming soon." },
-      { label: "Retreat", detail: "[PLACEHOLDER] Retreat information will be updated soon." },
-      { label: "Confirmation Mass", detail: "[PLACEHOLDER] Date and bishop or celebrant to be announced." },
+      { label: "Registration", detail: "Registration begins in August. Call the parish office." },
+      { label: "Youth Group", detail: "Grades 6 through high school: education and fellowship." },
+      { label: "Confirmation", detail: "The Rite of Confirmation occurs every two years." },
     ],
     registration:
-      "Registration information will be updated soon. Please contact the parish about Confirmation preparation.",
-    faqs: genericFaqs,
-    contactNote: "Confirmation coordinators will be listed when confirmed.",
+      "Registration begins in August. Call (503) 325-3671 or write to marty@stmaryastoria.com about Confirmation preparation.",
+    faqs: parishFaqs,
+    contactNote: "Marty Dursse coordinates Confirmation preparation with the parish office.",
     cardCta: "Learn more",
     seoTitle: "Confirmation Preparation",
     seoDescription:
-      "Confirmation preparation at St. Mary, Star of the Sea in Astoria, Oregon. Schedule and requirements coming soon.",
+      "Confirmation preparation at St. Mary, Star of the Sea in Astoria, Oregon. The Rite of Confirmation occurs every two years.",
     icon: "flame",
     relatedLinks: [
       { href: "/religious-education/sacramental-preparation", label: "Sacramental preparation" },
       { href: "/religious-education/ocia", label: "OCIA" },
     ],
+    image: parishImages.sanctuary,
   },
   {
     slug: "first-communion",
@@ -582,57 +579,58 @@ export const educationPrograms: EducationProgram[] = [
       "A dedicated path of preparation for First Holy Communion.",
     overview: [
       "First Holy Communion is a child's (or, in some cases, an older person's) first reception of the Body and Blood of Christ. Preparation is meant to be patient, beautiful, and close to the Mass.",
-      "Grade level, parent sessions, rehearsal, and the date of First Communion are not yet published. Placeholder content below is ready to be replaced.",
+      "At St. Mary, kindergarten through fifth grade Religious Education prepares children for Penance and First Holy Communion. Ask the office for the current year's gatherings.",
     ],
     audience: "Children and families preparing for First Holy Communion.",
     audienceGroups: [
       {
         title: "Children",
-        body: "Those preparing to receive the Eucharist for the first time — age or grade to be announced.",
+        body: "Children in kindergarten through fifth grade preparing for Penance and First Holy Communion.",
       },
       {
         title: "Parents",
-        body: "The child's first teachers. Family sessions, if offered, will be listed when confirmed.",
+        body: "The child's first teachers. Registration begins in August; the office will tell you how families are involved.",
       },
       {
         title: "Older candidates",
         body: "Those who receive First Communion later in life may follow a different path, including OCIA.",
       },
     ],
-    learnIntro: "Example First Communion themes only. Not an official parish syllabus.",
+    learnIntro: "Preparation for Penance and First Holy Communion, as Religious Education offers it for kindergarten through fifth grade.",
     topics: [
-      { title: "The Mass", summary: "[PLACEHOLDER TOPIC] Learning the prayer of the Church." },
-      { title: "The Real Presence", summary: "[PLACEHOLDER TOPIC] Jesus truly present in the Eucharist." },
-      { title: "Baptism and belonging", summary: "[PLACEHOLDER TOPIC] Why Communion belongs to the life begun at the font." },
-      { title: "Reconciliation", summary: "[PLACEHOLDER TOPIC] Preparing the heart through mercy." },
-      { title: "How to receive", summary: "[PLACEHOLDER TOPIC] Reverence, posture, and love — details coming soon." },
-      { title: "Living from the Eucharist", summary: "[PLACEHOLDER TOPIC] Communion that continues after Mass." },
+      { title: "The Mass", summary: "Learning the prayer of the Church." },
+      { title: "The Real Presence", summary: "Jesus truly present in the Eucharist." },
+      { title: "Baptism and belonging", summary: "Why Communion belongs to the life begun at the font." },
+      { title: "Reconciliation", summary: "Preparing the heart through mercy." },
+      { title: "How to receive", summary: "Reverence, posture, and love as the Church receives the Eucharist." },
+      { title: "Living from the Eucharist", summary: "Communion that continues after Mass." },
     ],
-    topicsNote: "Replace with official First Communion preparation when provided.",
-    schedule: comingSoonSchedule,
-    scheduleNote: "Class schedule coming soon.",
-    scheduleComingSoon: true,
-    location: "[LOCATION PLACEHOLDER]",
-    locationNote: "Details coming soon.",
-    instructor: placeholderInstructor,
+    topicsNote: "Ask the Religious Education office about the current First Communion year.",
+    schedule: registrationSeason,
+    scheduleNote: "Registration begins in August. Call the office for class times.",
+    scheduleComingSoon: false,
+    location: parishLocation,
+    locationNote: "Gatherings take place at St. Mary, Star of the Sea, 1465 Grand Avenue. Call the office for the current room.",
+    instructor: dre,
     importantDates: [
-      { label: "Registration", detail: "Details coming soon." },
-      { label: "First Reconciliation", detail: "[PLACEHOLDER] Date to be announced." },
-      { label: "First Holy Communion", detail: "[PLACEHOLDER] Date to be announced." },
+      { label: "Registration", detail: "Registration begins in August. Call the parish office." },
+      { label: "Penance", detail: "Kindergarten through fifth grade prepare for First Reconciliation." },
+      { label: "First Holy Communion", detail: "Ask the Religious Education office for the current year's celebration." },
     ],
     registration:
-      "Registration information will be updated soon. Families may inquire through the contact page.",
-    faqs: genericFaqs,
-    contactNote: "First Communion contacts will be listed when confirmed.",
+      "Registration begins in August. Call (503) 325-3671 or write to marty@stmaryastoria.com.",
+    faqs: parishFaqs,
+    contactNote: "Marty Dursse coordinates First Communion preparation with the parish office.",
     cardCta: "Learn more",
     seoTitle: "First Communion Preparation",
     seoDescription:
-      "First Holy Communion preparation at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon. Details coming soon.",
+      "First Holy Communion preparation at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon — kindergarten through fifth grade.",
     icon: "chalice",
     relatedLinks: [
       { href: "/religious-education/sacramental-preparation", label: "Sacramental preparation" },
       { href: "/religious-education/childrens-faith-formation", label: "Children's faith formation" },
     ],
+    image: parishImages.crucifix,
   },
   {
     slug: "marriage-family",
@@ -640,50 +638,51 @@ export const educationPrograms: EducationProgram[] = [
     cardTitle: "Marriage & Family",
     tagline: "Catholic formation for marriage and family life",
     description:
-      "Formation related to marriage, family, and the domestic church — if and when the parish offers it.",
+      "Catholic marriage and family life at St. Mary, Star of the Sea.",
     overview: [
-      "The Catholic Church calls the family the domestic church. Some parishes offer marriage preparation, groups for parents, or formation for family prayer and life.",
-      "St. Mary's official offerings in this area have not been supplied. This page exists so the parish can add marriage preparation, family catechesis, or related ministries without creating a new section later. Until then, treat every detail below as a placeholder.",
+      "The Catholic Church calls the family the domestic church. Those preparing for Matrimony at St. Mary are asked to contact the parish office at least six months prior to the intended wedding.",
+      "Baptism of children also requires preparation for parents and godparents. Call the office so we can walk with your household.",
     ],
-    audience: "Couples, parents, and families — offerings to be confirmed.",
+    audience: "Couples, parents, and families of the parish.",
     audienceGroups: [
       {
         title: "Those preparing for marriage",
-        body: "If the parish offers marriage preparation, it will be described here. Details coming soon.",
+        body: "Contact the parish office at least six months before the intended wedding.",
       },
       {
         title: "Married couples",
-        body: "Ongoing formation in the sacrament of marriage, if offered.",
+        body: "The sacrament of marriage is lived in the parish through prayer, the Mass, and the support of the community.",
       },
       {
         title: "Parents and families",
-        body: "Support for passing on the faith at home — program information will be updated soon.",
+        body: "Parents are the first teachers of the faith. Children's Religious Education is meant to support the home.",
       },
     ],
-    learnIntro: "Possible themes only. Not a confirmation that these classes are currently offered.",
+    learnIntro: "The Church's teaching on marriage and the family, as this parish accompanies couples and households.",
     topics: [
-      { title: "The sacrament of marriage", summary: "[PLACEHOLDER TOPIC] The covenant of man and woman in Christ." },
-      { title: "The domestic church", summary: "[PLACEHOLDER TOPIC] Prayer, mercy, and faith in the home." },
-      { title: "Family and the Mass", summary: "[PLACEHOLDER TOPIC] Worshiping together as a household." },
-      { title: "Raising children in the faith", summary: "[PLACEHOLDER TOPIC] Parents as first catechists." },
+      { title: "The sacrament of marriage", summary: "The covenant of man and woman in Christ." },
+      { title: "The domestic church", summary: "Prayer, mercy, and faith in the home." },
+      { title: "Family and the Mass", summary: "Worshiping together as a household." },
+      { title: "Raising children in the faith", summary: "Parents as first catechists." },
     ],
-    topicsNote: "Remove or rewrite this list when official family ministries are confirmed.",
-    schedule: comingSoonSchedule,
-    scheduleNote: "Class schedule coming soon — if this ministry is offered.",
-    scheduleComingSoon: true,
-    location: "[LOCATION PLACEHOLDER]",
-    locationNote: "Details coming soon.",
-    instructor: placeholderInstructor,
-    importantDates: placeholderDates,
+    topicsNote: "For a wedding date or baptismal preparation, begin with a call to the parish office.",
+    schedule: registrationSeason,
+    scheduleNote: "Contact the office at least six months before a wedding. Office hours are Tuesday–Friday, 9:00 a.m. – 4:00 p.m.",
+    scheduleComingSoon: false,
+    location: parishLocation,
+    locationNote: "Gatherings take place at St. Mary, Star of the Sea, 1465 Grand Avenue. Call the office for the current room.",
+    instructor: dre,
+    importantDates: seasonalDates,
     registration:
-      "If marriage or family formation is offered, registration details will appear here. Inquire through the contact page.",
-    faqs: genericFaqs,
-    contactNote: "Marriage and family contacts will be added if this ministry is offered.",
+      "Call the parish office at (503) 325-3671 at least six months before a wedding. For children's formation, registration begins in August.",
+    faqs: parishFaqs,
+    contactNote: "The parish office and Religious Education will help you take the next step.",
     cardCta: "Learn more",
     seoTitle: "Marriage & Family Formation",
     seoDescription:
-      "Catholic marriage and family formation at St. Mary, Star of the Sea in Astoria, Oregon. Program details coming soon.",
+      "Catholic marriage and family life at St. Mary, Star of the Sea in Astoria, Oregon. Contact the office at least six months before a wedding.",
     icon: "family",
+    image: parishImages.grotto,
   },
   {
     slug: "other-classes",
@@ -693,8 +692,8 @@ export const educationPrograms: EducationProgram[] = [
     description:
       "A flexible home for future classes, Bible studies, workshops, retreats, and special formation events.",
     overview: [
-      "Parish education is larger than any one program. This page is reserved for additional classes, seasonal studies, workshops, retreats, and guest speakers as they are announced.",
-      "Nothing listed here should be read as a current official offering. When the parish has an event or class to publish, replace the placeholder entries in lib/education.ts.",
+      "Parish education is larger than any one program. Adult Faith Formation is a listed ministry of St. Mary, and Religious Education publishes notices as the year unfolds.",
+      "For the latest word on studies, workshops, or special gatherings, check announcements or call the parish office.",
     ],
     audience: "Parishioners and guests, according to each offering.",
     audienceGroups: [
@@ -704,37 +703,38 @@ export const educationPrograms: EducationProgram[] = [
       },
       {
         title: "The parish",
-        body: "Workshops and retreats that serve the whole community — details coming soon.",
+        body: "Seasonal studies and special gatherings, as the parish announces them.",
       },
       {
         title: "Visitors",
         body: "Guest speakers and special events, when scheduled.",
       },
     ],
-    learnIntro: "Example categories for future offerings. Not a current catalog.",
+    learnIntro: "Ways the parish continues to teach beyond the ordinary Religious Education year.",
     topics: [
-      { title: "Bible studies", summary: "[PLACEHOLDER] Seasonal or ongoing Scripture studies, to be announced." },
-      { title: "Workshops", summary: "[PLACEHOLDER] Practical formation sessions as scheduled." },
-      { title: "Retreats", summary: "[PLACEHOLDER] Days or evenings of prayer, when offered." },
-      { title: "Guest speakers", summary: "[PLACEHOLDER] Visiting teachers and witnesses, when scheduled." },
+      { title: "Bible studies", summary: "Reading Sacred Scripture with the Church." },
+      { title: "Adult Faith Formation", summary: "A listed ministry of St. Mary, Star of the Sea." },
+      { title: "Prayer", summary: "The Rosary is prayed a half hour before weekend Mass; Adoration is offered at St. Mary and at Hammond." },
+      { title: "Parish life", summary: "Watch announcements and the parish website for special gatherings." },
     ],
-    topicsNote: "Add real events as objects in this program's data rather than hardcoding new pages.",
-    schedule: comingSoonSchedule,
-    scheduleNote: "No official classes are listed yet. Placeholder rows only.",
-    scheduleComingSoon: true,
-    location: "[LOCATION PLACEHOLDER]",
-    locationNote: "Location will be published with each offering.",
-    instructor: placeholderInstructor,
-    importantDates: placeholderDates,
+    topicsNote: "See announcements and stmaryastoria.com for current parish notices.",
+    schedule: registrationSeason,
+    scheduleNote: "Registration for Religious Education begins in August. Call the office about other studies.",
+    scheduleComingSoon: false,
+    location: parishLocation,
+    locationNote: "Most gatherings are at St. Mary, Star of the Sea, 1465 Grand Avenue.",
+    instructor: dre,
+    importantDates: seasonalDates,
     registration:
-      "When classes or events are announced, registration details will appear here. You may also use the contact page.",
-    faqs: genericFaqs,
-    contactNote: "Event contacts will be listed with each offering.",
+      "Call (503) 325-3671 or write to marty@stmaryastoria.com. Watch announcements for special studies.",
+    faqs: parishFaqs,
+    contactNote: "Marty Dursse and the parish office can point you to what is meeting now.",
     cardCta: "Learn more",
     seoTitle: "Other Classes & Parish Education",
     seoDescription:
-      "Additional Catholic classes, studies, workshops, and events at St. Mary, Star of the Sea in Astoria, Oregon. Details coming soon.",
+      "Additional Catholic classes and parish education at St. Mary, Star of the Sea in Astoria, Oregon.",
     icon: "cross",
+    image: parishImages.exterior,
   },
 ];
 

@@ -61,9 +61,11 @@ export function ProgramDetail({ program }: { program: EducationProgram }) {
             </Reveal>
             <Reveal delay={0.1}>
               <ImagePlaceholder
-                label={`${program.cardTitle} photograph placeholder`}
+                label={program.cardTitle}
                 aspectRatio="4/5"
-                alt=""
+                src={program.image?.src}
+                alt={program.image?.alt ?? program.cardTitle}
+                caption={program.image?.caption}
               />
             </Reveal>
           </div>

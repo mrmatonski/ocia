@@ -63,17 +63,20 @@ export default function ReligiousEducationPage() {
                   Scripture, in the sacraments, and in the life of this parish.
                 </p>
                 <p>
-                  Use this page as a central place for class schedules, the
-                  Religious Education calendar, announcements, the handbook, and
-                  learning materials — as the parish publishes them.
+                  Religious Education at St. Mary serves kindergarten through
+                  fifth grade (Penance and First Holy Communion), Youth Group
+                  for grades 6 through high school, and Adult Education —
+                  OCIA for those exploring the Catholic faith.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
               <ImagePlaceholder
-                label="Religious education photograph placeholder"
+                label="Religious Education at St. Mary"
                 aspectRatio="4/5"
-                caption="A future photograph of formation at St. Mary, Star of the Sea."
+                src="/images/parish/formation.jpg"
+                alt="Religious Education at St. Mary, Star of the Sea"
+                caption="Formation in the life of the parish."
               />
             </Reveal>
           </div>
@@ -98,7 +101,7 @@ export default function ReligiousEducationPage() {
           <SectionHeading
             eyebrow="Explore our programs"
             title="Paths of formation."
-            description="Each card opens a dedicated page. Names and descriptions are pastoral categories; official class lists will replace placeholder details as they are confirmed."
+            description="Each path is coordinated by Religious Education. Registration begins in August. If you are new to the parish, please call the office."
           />
           <div className="mt-16">
             <ProgramGrid />

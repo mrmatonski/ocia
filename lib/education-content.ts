@@ -151,121 +151,175 @@ export function getVideoEmbed(url: string): EducationVideoEmbed | null {
   }
 }
 
-/*
- * PLACEHOLDER CONTENT LIBRARY
- * TODO: Replace with official Religious Education materials.
- * Do not treat these entries as published parish lessons or curriculum.
- * Leave videoUrl, contentUrl, thumbnail, and resources unset until a real
- * file or link exists — do not invent recordings, instructors, or downloads.
- *
- * Categories are organizational labels for this library, not official
- * St. Mary program names.
- */
 export const educationContent: EducationContent[] = [
   {
-    id: "featured-lesson",
-    slug: "featured-lesson-coming-soon",
-    title: "Featured lesson coming soon",
+    id: "ocia-at-st-mary",
+    slug: "ocia-at-st-mary",
+    title: "Adult Education — OCIA",
     description:
-      "A featured recording or class lesson will appear here when the parish posts it.",
-    body: `This is a **placeholder** for a featured Religious Education lesson.
+      "An adult who has not been baptized and wishes to learn about becoming Catholic may participate in OCIA. Classes are weekly and begin in the Fall.",
+    body: `At St. Mary, Star of the Sea, **Adult Education — OCIA** is the path for unbaptized adults who wish to learn about becoming Catholic.
 
-When a recording, presentation, or class material is provided, families will be able to open it from this page.
+The parish describes this as a formation process focused on conversion. The Church celebrates that conversion through prayerful rites. **Classes are weekly and begin in the Fall.**
 
-*Featured lesson coming soon.*`,
-    type: "Lesson",
-    category: "Class Lessons",
-    publishedAt: "2026-08-22",
+You do not need to arrive certain. Call the parish office at (503) 325-3671 or write to Marty Dursse, Director of Religious Education, at marty@stmaryastoria.com.
+
+The weekday and hour are not posted online. The office will tell you when the next gathering meets.`,
+    type: "Article",
+    category: "Faith Formation",
+    thumbnail: {
+      src: "/images/parish/formation.jpg",
+      alt: "Religious Education at St. Mary, Star of the Sea",
+    },
+    contentUrl: "https://stmaryastoria.com/religious-education",
+    publishedAt: "2026-08-01",
+    author: "St. Mary, Star of the Sea",
     featured: true,
-    relatedSlugs: ["video-content-coming-soon", "understanding-the-eucharist"],
+    relatedSlugs: ["childrens-religious-education", "gifts-of-the-holy-spirit"],
     status: "published",
   },
   {
-    id: "understanding-the-eucharist",
-    slug: "understanding-the-eucharist",
-    title: "Understanding the Eucharist",
+    id: "childrens-re",
+    slug: "childrens-religious-education",
+    title: "Children's Religious Education",
     description:
-      "Sample study-guide entry. Supplemental material for class will be posted here when the parish provides it.",
-    body: `This is a **sample** study-guide entry — not an official parish handout.
+      "Kindergarten through fifth grade prepare for Penance and First Holy Communion. Registration begins in August.",
+    body: `Religious Education for **kindergarten through fifth grade** prepares children for Penance and First Holy Communion.
 
-When a reading, worksheet, or class note is provided, it can be linked from this page.
+After First Communion, young people are invited into Youth Group for grades 6 through high school.
 
-*Additional Religious Education resources will be posted here.*`,
-    type: "Study Guide",
+**Registration begins in August.** If you are new to the parish, please call the office at (503) 325-3671.
+
+Marty Dursse, Director of Religious Education, can be reached at marty@stmaryastoria.com.`,
+    type: "Article",
+    category: "Class Lessons",
+    thumbnail: {
+      src: "/images/parish/grotto-mary.jpg",
+      alt: "The Marian grotto at St. Mary, Star of the Sea",
+    },
+    contentUrl: "https://stmaryastoria.com/religious-education",
+    publishedAt: "2026-07-28",
+    author: "Religious Education",
+    relatedSlugs: ["youth-group-and-confirmation", "ocia-at-st-mary"],
+    status: "published",
+  },
+  {
+    id: "youth-confirmation",
+    slug: "youth-group-and-confirmation",
+    title: "Youth Group and Confirmation",
+    description:
+      "Grades 6 through high school: education, fellowship, and Confirmation every two years.",
+    body: `Youth Group at St. Mary is for **grades 6 through high school**. It is a place of education and fellowship after First Holy Communion.
+
+Religious Education coordinates sacramental preparation for Confirmation. **The Rite of Confirmation occurs every two years.** Ask the office for the current cycle.
+
+The gifts of the Holy Spirit — wisdom, understanding, counsel, fortitude, knowledge, piety, and fear of the Lord — belong to this preparation.
+
+Call (503) 325-3671 or write to marty@stmaryastoria.com.`,
+    type: "Lesson",
     category: "Sacraments",
-    publishedAt: "2026-08-18",
-    relatedSlugs: ["featured-lesson-coming-soon", "additional-class-resources"],
+    thumbnail: {
+      src: "/images/parish/sanctuary-candle.jpg",
+      alt: "Sanctuary candle at St. Mary, Star of the Sea",
+    },
+    contentUrl: "https://stmaryastoria.com/religious-education",
+    publishedAt: "2026-07-22",
+    author: "Religious Education",
+    relatedSlugs: ["gifts-of-the-holy-spirit", "childrens-religious-education"],
     status: "published",
   },
   {
-    id: "video-coming-soon",
-    slug: "video-content-coming-soon",
-    title: "Video content coming soon",
+    id: "gifts-spirit",
+    slug: "gifts-of-the-holy-spirit",
+    title: "The gifts of the Holy Spirit",
     description:
-      "Instructional recordings in the Catholic faith will be posted here as they become available.",
-    body: `This is a **placeholder** for an instructional video.
+      "Wisdom, understanding, counsel, fortitude, knowledge, piety, and fear of the Lord — as the Church has received them.",
+    body: `The Church names seven gifts of the Holy Spirit:
 
-No recording has been posted yet. When the parish provides a lesson, it can be watched from this page.
+1. Wisdom
+2. Understanding
+3. Counsel
+4. Fortitude
+5. Knowledge
+6. Piety
+7. Fear of the Lord
 
-*Video content coming soon.*`,
-    type: "Video",
+These gifts are not a list to memorize and set aside. They are the Spirit's own help for a Christian life — prayed for especially in Confirmation, and needed in ordinary days.
+
+St. Mary's Religious Education page lists these gifts as part of formation. Speak with Marty Dursse if you are preparing for Confirmation, or if you simply wish to understand them more deeply.`,
+    type: "Lesson",
     category: "Catholic Teaching",
-    publishedAt: "2026-08-12",
-    relatedSlugs: ["scripture-study-recording", "featured-lesson-coming-soon"],
+    thumbnail: {
+      src: "/images/parish/statue.jpg",
+      alt: "A sacred image at St. Mary, Star of the Sea",
+    },
+    contentUrl: "https://stmaryastoria.com/religious-education",
+    publishedAt: "2026-07-15",
+    relatedSlugs: ["youth-group-and-confirmation", "sunday-mass-and-adoration"],
     status: "published",
   },
   {
-    id: "scripture-study",
-    slug: "scripture-study-recording",
-    title: "Scripture study recording",
+    id: "mass-adoration",
+    slug: "sunday-mass-and-adoration",
+    title: "Sunday Mass and Adoration",
     description:
-      "A place for Bible study recordings for families and classes. Video content coming soon.",
-    body: `This is a **placeholder** for a Scripture study recording.
+      "Sunday Mass at St. Mary is at 8:30 a.m., 10:30 a.m., and Noon in Spanish. Adoration and Reconciliation are offered as published.",
+    body: `**Sunday Mass at St. Mary, Star of the Sea**
 
-It is not a published parish Bible study. When a recording is provided, it will appear here.
+- 8:30 a.m.
+- 10:30 a.m.
+- Noon (Spanish)
 
-*Video content coming soon.*`,
-    type: "Video",
-    category: "Scripture",
-    publishedAt: "2026-08-06",
-    relatedSlugs: ["video-content-coming-soon"],
+The church is wheelchair accessible through the 15th Street side door.
+
+**Saturday Vigil** at St. Francis de Sales Mission, Hammond: 4:00 p.m.
+
+The Rosary is prayed a half hour before the 4:00 p.m. Vigil and the 8:30 and 10:30 a.m. Sunday Masses.
+
+**Adoration at St. Mary:** Wednesday, 9:00 a.m. – 6:00 p.m.; First Friday, 8:00 p.m. through 8:00 a.m. Saturday.
+
+**Reconciliation:** Wednesday at 5:00 p.m. at St. Mary; Saturday at 3:30 p.m. at St. Francis de Sales; or by appointment.
+
+Daily Masses are cancelled from August 11 through September 2. Sunday Mass continues as published.
+
+Parish office: (503) 325-3671 · 1465 Grand Avenue, Astoria, OR 97103`,
+    type: "Article",
+    category: "Prayer",
+    thumbnail: {
+      src: "/images/parish/church-farley.jpg",
+      alt: "St. Mary, Star of the Sea, photograph by Michael Farley, Jr.",
+    },
+    contentUrl: "https://stmaryastoria.com/",
+    publishedAt: "2026-07-08",
+    author: "St. Mary, Star of the Sea",
+    relatedSlugs: ["ocia-at-st-mary", "parish-mission"],
     status: "published",
   },
   {
-    id: "additional-resources",
-    slug: "additional-class-resources",
-    title: "Additional class resources",
+    id: "parish-mission",
+    slug: "parish-mission",
+    title: "Our mission",
     description:
-      "PDFs, handouts, and other study materials will be listed here as the parish provides them.",
-    body: `This is a **placeholder** for downloadable class material.
+      "To build a Roman Catholic faith community through prayer, liturgy, education, and service.",
+    body: `St. Mary, Star of the Sea Catholic Church, with St. Francis de Sales Mission in Hammond, publishes this mission:
 
-Leave the file link empty until a real document is placed in the site’s documents folder.
+> Our Mission is to build a Roman Catholic faith community. As a sacramental people, we foster the spiritual growth and attend to the social needs of all through prayer, liturgy, education, and service.
 
-*Additional Religious Education resources will be posted here.*`,
-    type: "PDF",
-    category: "Supplemental Materials",
-    publishedAt: "2026-07-30",
-    relatedSlugs: ["understanding-the-eucharist"],
-    status: "published",
-  },
-  {
-    id: "draft-example",
-    slug: "draft-content-example",
-    title: "Draft content example",
-    description: "Draft entries stay hidden from the public library.",
+The first church in Astoria was blessed and dedicated on Sunday, October 11, 1874. The parish marked 150 years in Astoria on October 10, 2025, with Archbishop Alexander K. Sample.
+
+Pastor: **Fr. William D. Oruko, AJ**
+
+Religious Education is one way that mission takes flesh — for children, youth, and adults, including those who are only beginning to ask.`,
     type: "Article",
-    category: "Faith Formation",
-    publishedAt: "2026-01-01",
-    status: "draft",
-  },
-  {
-    id: "future-example",
-    slug: "future-content-example",
-    title: "Future content example",
-    description: "Items dated in the future stay hidden until that date.",
-    type: "Article",
-    category: "Faith Formation",
-    publishedAt: "2027-12-01",
+    category: "Church History",
+    thumbnail: {
+      src: "/images/parish/church-exterior.jpg",
+      alt: "St. Mary, Star of the Sea Catholic Church in Astoria, Oregon",
+    },
+    contentUrl: "https://stmaryastoria.com/",
+    publishedAt: "2026-06-20",
+    author: "St. Mary, Star of the Sea",
+    relatedSlugs: ["ocia-at-st-mary", "sunday-mass-and-adoration"],
     status: "published",
   },
 ];
