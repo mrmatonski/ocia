@@ -1,8 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ContentCard } from "@/components/education/ContentCard";
 import { ArrowIcon } from "@/components/icons";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { ImagePlaceholder, ParishFillImage } from "@/components/ui/ImagePlaceholder";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   contentActionLabel,
@@ -17,34 +16,36 @@ function FeaturedContent({ item }: { item: EducationContent }) {
 
   return (
     <article className="card-hover overflow-hidden border border-gold/15 bg-navy-lift/20 lg:grid lg:grid-cols-2 lg:items-stretch">
-      <div className="min-w-0 border-b border-gold/15 lg:border-r lg:border-b-0">
+      <div className="relative min-h-[12rem] min-w-0 overflow-hidden bg-ink border-b border-gold/15 lg:h-full lg:min-h-0 lg:border-r lg:border-b-0">
         {item.thumbnail ? (
           <Link
             href={href}
             aria-label={item.title}
-            className="relative block aspect-[16/9] h-full min-h-[12rem]"
+            className="relative block aspect-[16/9] overflow-hidden [clip-path:inset(0)] lg:absolute lg:inset-0 lg:aspect-auto"
           >
-            <Image
+            <ParishFillImage
               src={item.thumbnail.src}
               alt=""
-              fill
-              className="object-cover"
               sizes="(min-width: 1024px) 50vw, 100vw"
               priority
             />
           </Link>
         ) : (
-          <Link href={href} aria-label={item.title} className="block h-full">
+          <Link
+            href={href}
+            aria-label={item.title}
+            className="relative block aspect-[16/9] overflow-hidden [clip-path:inset(0)] lg:absolute lg:inset-0 lg:aspect-auto"
+          >
             <ImagePlaceholder
               label={item.title}
-              aspectRatio="16/9"
+              aspectRatio="auto"
               alt=""
               className="h-full"
             />
           </Link>
         )}
       </div>
-      <div className="flex min-w-0 flex-col justify-center p-6 sm:p-8 md:p-10">
+      <div className="flex h-full min-w-0 flex-col justify-center p-6 sm:p-8 md:p-10">
         <p className="eyebrow">Featured</p>
         <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.62rem] tracking-[0.16em] uppercase">
           <span className="text-gold">{item.type}</span>

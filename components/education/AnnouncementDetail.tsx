@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ParishFillImage } from "@/components/ui/ImagePlaceholder";
 import { AnnouncementBody } from "@/components/education/AnnouncementBody";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
 import { EducationSubnav } from "@/components/education/EducationSubnav";
@@ -48,11 +48,9 @@ export function AnnouncementDetail({ announcement }: { announcement: Announcemen
         <article className="page-wrap max-w-3xl">
           {announcement.image ? (
             <div className="relative mb-10 aspect-[16/9] overflow-hidden border border-gold/15">
-              <Image
+              <ParishFillImage
                 src={announcement.image.src}
                 alt={announcement.image.alt}
-                fill
-                className="object-cover"
                 sizes="(min-width: 768px) 48rem, 100vw"
                 priority
               />

@@ -74,9 +74,8 @@ export default function ReligiousEducationPage() {
               <ImagePlaceholder
                 label="Religious Education at St. Mary"
                 aspectRatio="4/5"
-                src="/images/parish/formation.jpg"
-                alt="Religious Education at St. Mary, Star of the Sea"
-                caption="Formation in the life of the parish."
+                src="/images/parish/statue.jpg"
+                alt="A sacred image at St. Mary, Star of the Sea"
               />
             </Reveal>
           </div>

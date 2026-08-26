@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowIcon } from "@/components/icons";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { ImagePlaceholder, ParishFillImage } from "@/components/ui/ImagePlaceholder";
 import {
   contentActionLabel,
   contentPath,
@@ -22,13 +21,11 @@ function Thumbnail({
       <Link
         href={contentPath(item.slug)}
         aria-label={item.title}
-        className="relative block aspect-[16/9] border-b border-gold/15"
+        className="relative block aspect-[16/9] overflow-hidden [clip-path:inset(0)] border-b border-gold/15"
       >
-        <Image
+        <ParishFillImage
           src={item.thumbnail.src}
           alt=""
-          fill
-          className="object-cover"
           sizes={sizes}
         />
       </Link>

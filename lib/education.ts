@@ -277,7 +277,7 @@ export const educationPrograms: EducationProgram[] = [
       { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Begin your journey" },
     ],
-    image: parishImages.formation,
+    image: parishImages.exterior,
   },
   {
     slug: "adult-faith-formation",
@@ -386,7 +386,7 @@ export const educationPrograms: EducationProgram[] = [
     seoDescription:
       "Youth Group for grades 6 through high school at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
     icon: "users",
-    image: parishImages.formation,
+    image: parishImages.hammond,
   },
   {
     slug: "sacramental-preparation",
@@ -568,7 +568,7 @@ export const educationPrograms: EducationProgram[] = [
       { href: "/religious-education/sacramental-preparation", label: "Sacramental preparation" },
       { href: "/religious-education/ocia", label: "OCIA" },
     ],
-    image: parishImages.sanctuary,
+    image: parishImages.statue,
   },
   {
     slug: "first-communion",

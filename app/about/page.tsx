@@ -54,11 +54,11 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <ImagePlaceholder
-              label="Formation at St. Mary"
+              label="The Marian grotto"
               aspectRatio="4/5"
-              src="/images/parish/formation.jpg"
-              alt="Religious Education at St. Mary, Star of the Sea"
-              caption="Formation in the life of the parish."
+              src="/images/parish/grotto-mary.jpg"
+              alt="The Marian grotto at St. Mary, Star of the Sea"
+              caption="The Marian grotto at St. Mary, Star of the Sea."
             />
           </Reveal>
         </div>

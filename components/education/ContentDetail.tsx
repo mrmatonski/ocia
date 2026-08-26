@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { AnnouncementBody } from "@/components/education/AnnouncementBody";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
@@ -6,7 +5,7 @@ import { EducationSubnav } from "@/components/education/EducationSubnav";
 import { RegistrationCTA } from "@/components/education/RegistrationCTA";
 import { ArrowIcon } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { ImagePlaceholder, ParishFillImage } from "@/components/ui/ImagePlaceholder";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import {
@@ -76,11 +75,9 @@ function ContentPlayer({ item }: { item: EducationContent }) {
   if (item.thumbnail) {
     return (
       <div className="relative mb-10 aspect-[16/9] overflow-hidden border border-gold/15">
-        <Image
+        <ParishFillImage
           src={item.thumbnail.src}
           alt={item.thumbnail.alt}
-          fill
-          className="object-cover"
           sizes="(min-width: 768px) 48rem, 100vw"
           priority
         />

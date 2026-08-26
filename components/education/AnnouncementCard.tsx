@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowIcon } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
+import { ParishFillImage } from "@/components/ui/ImagePlaceholder";
 import {
   announcementPath,
   type Announcement,
@@ -15,12 +15,10 @@ export function AnnouncementCard({ announcement }: { announcement: Announcement 
   return (
     <article className="card-hover min-w-0 overflow-hidden border border-gold/15 bg-navy-lift/20">
       {announcement.image ? (
-        <Link href={href} className="relative block aspect-[16/9] border-b border-gold/15">
-          <Image
+        <Link href={href} className="relative block aspect-[16/9] overflow-hidden border-b border-gold/15">
+          <ParishFillImage
             src={announcement.image.src}
             alt={announcement.image.alt}
-            fill
-            className="object-cover"
             sizes="(min-width: 768px) 42rem, 100vw"
           />
         </Link>

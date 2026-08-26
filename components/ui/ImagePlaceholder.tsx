@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CameraIcon } from "@/components/icons";
 import { CathedralVault } from "@/components/ui/Ornament";
+import { parishImageBleedClass, parishImagePosition } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -10,7 +11,41 @@ type Props = {
   src?: string;
   alt?: string;
   caption?: string;
+  objectPosition?: string;
 };
+
+export function ParishFillImage({
+  src,
+  alt,
+  sizes,
+  priority = false,
+  className,
+  objectPosition,
+}: {
+  src: string;
+  alt: string;
+  sizes: string;
+  priority?: boolean;
+  className?: string;
+  objectPosition?: string;
+}) {
+  return (
+    <div className={cn(parishImageBleedClass(src), className)}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover"
+        style={{
+          objectFit: "cover",
+          objectPosition: objectPosition ?? parishImagePosition(src),
+        }}
+        sizes={sizes}
+        priority={priority}
+      />
+    </div>
+  );
+}
 
 export function ImagePlaceholder({
   label,
@@ -19,11 +54,14 @@ export function ImagePlaceholder({
   src,
   alt,
   caption,
+  objectPosition,
 }: Props) {
+  const crop = objectPosition ?? (src ? parishImagePosition(src) : "center");
+
   return (
     <figure className={cn("group image-frame relative overflow-hidden", className)}>
       <div
-        className="relative overflow-hidden border border-gold/25"
+        className="relative h-full min-h-0 overflow-hidden border border-gold/25 [clip-path:inset(0)]"
         style={{ aspectRatio }}
       >
         <div className="pointer-events-none absolute inset-3 z-10 border border-gold/12" />
@@ -33,12 +71,12 @@ export function ImagePlaceholder({
         <div className="pointer-events-none absolute right-3 bottom-3 z-10 h-4 w-4 border-r border-b border-gold/50" />
 
         {src ? (
-          <Image
+          <ParishFillImage
             src={src}
             alt={alt ?? label}
-            fill
-            className="image-frame-inner object-cover"
             sizes="(min-width: 1024px) 50vw, 100vw"
+            className="image-frame-inner"
+            objectPosition={crop}
           />
         ) : (
           <div className="image-frame-inner placeholder-sheen absolute inset-0">
