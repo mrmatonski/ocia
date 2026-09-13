@@ -179,7 +179,7 @@ export function answerFromKnowledge(question: string): string | null {
   }
 
   if (/(contact|email|phone|coordinator|speak to someone)/.test(query)) {
-    return `Marty Dursse is Director of Religious Education. Email ${contactPlaceholders.email}, or the parish office at ${contactPlaceholders.officeEmail} and ${contactPlaceholders.phone}. Hours: ${contactPlaceholders.officeHours}. You may also use the contact page; please call or email as well, because the form does not send a message by itself. The parish website is ${site.parishUrl}.`;
+    return `Marty Dursse is Director of Religious Education. Email ${contactPlaceholders.email}, or the parish office at ${contactPlaceholders.officeEmail} and ${contactPlaceholders.phone}. Hours: ${contactPlaceholders.officeHours}. You may also use the contact page; messages from the form are sent to ${contactPlaceholders.email}. The parish website is ${site.parishUrl}.`;
   }
 
   if (/(just curious|not sure|do i have to|am i allowed|catholic enough)/.test(query)) {

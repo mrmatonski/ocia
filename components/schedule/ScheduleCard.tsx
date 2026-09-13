@@ -36,9 +36,11 @@ export function FeaturedSession({ session }: { session: Session }) {
         <p className="mt-2 text-sm tracking-[0.12em] text-stone-light uppercase">
           {session.time}
         </p>
-        <p className="mt-6 max-w-xl text-base leading-8 text-stone-light">
-          {session.topic}
-        </p>
+        {session.topic && session.topic !== session.title ? (
+          <p className="mt-6 max-w-xl text-base leading-8 text-stone-light">
+            {session.topic}
+          </p>
+        ) : null}
         <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-3 text-sm">
           <div>
             <dt className="text-[0.62rem] tracking-[0.18em] text-gold uppercase">
@@ -94,7 +96,9 @@ export function OrdoRow({
         <h3 className="font-serif text-2xl leading-snug text-ivory italic md:text-[1.7rem]">
           {session.title}
         </h3>
-        <p className="mt-1 text-sm leading-6 text-stone-light">{session.topic}</p>
+        {session.topic && session.topic !== session.title ? (
+          <p className="mt-1 text-sm leading-6 text-stone-light">{session.topic}</p>
+        ) : null}
       </div>
       <p className="mt-3 text-[0.68rem] tracking-[0.12em] text-stone-light uppercase md:mt-0 md:text-right">
         {session.time}

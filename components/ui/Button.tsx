@@ -12,6 +12,7 @@ type Props = {
   type?: "button" | "submit";
   onClick?: () => void;
   ariaLabel?: string;
+  disabled?: boolean;
 };
 
 export function Button({
@@ -22,12 +23,14 @@ export function Button({
   type = "button",
   onClick,
   ariaLabel,
+  disabled,
 }: Props) {
   const classes = cn(
     "inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.7rem] font-medium uppercase tracking-[0.2em] transition-colors duration-300",
     variant === "primary" && "btn-primary",
     variant === "secondary" && "btn-secondary",
     variant === "ghost" && "h-auto rounded-none px-0 text-gold hover:text-gold-bright",
+    disabled && "cursor-not-allowed opacity-60",
     className,
   );
 
@@ -48,7 +51,13 @@ export function Button({
   }
 
   return (
-    <button type={type} className={classes} onClick={onClick} aria-label={ariaLabel}>
+    <button
+      type={type}
+      className={classes}
+      onClick={onClick}
+      aria-label={ariaLabel}
+      disabled={disabled}
+    >
       {children}
       {variant === "ghost" ? <ArrowIcon /> : null}
     </button>

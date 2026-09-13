@@ -3,13 +3,48 @@
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/icons";
+import { contactPlaceholders } from "@/lib/site";
+
+const sendFailedMessage = `We could not send your message. Please try again, or write to ${contactPlaceholders.email}.`;
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    if (sending) return;
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get("name") ?? ""),
+      email: String(data.get("email") ?? ""),
+      phone: String(data.get("phone") ?? ""),
+      message: String(data.get("message") ?? ""),
+    };
+
+    setError(null);
+    setSending(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = (await response.json()) as { error?: string };
+      if (!response.ok) {
+        setError(result.error || sendFailedMessage);
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError(sendFailedMessage);
+    } finally {
+      setSending(false);
+    }
   }
 
   if (submitted) {
@@ -24,14 +59,17 @@ export function ContactForm() {
         </span>
         <h3 className="mt-6 font-serif text-3xl text-ivory">Message received.</h3>
         <p className="mt-4 max-w-md text-sm leading-7 text-stone-light">
-          Thank you. This form does not send email by itself. Please also call
-          the parish office at (503) 325-3671 or write to
-          marty@stmaryastoria.com so we can reply.
+          Thank you. Your message has been sent to {contactPlaceholders.coordinatorName}{" "}
+          at {contactPlaceholders.email}. If you need a quicker reply, call the parish
+          office at {contactPlaceholders.phone}.
         </p>
         <button
           type="button"
           className="mt-8 text-[0.68rem] tracking-[0.22em] text-gold uppercase"
-          onClick={() => setSubmitted(false)}
+          onClick={() => {
+            setSubmitted(false);
+            setError(null);
+          }}
         >
           Send another message
         </button>
@@ -44,13 +82,34 @@ export function ContactForm() {
       onSubmit={onSubmit}
       className="border-y border-gold/18 py-8 md:py-10"
       noValidate={false}
+      aria-busy={sending}
     >
       <p className="eyebrow">Write to us</p>
       <h3 className="mt-4 font-serif text-3xl text-ivory">Begin a conversation</h3>
       <div className="mt-8 grid gap-6">
-        <Field label="Name" name="name" required autoComplete="name" />
-        <Field label="Email" name="email" type="email" required autoComplete="email" />
-        <Field label="Phone" name="phone" type="tel" autoComplete="tel" optional />
+        <Field
+          label="Name"
+          name="name"
+          required
+          autoComplete="name"
+          disabled={sending}
+        />
+        <Field
+          label="Email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          disabled={sending}
+        />
+        <Field
+          label="Phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          optional
+          disabled={sending}
+        />
         <label className="block">
           <span className="mb-2 block text-[0.68rem] tracking-[0.2em] text-gold uppercase">
             Message
@@ -59,13 +118,19 @@ export function ContactForm() {
             name="message"
             required
             rows={6}
+            disabled={sending}
             suppressHydrationWarning
-            className="w-full resize-y border border-gold/20 bg-ink/50 px-4 py-3 text-ivory outline-none transition-colors placeholder:text-stone/70 focus:border-gold"
+            className="w-full resize-y border border-gold/20 bg-ink/50 px-4 py-3 text-ivory outline-none transition-colors placeholder:text-stone/70 focus:border-gold disabled:opacity-60"
             placeholder="Share a little of what brings you here."
           />
         </label>
-        <Button type="submit" className="w-full sm:w-auto">
-          Send Message
+        {error ? (
+          <p role="alert" className="text-sm leading-7 text-stone-light">
+            {error}
+          </p>
+        ) : null}
+        <Button type="submit" className="w-full sm:w-auto" disabled={sending}>
+          {sending ? "Sending…" : "Send Message"}
         </Button>
       </div>
     </form>
@@ -79,6 +144,7 @@ function Field({
   required,
   optional,
   autoComplete,
+  disabled,
 }: {
   label: string;
   name: string;
@@ -86,6 +152,7 @@ function Field({
   required?: boolean;
   optional?: boolean;
   autoComplete?: string;
+  disabled?: boolean;
 }) {
   return (
     <label className="block">
@@ -98,8 +165,9 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
+        disabled={disabled}
         suppressHydrationWarning
-        className="w-full border border-gold/20 bg-ink/50 px-4 py-3 text-ivory outline-none transition-colors placeholder:text-stone/70 focus:border-gold"
+        className="w-full border border-gold/20 bg-ink/50 px-4 py-3 text-ivory outline-none transition-colors placeholder:text-stone/70 focus:border-gold disabled:opacity-60"
       />
     </label>
   );

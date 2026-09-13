@@ -171,7 +171,7 @@ You do not need to arrive certain. Inquiry is welcome.`,
 
 Pastor: Fr. William D. Oruko, AJ
 
-You may also use the contact page on this site. The form does not send email by itself — please call or write if you need a reply.`,
+You may also use the contact page on this site. Messages from the form are sent to marty@stmaryastoria.com.`,
     category: "General",
     author: "St. Mary, Star of the Sea",
     publishedAt: "2026-07-01",
