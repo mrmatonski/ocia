@@ -23,6 +23,7 @@ const routes = [
   "/schedule",
   "/topics",
   "/journey",
+  "/pray",
   "/faq",
   "/contact",
 ];
