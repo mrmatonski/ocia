@@ -42,6 +42,19 @@ export default function EducationContentPage() {
       <Section tone="navy" className="py-20 md:py-28">
         <div className="page-wrap">
           <ContentLibrary featured={featured} items={items} />
+          <div className="mx-auto mt-16 w-full max-w-3xl md:mt-20">
+            <div className="relative aspect-[16/9] overflow-hidden border border-gold/15">
+              <iframe
+                title="Religious Education video"
+                src="https://www.youtube.com/embed/RS8NrJ0Y5O8"
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+          </div>
         </div>
       </Section>
       <RegistrationCTA
