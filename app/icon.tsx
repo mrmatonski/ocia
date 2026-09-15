@@ -13,17 +13,40 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0c0b0a",
+          background: "#0a0908",
         }}
       >
         <div
           style={{
-            width: 14,
-            height: 14,
-            border: "1.5px solid #c4a35a",
-            transform: "rotate(45deg)",
+            display: "flex",
+            width: 16,
+            height: 22,
+            position: "relative",
           }}
-        />
+        >
+          <div
+            style={{
+              display: "flex",
+              position: "absolute",
+              top: 0,
+              left: 6,
+              width: 4,
+              height: 22,
+              background: "#b8954d",
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              position: "absolute",
+              top: 5,
+              left: 0,
+              width: 16,
+              height: 4,
+              background: "#b8954d",
+            }}
+          />
+        </div>
       </div>
     ),
     size,
