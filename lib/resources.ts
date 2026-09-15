@@ -156,4 +156,29 @@ export const resourceGroups: ResourceGroup[] = [
       },
     ],
   },
+  {
+    id: "recommended",
+    eyebrow: "Recommended",
+    title: "Trusted Catholic resources.",
+    description:
+      "A Catholic publisher and a Catholic formation app — for those who wish to continue with Sacred Scripture, the Catechism, and the saints at home.",
+    items: [
+      {
+        href: "https://ignatius.com/",
+        title: "Ignatius Press",
+        description:
+          "A trusted Catholic publisher of Catholic Bibles, study Bibles, theology, apologetics, catechetical materials, books on the saints, Scripture resources, and other materials for growing in the Catholic faith.",
+        cta: "Visit Ignatius Press",
+        icon: "book",
+      },
+      {
+        href: "https://apps.apple.com/us/app/ascension-catholic-bible/id1660909501",
+        title: "Ascension: Catholic Bible",
+        description:
+          "The Ascension App brings together the Catholic Bible, the Catechism of the Catholic Church, daily Mass readings, the Rosary, saints, Bible studies, and Catholic formation in one app for iPhone and iPad.",
+        cta: "Download on the App Store",
+        icon: "flame",
+      },
+    ],
+  },
 ];
