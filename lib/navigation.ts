@@ -6,6 +6,7 @@ export const navItems = [
   { href: "/topics", label: "Topics", full: "Topics" },
   { href: "/journey", label: "Journey", full: "Your Journey" },
   { href: "/pray", label: "Pray", full: "How to Pray" },
+  { href: "/resources", label: "Resources", full: "Resources" },
   { href: "/faq", label: "FAQ", full: "FAQ" },
   { href: "/contact", label: "Contact", full: "Contact" },
 ] as const;
@@ -17,6 +18,7 @@ export const footerNavItems = [
   { href: "/topics", label: "Topics" },
   { href: "/journey", label: "Journey" },
   { href: "/pray", label: "How to Pray" },
+  { href: "/resources", label: "Resources" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ] as const;

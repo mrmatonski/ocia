@@ -91,7 +91,7 @@ export function Navbar() {
           </Link>
 
           <nav
-            className="hidden items-center gap-5 xl:gap-7 lg:flex"
+            className="hidden items-center gap-3.5 xl:flex xl:gap-5 2xl:gap-6"
             aria-label="Primary"
           >
             {navItems.map((item) => {
@@ -105,7 +105,7 @@ export function Navbar() {
                   href={item.href}
                   data-active={active}
                   className={cn(
-                    "nav-link text-[0.66rem] tracking-[0.2em] uppercase transition-colors",
+                    "nav-link shrink-0 text-[0.62rem] tracking-[0.16em] whitespace-nowrap uppercase transition-colors xl:text-[0.66rem] xl:tracking-[0.18em]",
                     active ? "text-gold" : "text-ivory/75 hover:text-ivory",
                   )}
                 >
@@ -115,7 +115,7 @@ export function Navbar() {
             })}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <Button href="/contact" className="px-5 py-3">
               Begin Your Journey
             </Button>
@@ -124,7 +124,7 @@ export function Navbar() {
           <button
             ref={buttonRef}
             type="button"
-            className="relative z-[80] flex h-11 w-11 items-center justify-center lg:hidden"
+            className="relative z-[80] flex h-11 w-11 items-center justify-center xl:hidden"
             aria-expanded={open}
             aria-controls={menuId}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -163,14 +163,14 @@ export function Navbar() {
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
-            className="fixed inset-0 z-[60] lg:hidden"
+            className="fixed inset-0 z-[60] xl:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <div className="absolute inset-0 bg-navy-deep/97" />
             <CathedralVault className="absolute inset-x-[-12%] top-8 h-[70%] w-[124%] opacity-50" />
-            <nav className="relative flex h-full flex-col justify-center px-8 pt-16">
+            <nav className="relative flex h-full flex-col justify-center overflow-y-auto px-8 py-24">
               {navItems.map((item, index) => {
                 const active =
                   item.href === "/"

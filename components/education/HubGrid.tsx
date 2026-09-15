@@ -4,6 +4,8 @@ import { ProgramGlyph } from "@/components/education/ProgramGlyph";
 import type { HubCardItem } from "@/lib/education-hub";
 
 export function HubCard({ item, index }: { item: HubCardItem; index: number }) {
+  const external = item.href.startsWith("http");
+
   return (
     <article className="card-hover flex h-full flex-col border border-gold/15 bg-navy-lift/20 p-7 md:p-8">
       <div className="flex items-center justify-between gap-4">
@@ -21,6 +23,7 @@ export function HubCard({ item, index }: { item: HubCardItem; index: number }) {
       <Link
         href={item.href}
         className="mt-8 inline-flex items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
         {item.cta}
         <ArrowIcon />

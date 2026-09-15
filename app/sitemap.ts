@@ -24,6 +24,7 @@ const routes = [
   "/topics",
   "/journey",
   "/pray",
+  "/resources",
   "/faq",
   "/contact",
 ];
