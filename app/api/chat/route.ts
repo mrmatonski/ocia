@@ -42,6 +42,10 @@ export async function POST(request: Request) {
         "Ask assistant: OpenAI request failed.",
         error instanceof Error ? error.message : "unknown error",
       );
+      return Response.json(
+        { error: "We weren't able to answer just now. Please try again." },
+        { status: 503 },
+      );
     }
   }
 
@@ -57,7 +61,7 @@ function sanitizeMessages(value: unknown): ChatMessage[] {
   if (!Array.isArray(value)) return [];
 
   return value
-    .slice(-16)
+    .slice(-12)
     .flatMap((entry) => {
       if (!entry || typeof entry !== "object") return [];
       const record = entry as Record<string, unknown>;

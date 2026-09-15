@@ -1,6 +1,6 @@
 import { faqItems } from "@/lib/faq";
 import { journeyStages } from "@/lib/journey";
-import { getNextSession, getUpcomingSessions } from "@/lib/schedule";
+import { getNextSession } from "@/lib/schedule";
 import { contactPlaceholders, site } from "@/lib/site";
 import { topicCategories } from "@/lib/topics";
 import { formatClassDate } from "@/lib/utils";
@@ -14,7 +14,7 @@ const catholicEntries: Array<{ keys: string[]; answer: string }> = [
   {
     keys: ["eucharist", "communion", "real presence", "transubstantiation", "host"],
     answer:
-      "Catholics believe the Eucharist is the Body and Blood of Jesus Christ — not a symbol only, but Christ truly present under the appearances of bread and wine. The Church calls the Eucharist the source and summit of the Christian life: the sacrifice of Calvary made present, and holy communion with the Lord. This is taught most fully at Mass. If you are exploring the faith, you are welcome to attend Mass; reception of Communion itself is for Catholics who are prepared. In OCIA, this mystery is unfolded slowly, not rushed.",
+      "Yes. Catholics believe that after the consecration at Mass, Jesus Christ is truly present—Body, Blood, Soul, and Divinity—under the appearances of bread and wine. The Church calls this the Real Presence.\n\nThe word transubstantiation means the substance of the bread and wine becomes Christ himself, while what we still see, taste, and touch remains the appearances of bread and wine. This is not a symbol only. Catholics receive Communion as a real communion with the Lord, usually after they have been received into the Church and prepared.",
   },
   {
     keys: ["mass", "liturgy", "divine liturgy"],
@@ -32,9 +32,9 @@ const catholicEntries: Array<{ keys: string[]; answer: string }> = [
       "Confirmation completes baptismal grace. The bishop (or a priest delegated by him) anoints the person with sacred chrism and prays for a fresh outpouring of the Holy Spirit — strengthening the Christian for witness, mission, and a mature life of faith. In OCIA, Confirmation is usually received with the other sacraments of initiation, or completed if someone was baptized Catholic but never confirmed.",
   },
   {
-    keys: ["confession", "reconciliation", "penance"],
+    keys: ["confession", "confess", "reconciliation", "penance", "absolution"],
     answer:
-      "Reconciliation (Confession) is the sacrament of healing and return. A person names their sins to a priest, expresses sorrow, receives absolution, and is given a penance. Catholics believe it is Christ who forgives, acting through the priest. You will never be forced to go, and you will be taught how it works before you are invited to receive it. Many people find it less frightening in practice than in imagination.",
+      "Catholics confess their sins to a priest because Jesus gave his apostles authority to forgive sins. In John 20:22–23, the risen Lord says, \"Whose sins you forgive are forgiven them.\"\n\nThe priest acts in the person of Christ. In Reconciliation, a person names their sins, expresses sorrow, receives absolution, and is given a penance. It is Christ who forgives, restoring the person to God and to the Church. You will be taught how it works before you are invited to receive it.",
   },
   {
     keys: ["mary", "rosary", "mother of god", "blessed virgin"],
@@ -49,7 +49,7 @@ const catholicEntries: Array<{ keys: string[]; answer: string }> = [
   {
     keys: ["trinity", "father son", "three persons"],
     answer:
-      "The Trinity is the central mystery of Christian faith: one God in three Persons — Father, Son, and Holy Spirit. Not three gods, and not one Person wearing three masks. The Father begets the Son; the Spirit proceeds from the Father and the Son; all are coeternal and consubstantial. Catholics do not claim to exhaust the mystery. They confess it, pray it (in the Sign of the Cross and the Creed), and live from it.",
+      "The Trinity is the Catholic belief that there is one God in three distinct divine Persons: the Father, the Son, and the Holy Spirit.\n\nThey are not three gods, and each Person is not one-third of God. Each Person is fully God, while God remains one. Christians encounter this mystery in Scripture—for example at Jesus' baptism, where the Son is baptized, the Father's voice is heard, and the Holy Spirit descends like a dove.",
   },
   {
     keys: ["jesus", "christ", "incarnation", "resurrection"],
@@ -82,7 +82,7 @@ const catholicEntries: Array<{ keys: string[]; answer: string }> = [
       "Catholics believe sin is a real rupture — with God, neighbor, and one's own heart — and that grace is God's own life offered freely, healing what we cannot repair alone. The moral life is not a list of burdens but a path of freedom: the Commandments, the virtues, and the call to holiness in ordinary work and love. The Church speaks honestly about sin because she believes mercy is stronger.",
   },
   {
-    keys: ["marriage", "holy orders", "vocation", "priest", "nun"],
+    keys: ["marriage", "holy orders", "vocation", "become a priest", "nun", "consecrated"],
     answer:
       "A vocation is a calling. For most Catholics it unfolds in marriage, family, and work in the world. Some are called to Holy Orders (deacon, priest, bishop) or to consecrated life. The Church does not treat these as competing ranks of holiness. All are ordered toward love of God and neighbor. OCIA may touch vocation, but it does not recruit; it helps people listen.",
   },
@@ -103,68 +103,49 @@ const catholicEntries: Array<{ keys: string[]; answer: string }> = [
   },
 ];
 
-export function buildSiteContext() {
-  const next = getNextSession();
-  const upcoming = getUpcomingSessions(5);
-  const topics = topicCategories
-    .map((category) => `${category.label}: ${category.items.map((item) => item.title).join(", ")}`)
-    .join("\n");
-  const journey = journeyStages
-    .map((stage) => `${stage.number} ${stage.title} (${stage.latin}): ${stage.description}`)
-    .join("\n");
-  const faq = faqItems.map((item) => `Q: ${item.question}\nA: ${item.answer}`).join("\n\n");
-
+function buildParishNotes() {
   return [
-    `${site.fullName} (${site.name}) at ${site.parishFull}, ${site.city}.`,
-    `Official parish website: ${site.parishUrl}`,
-    `Parish address: ${contactPlaceholders.addressLine}, ${contactPlaceholders.cityLine}.`,
-    `Pastor: ${site.pastor}.`,
-    `Director of Religious Education: ${contactPlaceholders.coordinatorName}, ${contactPlaceholders.email}, ${contactPlaceholders.phone}. Parish office: ${contactPlaceholders.officeEmail}. Hours: ${contactPlaceholders.officeHours}.`,
-    `OCIA: weekly classes beginning in the Fall. The parish has not published a weekday or hour online. Do not invent one. Point people to the office.`,
-    "Do not invent official parish-specific facts (Mass times already published excepted). If a weekday class time is unknown, say so and point people to the contact page or the parish website.",
-    next
-      ? `Next published formation note: ${next.title} (${formatClassDate(next.date)}), ${next.time}, at ${next.location}. ${next.topic} Instructor: ${next.instructor}.`
-      : "Call the parish office for the current OCIA meeting day and time. Classes are weekly and begin in the Fall.",
-    `Upcoming formation notes:\n${upcoming.map((session) => `- ${formatClassDate(session.date)}: ${session.title} (${session.topic})`).join("\n")}`,
-    `Topic outline (ordinary Catholic formation themes; weekly topics are set with Religious Education):\n${topics}`,
-    `Journey stages (the Church's structure of Christian initiation):\n${journey}`,
-    `Mass at St. Mary: Sunday 8:30 a.m., 10:30 a.m., and Noon Spanish. Vigil at St. Francis de Sales, Hammond: Saturday 4:00 p.m. Daily Masses cancelled August 11 through September 2.`,
-    `FAQ:\n${faq}`,
-  ].join("\n\n");
+    `This assistant serves visitors to the OCIA website of ${site.parishFull} in ${site.city}.`,
+    `Parish: ${contactPlaceholders.addressLine}, ${contactPlaceholders.cityLine}. Pastor: ${site.pastor}.`,
+    `Religious Education: ${contactPlaceholders.coordinatorName}, ${contactPlaceholders.email}, ${contactPlaceholders.phone}. Parish office: ${contactPlaceholders.officeEmail}. Hours: ${contactPlaceholders.officeHours}.`,
+    `Sunday Mass at St. Mary: 8:30 a.m., 10:30 a.m., and Noon in Spanish. Saturday vigil at St. Francis de Sales, Hammond: 4:00 p.m.`,
+    `OCIA classes are weekly and begin in the Fall. The weekday and hour are not posted online. Do not invent them. Invite a call to ${contactPlaceholders.phone} or an email to ${contactPlaceholders.email}.`,
+    `Parish website: ${site.parishUrl}`,
+  ].join("\n");
 }
 
-export const assistantSystemPrompt = `You are the AI assistant for St. Mary, Star of the Sea OCIA (${site.parishFull} in ${site.city}). You appear as Ask St. Mary OCIA.
+export const assistantSystemPrompt = `You are the St. Mary OCIA Assistant for St. Mary, Star of the Sea.
 
-Your purpose is to help visitors understand the Catholic faith while also being able to answer ordinary general-knowledge questions.
+You help visitors learn about the Catholic faith and answer ordinary questions clearly and naturally.
 
-Voice: restrained, reverent, clear, warm, never salesy, never cutesy, never a church-bulletin mascot. Write in complete sentences. Prefer short paragraphs. Keep most answers clear and approachable rather than unnecessarily academic. When a user wants more depth, provide a fuller explanation.
+Your tone should be warm, intelligent, conversational, respectful, and concise. Be confident without sounding arrogant. Write like a knowledgeable Catholic catechist speaking naturally to someone after class.
 
-For questions involving Christianity, theology, Scripture, doctrine, morality, worship, sacraments, prayer, saints, Church history, or spiritual life, answer from the perspective of the Catholic Church.
+Do not sound robotic. Do not unnecessarily repeat the user's question. Do not begin every answer with phrases such as "According to Catholic teaching...", "The Catholic Church teaches...", "As an AI...", or "It's important to note...". Use those phrases only when they genuinely help.
 
-Catholic theological answers should be consistent with Sacred Scripture, Sacred Tradition, the Catechism of the Catholic Church, and authoritative Catholic teaching. Use terms such as the Catholic Church, Sacred Scripture, Sacred Tradition, the Eucharist, the Sacraments, and the Magisterium when they are relevant and natural.
+For ordinary questions, answer directly. A geography question should get a geography answer, not a theological discussion.
 
-Do not present distinctly Protestant doctrines as Catholic teaching. When Christian traditions disagree, clearly distinguish Catholic teaching from other Christian interpretations rather than attacking or insulting those traditions.
+For Catholic questions, answer faithfully according to Sacred Scripture, Sacred Tradition, the Catechism of the Catholic Church, and the Magisterium. When a topic is disputed among Christian traditions, explain the Catholic position accurately and charitably. Do not present Protestant-specific teachings as Catholic doctrine. Do not insult other Christian traditions.
 
-For Catholic doctrine, be careful about theological accuracy.
-- The Most Holy Trinity is one God in three distinct divine Persons: Father, Son, and Holy Spirit. Do not describe the Trinity as three gods, three parts of God, or three forms of God.
-- When discussing the Eucharist, accurately represent Catholic teaching concerning the Real Presence.
-- When discussing Confession, Baptism, Confirmation, Holy Orders, Matrimony, or Anointing of the Sick, accurately represent Catholic sacramental teaching.
-- When discussing Mary and the saints, distinguish worship owed to God from Catholic veneration of the saints.
+Assume many visitors are new to Catholicism. Prioritize clarity over academic language. Explain unfamiliar terms when needed. Keep simple questions relatively short: usually 2–5 short paragraphs unless the question needs more. Do not write giant essays unless asked. Use bullet points only when they help. Do not add headings for very short answers.
 
-Do not invent official Church teachings. When uncertain about an exact Catholic doctrinal claim, say so rather than fabricating an answer.
+When Scripture is useful, cite it naturally. Do not invent Bible quotations. Mention Catechism paragraph numbers only when reasonably confident they are correct. Never fabricate Church documents, quotations, saints, councils, verses, historical facts, or Catechism references. If you are uncertain, say so plainly.
 
-Be welcoming toward people who are not Catholic or who are simply curious. Never ridicule another religion or denomination. Do not pressure anyone to convert. Inquiry is welcome. Curiosity is enough.
+The Most Holy Trinity is one God in three distinct divine Persons: Father, Son, and Holy Spirit. Do not describe the Trinity as three gods, three parts of God, or God changing between three forms.
 
-For general nonreligious questions, answer normally and helpfully.
+For the Eucharist, Catholics believe in the Real Presence of Jesus Christ. After the consecration, Christ is truly present—Body, Blood, Soul, and Divinity—under the appearances of bread and wine. Explain transubstantiation simply when it helps.
 
-Hard limits:
-- Do not invent official St. Mary OCIA weekday meeting times, fees, or unpublished pastoral policies.
-- Weekly OCIA classes begin in the Fall; if asked for a day or hour, say the office has not posted one online and invite a call to (503) 325-3671 or an email to marty@stmaryastoria.com.
-- If a question is medical, legal, or crisis-related, give general information only and point to appropriate professional or emergency help.
-- For suicide or self-harm, urge the person to contact local emergency services or the 988 Suicide & Crisis Lifeline in the US.
+For Confession, Catholics confess to a priest because Jesus gave the apostles authority to forgive sins (John 20:22–23). The priest acts in the person of Christ. Answer that kind of question directly, then explain.
 
-Parish and site context:
-${buildSiteContext()}`;
+Worship belongs to God alone. Catholics honor and venerate Mary and the saints; they do not worship them.
+
+If a question involves personal sacramental status, marriage validity, annulments, or other matters needing pastoral judgment, give useful general information and recommend speaking with a priest or OCIA leader. Do not overuse disclaimers. You do not need to mention that you are an AI unless it is relevant.
+
+If someone asks a follow-up such as "What about him?", "Why?", or "Can you explain that more?", use the previous messages. Above all, give the clearest, most natural, and most helpful answer possible.
+
+If a question is medical, legal, or a crisis, give general information only and point to professional or emergency help. For suicide or self-harm, urge local emergency services or the 988 Suicide & Crisis Lifeline in the US.
+
+Parish facts:
+${buildParishNotes()}`;
 
 function normalize(text: string) {
   return text.toLowerCase().replace(/[^\w\s]/g, " ").replace(/\s+/g, " ").trim();
@@ -181,7 +162,11 @@ export function answerFromKnowledge(question: string): string | null {
   if (
     /(what is ocia|what's ocia|order of christian|rcia|join the church|become catholic)/.test(query)
   ) {
-    return `${site.fullName} is the Church's way of walking with adults who wish to explore the Catholic faith. It is not a test to pass. It is a season of encounter — questions, prayer, teaching, and a community that makes room for people who are still finding their way. At ${site.parishFull} in ${site.city}, an unbaptized adult who wishes to become Catholic may participate in OCIA. Classes are weekly and begin in the Fall. Call ${contactPlaceholders.phone} or write to ${contactPlaceholders.coordinatorName} at ${contactPlaceholders.email}.`;
+    return `OCIA stands for the Order of Christian Initiation of Adults. It's the process the Catholic Church uses to help adults learn about the faith and prepare to enter the Church.
+
+Depending on someone's background, it can lead to Baptism, Confirmation, and reception of the Eucharist. OCIA isn't simply a class—you'll also spend time learning, praying, attending Mass, and discerning whether God is calling you into the Catholic Church.
+
+At ${site.parishFull} in ${site.city}, classes are weekly and begin in the Fall. Call ${contactPlaceholders.phone} or write to ${contactPlaceholders.coordinatorName} at ${contactPlaceholders.email} to take a first step.`;
   }
 
   if (/(next class|next session|when (do|does) (class|ocia)|schedule|what time)/.test(query)) {
