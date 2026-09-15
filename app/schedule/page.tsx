@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { ScheduleTimeline } from "@/components/schedule/ScheduleTimeline";
 import { CTASection } from "@/components/home/CTASection";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Class Schedule",
   description:
-    "View the OCIA class schedule at St. Mary, Star of the Sea in Astoria, Oregon.",
-};
+    "View the 2026–2027 OCIA class schedule at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
+  path: "/schedule",
+});
 
 export default function SchedulePage() {
   return (

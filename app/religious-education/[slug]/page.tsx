@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProgramDetail } from "@/components/education/ProgramDetail";
 import { educationPrograms, getProgram } from "@/lib/education";
+import { canonicalUrl, pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 type Props = {
@@ -20,11 +21,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!program) {
     return { title: "Program not found" };
   }
+  const path = `/religious-education/${slug}`;
   return {
-    title: program.seoTitle,
-    description: program.seoDescription,
+    ...pageMetadata({
+      title: program.seoTitle,
+      description: program.seoDescription,
+      path,
+    }),
     keywords: [
-      "St. Mary's Catholic Church",
+      "St. Mary Star of the Sea",
       "Astoria Oregon",
       "Religious Education",
       program.name,
@@ -34,6 +39,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${program.seoTitle} | ${site.parish}`,
       description: program.seoDescription,
+      url: canonicalUrl(path),
+      type: "website",
     },
   };
 }

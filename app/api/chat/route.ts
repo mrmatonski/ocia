@@ -5,14 +5,28 @@ import {
   type ChatMessage,
 } from "@/lib/chat/knowledge";
 import { hasOpenAIKey, streamOpenAIReply } from "@/lib/chat/openai";
+import { getRequestIp, isChatRateLimited } from "@/lib/contact-rate-limit";
 
 export const runtime = "nodejs";
+
+const SAFE_ERROR = "We weren't able to answer just now. Please try again.";
+const MAX_BODY_BYTES = 40_000;
 
 type Body = {
   messages?: ChatMessage[];
 };
 
 export async function POST(request: Request) {
+  const length = Number(request.headers.get("content-length") || 0);
+  if (Number.isFinite(length) && length > MAX_BODY_BYTES) {
+    return Response.json({ error: "Invalid request." }, { status: 400 });
+  }
+
+  const ip = getRequestIp(request);
+  if (isChatRateLimited(ip)) {
+    return Response.json({ error: SAFE_ERROR }, { status: 429 });
+  }
+
   let body: Body;
   try {
     body = (await request.json()) as Body;
@@ -42,10 +56,7 @@ export async function POST(request: Request) {
         "Ask assistant: OpenAI request failed.",
         error instanceof Error ? error.message : "unknown error",
       );
-      return Response.json(
-        { error: "We weren't able to answer just now. Please try again." },
-        { status: 503 },
-      );
+      return Response.json({ error: SAFE_ERROR }, { status: 503 });
     }
   }
 

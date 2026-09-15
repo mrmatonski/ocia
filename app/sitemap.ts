@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { announcementPath, getPublishedAnnouncementSlugs } from "@/lib/education-announcements";
 import { contentPath, getPublishedContentSlugs } from "@/lib/education-content";
 import { getProgramSlugs } from "@/lib/education";
-import { site } from "@/lib/site";
+import { canonicalUrl } from "@/lib/seo";
 
 const hubRoutes = [
   "/religious-education",
@@ -31,7 +31,7 @@ const routes = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
-    url: `${site.url}${route}`,
+    url: canonicalUrl(route || "/"),
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: route === "" ? 1 : 0.7,

@@ -1,6 +1,6 @@
 export const DEFAULT_CONTACT_EMAIL = "mrmatonski@icloud.com";
 export const RESEND_TEST_FROM = "St. Mary OCIA <onboarding@resend.dev>";
-export const SITE_ORIGIN = "stmary-ocia.com";
+export const SITE_ORIGIN = "www.stmary-ocia.com";
 
 function serverEnv(name: string) {
   return process.env[name]?.trim() || "";

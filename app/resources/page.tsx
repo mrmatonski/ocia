@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { ResourceLibrary } from "@/components/resources/ResourceLibrary";
 import { CTASection } from "@/components/home/CTASection";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
@@ -7,11 +6,14 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 
-export const metadata: Metadata = {
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
   title: "Resources",
   description:
-    "Trustworthy Catholic resources for OCIA, lifelong formation, and those exploring the faith at St. Mary, Star of the Sea in Astoria, Oregon.",
-};
+    "Trustworthy Catholic resources for OCIA and lifelong formation at St. Mary, Star of the Sea in Astoria, Oregon — from the Holy See, the USCCB, and the Archdiocese of Portland.",
+  path: "/resources",
+});
 
 export default function ResourcesPage() {
   return (

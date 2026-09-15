@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { TopicAccordion } from "@/components/topics/TopicAccordion";
 import { CTASection } from "@/components/home/CTASection";
 
-export const metadata: Metadata = {
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
   title: "Topics",
   description:
-    "Explore the Catholic faith topics discussed during OCIA at St. Mary, Star of the Sea.",
-};
+    "Explore Catholic faith topics studied in OCIA at St. Mary, Star of the Sea in Astoria, Oregon — the Creed, Sacred Scripture, the Church, and the sacraments.",
+  path: "/topics",
+});
 
 export default function TopicsPage() {
   return (

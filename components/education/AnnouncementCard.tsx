@@ -2,18 +2,27 @@ import Link from "next/link";
 import { ArrowIcon } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
 import { ParishFillImage } from "@/components/ui/ImagePlaceholder";
-import {
-  announcementPath,
-  type Announcement,
-} from "@/lib/education-announcements";
-import { formatFullDate } from "@/lib/utils";
+import { announcementPath, type Announcement } from "@/lib/education-announcements";
+import { cn, formatFullDate } from "@/lib/utils";
 
-export function AnnouncementCard({ announcement }: { announcement: Announcement }) {
+export function AnnouncementCard({
+  announcement,
+  archived = false,
+}: {
+  announcement: Announcement;
+  archived?: boolean;
+}) {
   const href = announcementPath(announcement.slug);
   const attachmentReady = Boolean(announcement.attachment?.href);
+  const dateValue = announcement.eventDate ?? announcement.publishedAt.slice(0, 10);
 
   return (
-    <article className="card-hover min-w-0 overflow-hidden border border-gold/15 bg-navy-lift/20">
+    <article
+      className={cn(
+        "card-hover min-w-0 overflow-hidden border border-gold/15 bg-navy-lift/20",
+        archived && "opacity-70",
+      )}
+    >
       {announcement.image ? (
         <Link href={href} className="relative block aspect-[16/9] overflow-hidden border-b border-gold/15">
           <ParishFillImage
@@ -25,12 +34,20 @@ export function AnnouncementCard({ announcement }: { announcement: Announcement 
       ) : null}
       <div className="p-6 sm:p-8 md:p-9">
         <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.62rem] tracking-[0.16em] uppercase">
-          <span className="text-gold">{announcement.category ?? "Announcement"}</span>
+          {archived ? <span className="text-stone">Past notice</span> : null}
+          {archived ? (
+            <span className="text-gold/35" aria-hidden="true">
+              ·
+            </span>
+          ) : null}
+          <span className="text-gold">
+            {announcement.kicker ?? announcement.category ?? "Announcement"}
+          </span>
           <span className="text-gold/35" aria-hidden="true">
             ·
           </span>
-          <time className="text-stone" dateTime={announcement.publishedAt.slice(0, 10)}>
-            {formatFullDate(announcement.publishedAt)}
+          <time className="text-stone" dateTime={dateValue}>
+            {formatFullDate(dateValue)}
           </time>
         </p>
         <h2 className="mt-4 font-serif text-[1.85rem] leading-tight break-words text-ivory italic md:text-3xl">

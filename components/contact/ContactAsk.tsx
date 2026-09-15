@@ -72,6 +72,11 @@ export function ContactAsk() {
         throw new Error("unavailable");
       }
 
+      const contentType = response.headers.get("content-type") ?? "";
+      if (contentType.includes("application/json")) {
+        throw new Error("unavailable");
+      }
+
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let assistant = "";
@@ -111,7 +116,8 @@ export function ContactAsk() {
       <p className="mt-4 text-sm leading-7 text-stone-light">
         Ask a question about Catholic teaching, Scripture, OCIA, prayer, the
         sacraments, Church history, or just about anything you&apos;d like to
-        understand better.
+        understand better. This is an AI assistant, not Marty, a priest, or
+        another member of the parish staff.
       </p>
 
       <div className="mt-8 flex min-h-[28rem] flex-col">

@@ -34,6 +34,21 @@ export function ChatWidget() {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeChat();
+
+      if (event.key !== "Tab" || !panelRef.current) return;
+      const focusable = panelRef.current.querySelectorAll<HTMLElement>(
+        "a[href], button:not([disabled]), textarea, input",
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     const id = window.setTimeout(() => inputRef.current?.focus(), 120);
@@ -78,7 +93,12 @@ export function ChatWidget() {
       });
 
       if (!response.ok || !response.body) {
-        throw new Error("The companion could not answer just now.");
+        throw new Error("unavailable");
+      }
+
+      const contentType = response.headers.get("content-type") ?? "";
+      if (contentType.includes("application/json")) {
+        throw new Error("unavailable");
       }
 
       const reader = response.body.getReader();
@@ -93,9 +113,14 @@ export function ChatWidget() {
         const snapshot = assistant;
         setMessages([...nextMessages, { role: "assistant", content: snapshot }]);
       }
+
+      if (!assistant.trim()) {
+        throw new Error("empty");
+      }
     } catch (caught) {
       if ((caught as Error).name === "AbortError") return;
       setError("Something went quiet. Please try again.");
+      setMessages(nextMessages);
     } finally {
       setPending(false);
     }
@@ -133,14 +158,19 @@ export function ChatWidget() {
                 ref={closeRef}
                 type="button"
                 onClick={closeChat}
-                className="mt-1 flex h-8 w-8 items-center justify-center text-stone-light transition-colors hover:text-ivory"
+                className="mt-1 flex h-11 w-11 items-center justify-center text-stone-light transition-colors hover:text-ivory"
                 aria-label="Close question panel"
               >
                 <CloseIcon />
               </button>
             </header>
 
-            <div ref={listRef} className="flex-1 space-y-4 overflow-y-auto px-5 py-5" aria-live="polite">
+            <div
+              ref={listRef}
+              className="flex-1 space-y-4 overflow-y-auto px-5 py-5"
+              aria-live="polite"
+              aria-busy={pending}
+            >
               {messages.length === 0 ? (
                 <div>
                   <p className="font-serif text-lg leading-7 text-ivory/90">
@@ -181,10 +211,17 @@ export function ChatWidget() {
                   </div>
                 ))
               )}
-              {error ? <p className="text-sm text-gold">{error}</p> : null}
+              {pending && messages[messages.length - 1]?.role !== "assistant" ? (
+                <p className="text-sm text-stone-light">Considering…</p>
+              ) : null}
+              {error ? (
+                <p role="alert" className="text-sm text-gold">
+                  {error}
+                </p>
+              ) : null}
             </div>
 
-            <form onSubmit={onSubmit} className="border-t border-gold/15 p-3">
+            <form onSubmit={onSubmit} className="border-t border-gold/15 p-3" aria-busy={pending}>
               <label htmlFor="chat-input" className="sr-only">
                 Ask a question
               </label>
@@ -226,6 +263,7 @@ export function ChatWidget() {
             exit={{ opacity: 0, y: 8 }}
             aria-expanded={open}
             aria-haspopup="dialog"
+            aria-label="Ask St. Mary OCIA"
           >
             <StarOfTheSeaIcon className="h-5 w-5 text-gold" />
             <span className="font-display text-[0.68rem] tracking-[0.22em]">Ask</span>

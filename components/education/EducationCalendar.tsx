@@ -8,7 +8,7 @@ import {
   type CalendarCategory,
   type CalendarEvent,
 } from "@/lib/education-calendar";
-import { formatClassDate, formatClassWeekday, formatMonthLabel } from "@/lib/utils";
+import { formatClassDate, formatClassWeekday, formatMonthLabel, getParishDateParts } from "@/lib/utils";
 
 const weekdayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -21,10 +21,10 @@ function monthKey(year: number, monthIndex: number) {
 }
 
 export function EducationCalendar() {
-  const today = new Date();
+  const todayParts = getParishDateParts();
   const [cursor, setCursor] = useState({
-    year: today.getFullYear(),
-    month: today.getMonth(),
+    year: todayParts.year,
+    month: todayParts.month - 1,
   });
 
   const dated = educationCalendarEvents.filter((event) => isIsoDate(event.date));
@@ -77,7 +77,8 @@ export function EducationCalendar() {
         <div className="flex gap-2">
           <button
             type="button"
-            className="btn-secondary px-4 py-2 text-[0.62rem] tracking-[0.18em] uppercase"
+            className="btn-secondary min-h-11 px-4 py-2 text-[0.62rem] tracking-[0.18em] uppercase"
+            aria-label="Previous month"
             onClick={() =>
               setCursor((current) => {
                 const month = current.month - 1;
@@ -89,7 +90,8 @@ export function EducationCalendar() {
           </button>
           <button
             type="button"
-            className="btn-secondary px-4 py-2 text-[0.62rem] tracking-[0.18em] uppercase"
+            className="btn-secondary min-h-11 px-4 py-2 text-[0.62rem] tracking-[0.18em] uppercase"
+            aria-label="Next month"
             onClick={() =>
               setCursor((current) => {
                 const month = current.month + 1;

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ClassScheduleTable } from "@/components/education/ClassScheduleTable";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
@@ -8,12 +7,14 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getEducationSchedules } from "@/lib/education-schedules";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Religious Education Class Schedules",
   description:
     "Class schedules for Religious Education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
-};
+  path: "/religious-education/schedules",
+});
 
 export default function EducationSchedulesPage() {
   const schedules = getEducationSchedules();

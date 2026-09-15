@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { ContentLibrary } from "@/components/education/ContentLibrary";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
 import { EducationSubnav } from "@/components/education/EducationSubnav";
@@ -6,12 +5,14 @@ import { RegistrationCTA } from "@/components/education/RegistrationCTA";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { getBrowsableContent, getFeaturedContent } from "@/lib/education-content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Religious Education Content & Videos",
   description:
     "Instructional videos, class lessons, and study materials for Religious Education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
-};
+  path: "/religious-education/content",
+});
 
 export default function EducationContentPage() {
   const featured = getFeaturedContent();

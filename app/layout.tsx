@@ -5,7 +5,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { ChatProvider } from "@/components/chat/ChatProvider";
 import { ChatWidget } from "@/components/chat/ChatWidget";
 import { MotionProvider } from "@/components/providers";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/site";
+import { rootJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -38,6 +40,22 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.name,
   authors: [{ name: site.parishFull }],
+  creator: site.parishFull,
+  publisher: site.parishFull,
+  category: "religion",
+  keywords: [
+    "OCIA",
+    "Order of Christian Initiation of Adults",
+    "St. Mary Star of the Sea",
+    "Astoria Oregon",
+    "Catholic",
+    "Religious Education",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
   openGraph: {
     title: site.title,
     description: site.description,
@@ -49,6 +67,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
+  },
+  icons: {
+    icon: "/icon",
+    apple: "/apple-icon",
   },
 };
 
@@ -63,6 +85,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${cormorant.variable} ${cinzel.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-ink font-sans text-ivory">
+        <JsonLd data={rootJsonLd()} />
         <MotionProvider>
           <ChatProvider>
             <SkipLink />

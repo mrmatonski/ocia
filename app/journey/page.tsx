@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { JourneyTimeline } from "@/components/journey/JourneyTimeline";
@@ -7,11 +6,14 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CTASection } from "@/components/home/CTASection";
 import { Ornament } from "@/components/ui/Ornament";
 
-export const metadata: Metadata = {
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
   title: "Your Journey",
   description:
-    "Walk through the stages of OCIA — from inquiry to the sacraments of initiation.",
-};
+    "Walk the five stages of OCIA at St. Mary, Star of the Sea in Astoria, Oregon — from inquiry to the Sacraments of Initiation and mystagogy.",
+  path: "/journey",
+});
 
 export default function JourneyPage() {
   return (

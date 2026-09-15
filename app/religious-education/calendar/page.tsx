@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
 import { EducationCalendar } from "@/components/education/EducationCalendar";
 import { EducationSubnav } from "@/components/education/EducationSubnav";
@@ -6,12 +5,14 @@ import { RegistrationCTA } from "@/components/education/RegistrationCTA";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Religious Education Calendar",
   description:
     "Religious Education calendar for St. Mary, Star of the Sea Catholic Church in Astoria, Oregon. A general guideline that may change; see announcements for the latest information.",
-};
+  path: "/religious-education/calendar",
+});
 
 export default function EducationCalendarPage() {
   return (

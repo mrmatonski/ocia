@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
@@ -9,11 +8,14 @@ import { CTASection } from "@/components/home/CTASection";
 import { Ornament } from "@/components/ui/Ornament";
 import { Button } from "@/components/ui/Button";
 
-export const metadata: Metadata = {
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
   title: "About OCIA",
   description:
-    "Learn what OCIA is and how adults at St. Mary, Star of the Sea explore the Catholic faith.",
-};
+    "Learn what the Order of Christian Initiation of Adults (OCIA) is and how adults at St. Mary, Star of the Sea in Astoria, Oregon explore the Catholic faith.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

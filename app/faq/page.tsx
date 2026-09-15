@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { FAQAccordion } from "@/components/faq/FAQAccordion";
 import { CTASection } from "@/components/home/CTASection";
 
-export const metadata: Metadata = {
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
   title: "FAQ",
   description:
-    "Common questions about OCIA at St. Mary, Star of the Sea in Astoria, Oregon.",
-};
+    "Common questions about becoming Catholic through OCIA at St. Mary, Star of the Sea in Astoria, Oregon.",
+  path: "/faq",
+});
 
 export default function FAQPage() {
   return (

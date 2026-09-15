@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
 
 type Crumb = {
@@ -15,6 +17,7 @@ export function EducationBreadcrumbs({
 }) {
   return (
     <nav aria-label="Breadcrumb">
+      <JsonLd data={breadcrumbJsonLd(items)} />
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.68rem] tracking-[0.16em] uppercase">
         {items.map((item, index) => {
           const last = index === items.length - 1;

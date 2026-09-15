@@ -280,7 +280,7 @@ The Rosary is prayed a half hour before the 4:00 p.m. Vigil and the 8:30 and 10:
 
 **Reconciliation:** Wednesday at 5:00 p.m. at St. Mary; Saturday at 3:30 p.m. at St. Francis de Sales; or by appointment.
 
-Daily Masses are cancelled from August 11 through September 2. Sunday Mass continues as published.
+Weekday Mass times are published by the parish and may change. Sunday Mass continues as listed above.
 
 Parish office: (503) 325-3671 · 1465 Grand Avenue, Astoria, OR 97103`,
     type: "Article",

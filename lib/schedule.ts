@@ -1,3 +1,5 @@
+import { getTodayIso } from "@/lib/utils";
+
 export type ClassStatus = "upcoming" | "completed";
 
 export type ClassSession = {
@@ -249,13 +251,6 @@ export function getClassStatus(date: string, today = getTodayIso()): ClassStatus
 
 export function withStatus(session: ClassSession, today = getTodayIso()) {
   return { ...session, status: getClassStatus(session.date, today) };
-}
-
-function getTodayIso() {
-  const now = new Date();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${now.getFullYear()}-${month}-${day}`;
 }
 
 export function getUpcomingSessions(count = 4) {

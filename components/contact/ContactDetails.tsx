@@ -32,9 +32,7 @@ export function ContactDetails() {
         We would be glad to hear from you.
       </h2>
       <p className="mt-6 max-w-md text-sm leading-7 text-stone-light md:text-base">
-        Share your name and a little of your story. Call the parish office at{" "}
-        {contactPlaceholders.phone}, write to {contactPlaceholders.email}, or
-        ask a question here. Office hours: {contactPlaceholders.officeHours}.
+        Share a little of your story with Religious Education by phone or email. For ordinary questions about the Catholic faith and OCIA, you may also ask the AI assistant on this page. That assistant is not a parish staff member. Office hours: {contactPlaceholders.officeHours}.
       </p>
       <ul className="mt-10 space-y-5">
         {details.map((item) => (

@@ -6,8 +6,25 @@ import { formatClassDate, formatClassWeekday, cn } from "@/lib/utils";
 
 type Session = ReturnType<typeof withStatus>;
 
+function featuredCopy(session: Session) {
+  const generic = /^(all classes|no classes)/i.test(session.title);
+  const match = session.topic.match(/^(.*?)\s*\((Liguori[^)]+)\)\s*$/);
+  if (generic && match) {
+    return { heading: match[1], detail: match[2] };
+  }
+  if (generic && session.topic && session.topic !== session.title) {
+    return { heading: session.topic, detail: null };
+  }
+  return {
+    heading: session.title,
+    detail: session.topic && session.topic !== session.title ? session.topic : null,
+  };
+}
+
 export function FeaturedSession({ session }: { session: Session }) {
   const status = session.status ?? getClassStatus(session.date);
+  const copy = featuredCopy(session);
+  const postedTime = session.time && session.time !== "Weekly";
 
   return (
     <motion.article
@@ -26,19 +43,21 @@ export function FeaturedSession({ session }: { session: Session }) {
           </span>
         </div>
         <h3 className="mt-5 max-w-2xl font-serif text-4xl leading-tight text-ivory italic md:text-6xl">
-          {session.title}
+          {copy.heading}
         </h3>
         <p className="mt-4 font-serif text-xl text-gold/90 md:text-2xl">
           {formatClassWeekday(session.date)
             ? `${formatClassWeekday(session.date)} · ${formatClassDate(session.date)}`
             : formatClassDate(session.date)}
         </p>
-        <p className="mt-2 text-sm tracking-[0.12em] text-stone-light uppercase">
-          {session.time}
-        </p>
-        {session.topic && session.topic !== session.title ? (
+        {postedTime ? (
+          <p className="mt-2 text-sm tracking-[0.12em] text-stone-light uppercase">
+            {session.time}
+          </p>
+        ) : null}
+        {copy.detail ? (
           <p className="mt-6 max-w-xl text-base leading-8 text-stone-light">
-            {session.topic}
+            {copy.detail}
           </p>
         ) : null}
         <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-3 text-sm">

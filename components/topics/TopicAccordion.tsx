@@ -99,7 +99,15 @@ function TopicCard({
           />
         </button>
       </h3>
-      <div id={panelId} role="region" aria-labelledby={buttonId} className="accordion-panel" data-open={open}>
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        className="accordion-panel"
+        data-open={open}
+        inert={!open}
+        aria-hidden={!open}
+      >
         <div className="min-h-0 overflow-hidden">
           <ul className="space-y-5 pb-8 pl-[3.35rem] md:pl-[4.25rem]">
             {category.items.map((item) => (

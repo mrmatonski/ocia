@@ -12,6 +12,7 @@ export const announcementCategories = [
 
 export type AnnouncementCategory = (typeof announcementCategories)[number];
 export type AnnouncementStatus = "published" | "draft";
+export type AnnouncementLifecycle = "current" | "upcoming" | "archived";
 
 export type AnnouncementImage = {
   src: string;
@@ -38,6 +39,9 @@ export type Announcement = {
   author?: string;
   publishedAt: string;
   updatedAt?: string;
+  eventDate?: string;
+  expiresAt?: string;
+  kicker?: string;
   image?: AnnouncementImage;
   attachment?: AnnouncementAttachment;
   externalLink?: AnnouncementLink;
@@ -48,7 +52,7 @@ export function announcementPath(slug: string) {
   return `/religious-education/announcements/${slug}`;
 }
 
-function publishedDate(value: string) {
+function isoDay(value: string) {
   return value.slice(0, 10);
 }
 
@@ -58,14 +62,70 @@ export function isAnnouncementPublic(
 ) {
   return (
     announcement.status === "published" &&
-    publishedDate(announcement.publishedAt) <= today
+    isoDay(announcement.publishedAt) <= today
   );
 }
 
+export function getAnnouncementLifecycle(
+  announcement: Announcement,
+  today = getTodayIso(),
+): AnnouncementLifecycle {
+  if (announcement.expiresAt && isoDay(announcement.expiresAt) < today) {
+    return "archived";
+  }
+  if (announcement.eventDate) {
+    const event = isoDay(announcement.eventDate);
+    if (event < today) return "archived";
+    if (event > today) return "upcoming";
+    return "current";
+  }
+  return "current";
+}
+
+function sortByRecency(a: Announcement, b: Announcement) {
+  return isoDay(b.publishedAt).localeCompare(isoDay(a.publishedAt));
+}
+
+function sortActive(a: Announcement, b: Announcement) {
+  const aEvent = a.eventDate ? isoDay(a.eventDate) : "";
+  const bEvent = b.eventDate ? isoDay(b.eventDate) : "";
+  if (aEvent && bEvent) return aEvent.localeCompare(bEvent);
+  if (aEvent) return -1;
+  if (bEvent) return 1;
+  return sortByRecency(a, b);
+}
+
 export function getPublishedAnnouncements(today?: string) {
+  const day = today ?? getTodayIso();
   return educationAnnouncements
-    .filter((item) => isAnnouncementPublic(item, today))
-    .sort((a, b) => publishedDate(b.publishedAt).localeCompare(publishedDate(a.publishedAt)));
+    .filter((item) => isAnnouncementPublic(item, day))
+    .sort((a, b) => {
+      const aLife = getAnnouncementLifecycle(a, day);
+      const bLife = getAnnouncementLifecycle(b, day);
+      const aArchived = aLife === "archived";
+      const bArchived = bLife === "archived";
+      if (aArchived !== bArchived) return aArchived ? 1 : -1;
+      if (!aArchived && !bArchived) return sortActive(a, b);
+      return sortByRecency(a, b);
+    });
+}
+
+export function getCurrentAnnouncements(today?: string) {
+  const day = today ?? getTodayIso();
+  return getPublishedAnnouncements(day).filter(
+    (item) => getAnnouncementLifecycle(item, day) !== "archived",
+  );
+}
+
+export function getArchivedAnnouncements(today?: string) {
+  const day = today ?? getTodayIso();
+  return getPublishedAnnouncements(day).filter(
+    (item) => getAnnouncementLifecycle(item, day) === "archived",
+  );
+}
+
+export function getLatestAnnouncement(today?: string) {
+  return getCurrentAnnouncements(today)[0] ?? null;
 }
 
 export function getAnnouncementBySlug(slug: string, today?: string) {
@@ -82,25 +142,59 @@ export function getPublishedAnnouncementSlugs(today?: string) {
 
 export const educationAnnouncements: Announcement[] = [
   {
+    id: "ocia-sept-20-faith-trinity",
+    slug: "next-class-faith-and-the-most-holy-trinity",
+    title: "Next Class: Faith & the Most Holy Trinity",
+    kicker: "OCIA — September 20, 2026",
+    excerpt:
+      "Our next OCIA gathering will explore two foundational topics from Liguori Publications' Journey of Faith Inquiry program: What Is Faith? and Trinity: Three in One.",
+    content: `At our next OCIA class, we will explore Lessons Q2 and Q3 of Liguori Publications' Journey of Faith Inquiry program.
+
+## What Is Faith?
+
+We will explore faith as God's gift and our response to Him—a relationship of trust that grows through prayer, learning, participation in the Church, and the way we live.
+
+We will also consider the relationship between faith and reason and why authentic Catholic faith does not require us to abandon reason or truth.
+
+## The Most Holy Trinity
+
+We will then explore the central mystery of the Christian faith: one God in three distinct divine Persons—the Father, the Son, and the Holy Spirit.
+
+We will look at how God reveals Himself as Father, Son, and Holy Spirit and why the Trinity stands at the heart of Catholic belief and Christian life.
+
+Come ready to learn, ask questions, and continue growing together in the Catholic faith.`,
+    category: "Class Information",
+    author: "Religious Education",
+    publishedAt: "2026-09-15",
+    eventDate: "2026-09-20",
+    expiresAt: "2026-09-20",
+    status: "published",
+    externalLink: {
+      label: "View class schedule",
+      href: "/schedule",
+    },
+  },
+  {
     id: "daily-mass-pause",
     slug: "daily-masses-august-11-september-2",
     title: "Daily Masses paused through September 2",
     excerpt:
-      "Daily Masses at St. Mary are cancelled from August 11 through September 2. Sunday Mass continues as published.",
-    content: `The parish has announced that **daily Masses are cancelled from August 11 through September 2**.
+      "Daily Masses at St. Mary were cancelled from August 11 through September 2. Sunday Mass continued as published.",
+    content: `The parish announced that **daily Masses were cancelled from August 11 through September 2**.
 
-Sunday Mass at St. Mary continues:
+Sunday Mass at St. Mary continued as published:
 
 - 8:30 a.m.
 - 10:30 a.m.
 - Noon (Spanish)
 
-The Saturday Vigil Mass at St. Francis de Sales Mission in Hammond remains at 4:00 p.m.
+The Saturday Vigil Mass at St. Francis de Sales Mission in Hammond remained at 4:00 p.m.
 
 If you are unsure whether a weekday liturgy is meeting, call the parish office at (503) 325-3671.`,
     category: "Schedule Update",
     author: "St. Mary, Star of the Sea",
     publishedAt: "2026-08-11",
+    expiresAt: "2026-09-02",
     status: "published",
     externalLink: {
       label: "Parish website",
@@ -127,6 +221,7 @@ If you are new to the parish, please call the office.`,
     category: "Parent Information",
     author: "Religious Education",
     publishedAt: "2026-08-01",
+    expiresAt: "2026-09-06",
     status: "published",
     externalLink: {
       label: "Religious Education",
@@ -171,7 +266,7 @@ You do not need to arrive certain. Inquiry is welcome.`,
 
 Pastor: Fr. William D. Oruko, AJ
 
-You may also use the contact page on this site. Messages from the form are sent to marty@stmaryastoria.com.`,
+To reach a member of the parish staff, call or write using the details above. The contact page also offers an AI assistant for ordinary questions about the Catholic faith and OCIA. That assistant is not a parish staff member.`,
     category: "General",
     author: "St. Mary, Star of the Sea",
     publishedAt: "2026-07-01",

@@ -1,5 +1,6 @@
 const WINDOW_MS = 10 * 60 * 1000;
-const MAX_ATTEMPTS = 5;
+const CONTACT_MAX = 5;
+const CHAT_MAX = 20;
 
 const hits = new Map<string, number[]>();
 
@@ -14,14 +15,22 @@ export function getRequestIp(request: Request) {
   return "unknown";
 }
 
-export function isContactRateLimited(ip: string) {
+function isRateLimited(key: string, max: number, windowMs = WINDOW_MS) {
   const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((time) => now - time < WINDOW_MS);
-  if (recent.length >= MAX_ATTEMPTS) {
-    hits.set(ip, recent);
+  const recent = (hits.get(key) ?? []).filter((time) => now - time < windowMs);
+  if (recent.length >= max) {
+    hits.set(key, recent);
     return true;
   }
   recent.push(now);
-  hits.set(ip, recent);
+  hits.set(key, recent);
   return false;
+}
+
+export function isContactRateLimited(ip: string) {
+  return isRateLimited(`contact:${ip}`, CONTACT_MAX);
+}
+
+export function isChatRateLimited(ip: string) {
+  return isRateLimited(`chat:${ip}`, CHAT_MAX);
 }

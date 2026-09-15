@@ -1,20 +1,25 @@
-import type { Metadata } from "next";
 import { AnnouncementFeed } from "@/components/education/AnnouncementFeed";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
 import { EducationSubnav } from "@/components/education/EducationSubnav";
 import { RegistrationCTA } from "@/components/education/RegistrationCTA";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
-import { getPublishedAnnouncements } from "@/lib/education-announcements";
+import {
+  getArchivedAnnouncements,
+  getCurrentAnnouncements,
+} from "@/lib/education-announcements";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Announcements",
   description:
-    "Stay up to date with the latest news, schedule changes, reminders, and information from Religious Education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
-};
+    "Current Religious Education and OCIA notices from St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
+  path: "/religious-education/announcements",
+});
 
 export default function EducationAnnouncementsPage() {
-  const announcements = getPublishedAnnouncements();
+  const current = getCurrentAnnouncements();
+  const archived = getArchivedAnnouncements();
 
   return (
     <>
@@ -40,7 +45,7 @@ export default function EducationAnnouncementsPage() {
       </Section>
       <Section tone="navy" className="py-20 md:py-28">
         <div className="page-wrap max-w-3xl">
-          <AnnouncementFeed items={announcements} />
+          <AnnouncementFeed current={current} archived={archived} />
         </div>
       </Section>
       <RegistrationCTA

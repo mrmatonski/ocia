@@ -50,6 +50,8 @@ export function FAQAccordion({ items = faqItems }: { items?: FaqItem[] }) {
                 aria-labelledby={buttonId}
                 className="accordion-panel"
                 data-open={isOpen}
+                inert={!isOpen}
+                aria-hidden={!isOpen}
               >
                 <div className="min-h-0 overflow-hidden">
                   <p className="max-w-3xl pb-6 pl-[2.75rem] text-sm leading-7 text-stone-light md:pl-[3.5rem] md:text-base">

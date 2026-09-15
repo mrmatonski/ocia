@@ -26,6 +26,7 @@ export function HubCard({ item, index }: { item: HubCardItem; index: number }) {
         {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
         {item.cta}
+        {external ? <span className="sr-only"> (opens in a new tab)</span> : null}
         <ArrowIcon />
       </Link>
     </article>

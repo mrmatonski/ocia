@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
 import { EducationSubnav } from "@/components/education/EducationSubnav";
 import { HandbookPanel } from "@/components/education/HandbookPanel";
 import { RegistrationCTA } from "@/components/education/RegistrationCTA";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Religious Education Handbook",
   description:
     "Religious Education registration for St. Mary, Star of the Sea Catholic Church in Astoria, Oregon. Contact Marty Dursse or the parish office.",
-};
+  path: "/religious-education/handbook",
+});
 
 export default function EducationHandbookPage() {
   return (

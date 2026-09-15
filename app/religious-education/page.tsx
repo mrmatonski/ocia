@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { EducationBreadcrumbs } from "@/components/education/EducationBreadcrumbs";
 import { EducationSubnav } from "@/components/education/EducationSubnav";
 import { HubGrid } from "@/components/education/HubGrid";
@@ -11,14 +10,18 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { educationHubCards } from "@/lib/education-hub";
+import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Religious Education",
-  description:
-    "Religious Education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon — class schedules, calendar, announcements, handbook, and learning resources.",
+export const metadata = {
+  ...pageMetadata({
+    title: "Religious Education",
+    description:
+      "Religious Education at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon — class schedules, calendar, announcements, handbook, and learning resources.",
+    path: "/religious-education",
+  }),
   keywords: [
-    "St. Mary's Catholic Church",
+    "St. Mary Star of the Sea",
     "Astoria Oregon",
     "Religious Education",
     "OCIA",

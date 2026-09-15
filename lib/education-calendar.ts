@@ -59,7 +59,7 @@ const parishEvents: CalendarEvent[] = [
     category: "break",
     location: "St. Mary, Star of the Sea",
     notes:
-      "The parish has announced that daily Masses are cancelled from August 11 through September 2. Sunday Mass continues as published. See announcements for the latest word.",
+      "Daily Masses were cancelled from August 11 through September 2, 2026. Sunday Mass continued as published. For current weekday Mass times, call the parish office.",
   },
   {
     id: "sunday-mass",

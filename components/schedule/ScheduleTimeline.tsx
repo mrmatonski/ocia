@@ -46,7 +46,7 @@ export function ScheduleTimeline({ limit }: { limit?: number }) {
                 onClick={() => setFilter(value)}
                 aria-pressed={filter === value}
                 className={cn(
-                  "border-b pb-1 text-[0.68rem] tracking-[0.22em] uppercase transition-colors",
+                  "min-h-11 border-b pb-1 text-[0.68rem] tracking-[0.22em] uppercase transition-colors",
                   filter === value
                     ? "border-gold text-gold"
                     : "border-transparent text-stone-light hover:text-ivory",
@@ -62,7 +62,7 @@ export function ScheduleTimeline({ limit }: { limit?: number }) {
               onClick={() => setMonth("all")}
               aria-pressed={month === "all"}
               className={cn(
-                "shrink-0 px-1 py-1 text-[0.65rem] tracking-[0.16em] whitespace-nowrap uppercase transition-colors",
+                "min-h-11 shrink-0 px-1 py-1 text-[0.65rem] tracking-[0.16em] whitespace-nowrap uppercase transition-colors",
                 month === "all" ? "text-gold" : "text-stone-light hover:text-ivory",
               )}
             >
@@ -75,7 +75,7 @@ export function ScheduleTimeline({ limit }: { limit?: number }) {
                 onClick={() => setMonth(item.key)}
                 aria-pressed={month === item.key}
                 className={cn(
-                  "shrink-0 px-1 py-1 text-[0.65rem] tracking-[0.16em] whitespace-nowrap uppercase transition-colors",
+                  "min-h-11 shrink-0 px-1 py-1 text-[0.65rem] tracking-[0.16em] whitespace-nowrap uppercase transition-colors",
                   month === item.key ? "text-gold" : "text-stone-light hover:text-ivory",
                 )}
               >

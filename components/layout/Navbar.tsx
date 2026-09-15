@@ -104,6 +104,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   data-active={active}
+                  aria-current={active ? "page" : undefined}
                   className={cn(
                     "nav-link shrink-0 text-[0.62rem] tracking-[0.16em] whitespace-nowrap uppercase transition-colors xl:text-[0.66rem] xl:tracking-[0.18em]",
                     active ? "text-gold" : "text-ivory/75 hover:text-ivory",
@@ -186,6 +187,7 @@ export function Navbar() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
+                      aria-current={active ? "page" : undefined}
                       className={cn(
                         "flex items-baseline gap-5 border-b border-gold/12 py-4",
                         active ? "text-gold" : "text-ivory",

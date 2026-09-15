@@ -6,9 +6,9 @@ export const site = {
   city: "Astoria, Oregon",
   title: "OCIA | St. Mary, Star of the Sea",
   description:
-    "Explore the Catholic faith through OCIA at St. Mary, Star of the Sea in Astoria, Oregon.",
+    "Explore the Catholic faith through the Order of Christian Initiation of Adults (OCIA) at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
   parishUrl: "https://stmaryastoria.com/",
-  url: "https://stmary-ocia.com",
+  url: "https://www.stmary-ocia.com",
   mission:
     "Our Mission is to build a Roman Catholic faith community. As a sacramental people, we foster the spiritual growth and attend to the social needs of all through prayer, liturgy, education, and service.",
   pastor: "Fr. William D. Oruko, AJ",

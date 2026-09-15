@@ -5,6 +5,7 @@ import {
   getContentBySlug,
   getPublishedContentSlugs,
 } from "@/lib/education-content";
+import { canonicalUrl, pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 type Props = {
@@ -23,12 +24,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!item) {
     return { title: "Content not found" };
   }
+  const path = `/religious-education/content/${slug}`;
   return {
-    title: item.title,
-    description: item.description,
+    ...pageMetadata({
+      title: item.title,
+      description: item.description,
+      path,
+    }),
     openGraph: {
       title: `${item.title} | ${site.parish}`,
       description: item.description,
+      url: canonicalUrl(path),
+      type: "article",
     },
   };
 }

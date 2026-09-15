@@ -1,3 +1,5 @@
+export const PARISH_TIMEZONE = "America/Los_Angeles";
+
 export function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -38,9 +40,23 @@ export function formatMonthLabel(isoDate: string) {
   }).format(date);
 }
 
-export function getTodayIso() {
-  const now = new Date();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${now.getFullYear()}-${month}-${day}`;
+export function formatWeekdayDate(isoDate: string) {
+  const weekday = formatClassWeekday(isoDate);
+  if (!weekday) return formatClassDate(isoDate);
+  return `${weekday} · ${formatClassDate(isoDate)}`;
+}
+
+export function getTodayIso(now = new Date()) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: PARISH_TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now);
+}
+
+export function getParishDateParts(now = new Date()) {
+  const iso = getTodayIso(now);
+  const [year, month, day] = iso.split("-").map(Number);
+  return { year, month, day };
 }

@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { PrayerGuide } from "@/components/pray/PrayerGuide";
 import { CTASection } from "@/components/home/CTASection";
 
-export const metadata: Metadata = {
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
   title: "How to Pray",
   description:
-    "Learn traditional Catholic prayers for the OCIA journey at St. Mary, Star of the Sea in Astoria, Oregon.",
-};
+    "Learn traditional Catholic prayers for the OCIA journey at St. Mary, Star of the Sea Catholic Church in Astoria, Oregon.",
+  path: "/pray",
+});
 
 export default function PrayPage() {
   return (
