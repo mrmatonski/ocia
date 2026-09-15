@@ -3,9 +3,9 @@
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/icons";
-import { contactPlaceholders } from "@/lib/site";
 
-const sendFailedMessage = `We could not send your message. Please try again, or write to ${contactPlaceholders.email}.`;
+const sendFailedMessage =
+  "We weren't able to send your message. Please try again.";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -23,6 +23,7 @@ export function ContactForm() {
       email: String(data.get("email") ?? ""),
       phone: String(data.get("phone") ?? ""),
       message: String(data.get("message") ?? ""),
+      website: String(data.get("website") ?? ""),
     };
 
     setError(null);
@@ -34,8 +35,14 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const result = (await response.json()) as { error?: string };
-      if (!response.ok) {
+      let result: { ok?: boolean; error?: string } = {};
+      try {
+        result = (await response.json()) as { ok?: boolean; error?: string };
+      } catch {
+        setError(sendFailedMessage);
+        return;
+      }
+      if (!response.ok || result.ok !== true) {
         setError(result.error || sendFailedMessage);
         return;
       }
@@ -59,9 +66,7 @@ export function ContactForm() {
         </span>
         <h3 className="mt-6 font-serif text-3xl text-ivory">Message received.</h3>
         <p className="mt-4 max-w-md text-sm leading-7 text-stone-light">
-          Thank you. Your message has been sent to {contactPlaceholders.coordinatorName}{" "}
-          at {contactPlaceholders.email}. If you need a quicker reply, call the parish
-          office at {contactPlaceholders.phone}.
+          Thank you. Your message has been sent successfully.
         </p>
         <button
           type="button"
@@ -80,10 +85,22 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="border-y border-gold/18 py-8 md:py-10"
+      className="relative border-y border-gold/18 py-8 md:py-10"
       noValidate={false}
       aria-busy={sending}
     >
+      <div aria-hidden="true" className="sr-only">
+        <label>
+          Website
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            defaultValue=""
+          />
+        </label>
+      </div>
       <p className="eyebrow">Write to us</p>
       <h3 className="mt-4 font-serif text-3xl text-ivory">Begin a conversation</h3>
       <div className="mt-8 grid gap-6">
@@ -93,6 +110,7 @@ export function ContactForm() {
           required
           autoComplete="name"
           disabled={sending}
+          maxLength={120}
         />
         <Field
           label="Email"
@@ -101,6 +119,7 @@ export function ContactForm() {
           required
           autoComplete="email"
           disabled={sending}
+          maxLength={254}
         />
         <Field
           label="Phone"
@@ -109,6 +128,7 @@ export function ContactForm() {
           autoComplete="tel"
           optional
           disabled={sending}
+          maxLength={40}
         />
         <label className="block">
           <span className="mb-2 block text-[0.68rem] tracking-[0.2em] text-gold uppercase">
@@ -118,6 +138,7 @@ export function ContactForm() {
             name="message"
             required
             rows={6}
+            maxLength={5000}
             disabled={sending}
             suppressHydrationWarning
             className="w-full resize-y border border-gold/20 bg-ink/50 px-4 py-3 text-ivory outline-none transition-colors placeholder:text-stone/70 focus:border-gold disabled:opacity-60"
@@ -145,6 +166,7 @@ function Field({
   optional,
   autoComplete,
   disabled,
+  maxLength,
 }: {
   label: string;
   name: string;
@@ -153,6 +175,7 @@ function Field({
   optional?: boolean;
   autoComplete?: string;
   disabled?: boolean;
+  maxLength?: number;
 }) {
   return (
     <label className="block">
@@ -166,6 +189,7 @@ function Field({
         required={required}
         autoComplete={autoComplete}
         disabled={disabled}
+        maxLength={maxLength}
         suppressHydrationWarning
         className="w-full border border-gold/20 bg-ink/50 px-4 py-3 text-ivory outline-none transition-colors placeholder:text-stone/70 focus:border-gold disabled:opacity-60"
       />
