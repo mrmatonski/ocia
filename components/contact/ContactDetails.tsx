@@ -34,7 +34,7 @@ export function ContactDetails() {
       <p className="mt-6 max-w-md text-sm leading-7 text-stone-light md:text-base">
         Share your name and a little of your story. Call the parish office at{" "}
         {contactPlaceholders.phone}, write to {contactPlaceholders.email}, or
-        use the form. Office hours: {contactPlaceholders.officeHours}.
+        ask a question here. Office hours: {contactPlaceholders.officeHours}.
       </p>
       <ul className="mt-10 space-y-5">
         {details.map((item) => (

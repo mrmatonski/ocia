@@ -1,10 +1,10 @@
 import {
   answerFromKnowledge,
   answerFromTheWeb,
-  assistantSystemPrompt,
   fallbackReply,
   type ChatMessage,
 } from "@/lib/chat/knowledge";
+import { hasOpenAIKey, streamOpenAIReply } from "@/lib/chat/openai";
 
 export const runtime = "nodejs";
 
@@ -20,23 +20,32 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const messages = Array.isArray(body.messages) ? body.messages.slice(-16) : [];
+  const messages = sanitizeMessages(body.messages);
   const lastUser = [...messages].reverse().find((message) => message.role === "user");
-  if (!lastUser?.content?.trim()) {
+  if (!lastUser) {
     return Response.json({ error: "Please ask a question." }, { status: 400 });
   }
 
-  const question = lastUser.content.trim().slice(0, 2000);
-
-  if (process.env.OPENAI_API_KEY) {
+  if (hasOpenAIKey()) {
     try {
-      const streamed = await streamOpenAI(messages);
-      if (streamed) return streamed;
-    } catch {
-      // Fall through to local answering if the model is unavailable.
+      const streamed = await streamOpenAIReply(messages);
+      if (streamed) {
+        return new Response(streamed, {
+          headers: {
+            "Content-Type": "text/plain; charset=utf-8",
+            "Cache-Control": "no-store",
+          },
+        });
+      }
+    } catch (error) {
+      console.error(
+        "Ask assistant: OpenAI request failed.",
+        error instanceof Error ? error.message : "unknown error",
+      );
     }
   }
 
+  const question = lastUser.content;
   const local = answerFromKnowledge(question);
   const web = local ? null : await answerFromTheWeb(question);
   const text = local ?? web ?? fallbackReply;
@@ -44,68 +53,19 @@ export async function POST(request: Request) {
   return streamText(text);
 }
 
-async function streamOpenAI(messages: ChatMessage[]) {
-  const key = process.env.OPENAI_API_KEY;
-  if (!key) return null;
+function sanitizeMessages(value: unknown): ChatMessage[] {
+  if (!Array.isArray(value)) return [];
 
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${key}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
-      stream: true,
-      temperature: 0.4,
-      messages: [{ role: "system", content: assistantSystemPrompt }, ...messages],
-    }),
-  });
-
-  if (!response.ok || !response.body) return null;
-
-  const encoder = new TextEncoder();
-  const decoder = new TextDecoder();
-  const reader = response.body.getReader();
-
-  const stream = new ReadableStream({
-    async start(controller) {
-      let buffer = "";
-      try {
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop() ?? "";
-          for (const line of lines) {
-            const trimmed = line.trim();
-            if (!trimmed.startsWith("data:")) continue;
-            const data = trimmed.slice(5).trim();
-            if (data === "[DONE]") continue;
-            try {
-              const json = JSON.parse(data) as {
-                choices?: Array<{ delta?: { content?: string } }>;
-              };
-              const piece = json.choices?.[0]?.delta?.content;
-              if (piece) controller.enqueue(encoder.encode(piece));
-            } catch {
-              // Ignore malformed SSE chunks.
-            }
-          }
-        }
-      } finally {
-        controller.close();
-      }
-    },
-  });
-
-  return new Response(stream, {
-    headers: {
-      "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "no-store",
-    },
-  });
+  return value
+    .slice(-16)
+    .flatMap((entry) => {
+      if (!entry || typeof entry !== "object") return [];
+      const record = entry as Record<string, unknown>;
+      const role = record.role;
+      const content = typeof record.content === "string" ? record.content.trim() : "";
+      if ((role !== "user" && role !== "assistant") || !content) return [];
+      return [{ role, content: content.slice(0, 2000) }];
+    });
 }
 
 function streamText(text: string) {
