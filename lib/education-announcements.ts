@@ -147,16 +147,16 @@ export const educationAnnouncements: Announcement[] = [
     title: "Upcoming OCIA Classes",
     kicker: "OCIA — September 27, 2026",
     excerpt:
-      "Our next OCIA gatherings will explore two foundational topics: Who Is Jesus Christ? and The Bible.",
-    content: `At our upcoming OCIA classes, we will turn to two central questions of the Catholic faith: who Jesus Christ is, and how God speaks to us in Sacred Scripture.
+      "Who is Jesus Christ, and why is He at the center of the Christian faith? Our upcoming OCIA classes will also turn to the Bible as Sacred Scripture—God's Word, revealing His plan of salvation within the life of the Church.",
+    content: `Our upcoming OCIA classes will explore two foundations of the Catholic faith: the person of Jesus Christ, and Sacred Scripture.
 
 ## Who Is Jesus Christ?
 
-Explore the person of Jesus Christ—true God and true man—and discover why He is at the heart of the Christian faith. We will reflect on His life, His mission, His death and Resurrection, and what it means to follow Him.
+Who is Jesus Christ, and why is He at the very center of the Christian faith? In this session, we will explore who Jesus is, His life and mission, and the mystery of His being both fully God and fully human. We will look at His death and Resurrection and discover what it means to place our faith in Christ and enter into a relationship with Him.
 
 ## The Bible
 
-Discover the Bible as Sacred Scripture and God's Word to His people. We will explore how Scripture reveals God's plan of salvation and how Catholics read and understand the Bible within the life of the Church.
+What is the Bible, and why is it so important to the Catholic faith? In this session, we will discover Sacred Scripture as God's Word and explore how the Bible reveals God's plan of salvation. We will also learn how Catholics understand and interpret Scripture within the life and teaching of the Church, and how God's Word continues to speak to us today.
 
 Come ready to learn, ask questions, and continue growing together in the Catholic faith.`,
     category: "Class Information",
