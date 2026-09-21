@@ -145,13 +145,20 @@ export const educationAnnouncements: Announcement[] = [
     id: "ocia-upcoming-jesus-bible",
     slug: "upcoming-ocia-classes-who-is-jesus-christ-and-the-bible",
     title: "Upcoming OCIA Classes",
-    kicker: "OCIA",
-    excerpt: "Who is Jesus Christ? The Bible.",
-    content: `Our upcoming OCIA classes will explore two topics:
+    kicker: "OCIA — September 27, 2026",
+    excerpt:
+      "Our next OCIA gatherings will explore two foundational topics: Who Is Jesus Christ? and The Bible.",
+    content: `At our upcoming OCIA classes, we will turn to two central questions of the Catholic faith: who Jesus Christ is, and how God speaks to us in Sacred Scripture.
 
-## Who is Jesus Christ?
+## Who Is Jesus Christ?
 
-## The Bible`,
+Explore the person of Jesus Christ—true God and true man—and discover why He is at the heart of the Christian faith. We will reflect on His life, His mission, His death and Resurrection, and what it means to follow Him.
+
+## The Bible
+
+Discover the Bible as Sacred Scripture and God's Word to His people. We will explore how Scripture reveals God's plan of salvation and how Catholics read and understand the Bible within the life of the Church.
+
+Come ready to learn, ask questions, and continue growing together in the Catholic faith.`,
     category: "Class Information",
     author: "Religious Education",
     publishedAt: "2026-09-21",
