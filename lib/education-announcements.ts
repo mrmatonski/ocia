@@ -142,6 +142,28 @@ export function getPublishedAnnouncementSlugs(today?: string) {
 
 export const educationAnnouncements: Announcement[] = [
   {
+    id: "ocia-upcoming-jesus-bible",
+    slug: "upcoming-ocia-classes-who-is-jesus-christ-and-the-bible",
+    title: "Upcoming OCIA Classes",
+    kicker: "OCIA",
+    excerpt: "Who is Jesus Christ? The Bible.",
+    content: `Our upcoming OCIA classes will explore two topics:
+
+## Who is Jesus Christ?
+
+## The Bible`,
+    category: "Class Information",
+    author: "Religious Education",
+    publishedAt: "2026-09-21",
+    eventDate: "2026-09-27",
+    expiresAt: "2026-09-27",
+    status: "published",
+    externalLink: {
+      label: "View class schedule",
+      href: "/schedule",
+    },
+  },
+  {
     id: "ocia-sept-20-faith-trinity",
     slug: "next-class-faith-and-the-most-holy-trinity",
     title: "Next Class: Faith & the Most Holy Trinity",
