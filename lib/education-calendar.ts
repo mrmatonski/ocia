@@ -1,4 +1,4 @@
-import { classSchedule } from "@/lib/schedule";
+import { allClassesNote, classSchedule } from "@/lib/schedule";
 
 export type CalendarCategory =
   | "class"
@@ -33,15 +33,18 @@ export const calendarCategoryLabels: Record<CalendarCategory, string> = {
 };
 
 export const calendarGuideline =
-  "Please note: The Religious Education calendar is a general guideline and may be subject to change. Please check announcements for the most current information.";
+  `Please note: The Religious Education calendar is a general guideline and may be subject to change. Please check announcements for the most current information. ${allClassesNote}`;
 
 function categoryFor(title: string): CalendarCategory {
   if (/registration/i.test(title)) return "registration";
   if (/parent/i.test(title)) return "parent";
-  if (/catechist/i.test(title)) return "event";
-  if (/NO CLASSES|Break/i.test(title)) return "break";
+  if (/catechist|Crowning of Mary/i.test(title)) return "event";
+  if (/First Reconciliation|First Holy Communion|Rite of Election|Scrutiny/i.test(title)) {
+    return "sacrament";
+  }
+  if (/No classes|No RE classes|Break|Memorial Day/i.test(title)) return "break";
   if (
-    /Thanksgiving Day|Nativity|New Year|Ash Wednesday|Holy Thursday|Good Friday|Holy Saturday|Resurrection/i.test(
+    /Thanksgiving Day|Nativity|New Year|Ash Wednesday|Palm Sunday|Holy Thursday|Good Friday|Holy Saturday|Resurrection|Pentecost|Divine Mercy|Mother's Day/i.test(
       title,
     )
   ) {
