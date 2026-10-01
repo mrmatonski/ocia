@@ -142,6 +142,39 @@ export function getPublishedAnnouncementSlugs(today?: string) {
 
 export const educationAnnouncements: Announcement[] = [
   {
+    id: "ocia-oct-4-revelation-prayer",
+    slug: "next-class-divine-revelation-and-your-prayer-life",
+    title: "Next Class: Divine Revelation & Your Prayer Life",
+    kicker: "OCIA — October 4, 2026",
+    excerpt:
+      "Our next OCIA gathering will explore two important topics from Liguori Publications' Journey of Faith Inquiry program: Divine Revelation and Your Prayer Life. Together, we will look at how God makes Himself known to us and how we respond to that revelation through a living relationship of prayer.",
+    content: `Our next OCIA gathering will explore two important topics from Liguori Publications' Journey of Faith Inquiry program: Divine Revelation and Your Prayer Life. Together, we will look at how God makes Himself known to us and how we respond to that revelation through a living relationship of prayer.
+
+## Divine Revelation
+
+God does not remain distant or hidden from humanity. In Divine Revelation, God freely makes Himself known to us and reveals His plan of love and salvation. We will explore how Catholics receive God's revelation through both Sacred Scripture and Sacred Tradition, which together transmit the one Word of God entrusted to the Church.
+
+This class will also help us understand that the Bible is not an isolated collection of writings, but part of God's continuing relationship with His people. Through Scripture and Tradition, interpreted within the life and teaching of the Church, we encounter the story of salvation and ultimately Jesus Christ, who is the fullness of God's revelation.
+
+## Your Prayer Life
+
+Prayer is our response to the God who first calls us into relationship with Him. In this lesson, we will explore what prayer is, why it is essential to the Christian life, and how prayer allows us to grow in friendship and communion with God. Prayer is more than simply asking God for things; it includes praise, thanksgiving, repentance, listening, and bringing the whole of our lives before Him.
+
+We will also look at some of the common difficulties people experience with prayer and how to develop a more consistent and meaningful prayer life. The goal is not to find a perfect technique, but to learn how to make time for God, speak honestly with Him, listen for His guidance, and allow prayer to gradually shape the way we live.
+
+Come with your questions and an open heart as we continue exploring how God reveals Himself to us and how we can respond to Him through prayer.`,
+    category: "Class Information",
+    author: "Religious Education",
+    publishedAt: "2026-10-01",
+    eventDate: "2026-10-04",
+    expiresAt: "2026-10-04",
+    status: "published",
+    externalLink: {
+      label: "View class schedule",
+      href: "/schedule",
+    },
+  },
+  {
     id: "ocia-upcoming-jesus-bible",
     slug: "upcoming-ocia-classes-who-is-jesus-christ-and-the-bible",
     title: "Upcoming OCIA Classes",
