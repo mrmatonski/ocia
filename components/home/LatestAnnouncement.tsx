@@ -18,7 +18,11 @@ export function LatestAnnouncement() {
   return (
     <Section tone="navy" className="border-y border-gold/12 py-12 md:py-14">
       <div className="page-wrap max-w-3xl">
-        <p className="eyebrow">Latest announcement</p>
+        <p className="eyebrow">
+          {announcement.title.toLowerCase().startsWith("next class")
+            ? "Next class"
+            : "Latest announcement"}
+        </p>
         {announcement.kicker ? (
           <p className="mt-5 text-[0.62rem] tracking-[0.16em] text-gold uppercase">
             {announcement.kicker}
@@ -38,7 +42,9 @@ export function LatestAnnouncement() {
             href={announcementPath(announcement.slug)}
             className="inline-flex min-h-11 items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
           >
-            Read announcement
+            {announcement.title.toLowerCase().startsWith("next class")
+              ? "Read next class"
+              : "Read announcement"}
             <ArrowIcon />
           </Link>
         </p>

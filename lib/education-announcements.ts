@@ -128,6 +128,13 @@ export function getLatestAnnouncement(today?: string) {
   return getCurrentAnnouncements(today)[0] ?? null;
 }
 
+export function getNextClassPath(today?: string) {
+  const latest = getLatestAnnouncement(today);
+  return latest
+    ? announcementPath(latest.slug)
+    : "/religious-education/announcements";
+}
+
 export function getAnnouncementBySlug(slug: string, today?: string) {
   const announcement = educationAnnouncements.find((item) => item.slug === slug);
   if (!announcement || !isAnnouncementPublic(announcement, today)) {

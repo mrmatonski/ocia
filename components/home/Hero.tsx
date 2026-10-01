@@ -49,6 +49,11 @@ export function Hero() {
             View Class Schedule
           </Button>
         </motion.div>
+        <motion.p {...fade(0.78)} className="mt-6">
+          <Button href="/about" variant="ghost">
+            New to OCIA? Start Here
+          </Button>
+        </motion.p>
       </div>
 
       <motion.a
