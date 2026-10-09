@@ -149,6 +149,35 @@ export function getPublishedAnnouncementSlugs(today?: string) {
 
 export const educationAnnouncements: Announcement[] = [
   {
+    id: "ocia-oct-11-prayers-mass",
+    slug: "next-class-catholic-prayers-and-practices-and-the-mass",
+    title: "Next Class: Catholic Prayers and Practices & The Mass",
+    kicker: "OCIA — October 11, 2026",
+    excerpt:
+      "Our next OCIA gathering will explore two important topics from Liguori Publications' Journey of Faith Inquiry program: Catholic Prayers and Practices and The Mass. Together, we will look at the Church's traditions of prayer and devotion, and at the Holy Mass as the central act of Catholic worship.",
+    content: `Our next OCIA gathering will explore two important topics from Liguori Publications' Journey of Faith Inquiry program: Catholic Prayers and Practices and The Mass. Together, we will look at the Church's traditions of prayer and devotion, and at the Holy Mass as the central act of Catholic worship.
+
+## Catholic Prayers and Practices
+
+In this lesson, we will explore the beautiful traditions of Catholic prayer and the devotional practices that help us grow closer to God. We will learn about the Rosary, prayers asking for the intercession of Mary and the saints, Eucharistic Adoration, sacramentals, and the Liturgy of the Hours. We will also discover how these practices complement our participation in the sacraments and help us bring our Catholic faith into everyday life.
+
+## The Mass
+
+In this lesson, we will explore the Holy Mass, the central act of worship in the Catholic Church. We will examine the two principal parts of the Mass—the Liturgy of the Word and the Liturgy of the Eucharist—and learn why Catholics believe Jesus Christ is truly present in the Eucharist. We will also discuss the meaning of the prayers, readings, gestures, and rituals of the Mass, helping participants understand how to participate more fully and reverently in this sacred celebration.
+
+Come with your questions and an open heart as we continue exploring the prayer of the Church and the mystery of the Mass.`,
+    category: "Class Information",
+    author: "Religious Education",
+    publishedAt: "2026-10-09",
+    eventDate: "2026-10-11",
+    expiresAt: "2026-10-11",
+    status: "published",
+    externalLink: {
+      label: "View class schedule",
+      href: "/schedule",
+    },
+  },
+  {
     id: "ocia-oct-4-revelation-prayer",
     slug: "next-class-divine-revelation-and-your-prayer-life",
     title: "Next Class: Divine Revelation & Your Prayer Life",
