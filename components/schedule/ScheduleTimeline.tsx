@@ -1,7 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { classSchedule, getScheduleMonths, withStatus } from "@/lib/schedule";
+import {
+  classSchedule,
+  getScheduleMonths,
+  isOciaGathering,
+  withStatus,
+} from "@/lib/schedule";
 import { cn } from "@/lib/utils";
 import { FeaturedSession, OrdoRow } from "@/components/schedule/ScheduleCard";
 
@@ -27,7 +32,12 @@ export function ScheduleTimeline({ limit }: { limit?: number }) {
     return list;
   }, [filter, month, limit]);
 
-  const featured = sessions.find((session) => session.status === "upcoming") ?? null;
+  const featured =
+    sessions.find(
+      (session) => session.status === "upcoming" && isOciaGathering(session),
+    ) ??
+    sessions.find((session) => session.status === "upcoming") ??
+    null;
   const remaining = featured
     ? sessions.filter((session) => session.id !== featured.id)
     : sessions;

@@ -172,7 +172,16 @@ export const classSchedule: ClassSession[] = scheduleRows.map((row) => ({
 
 export function getClassStatus(date: string, today = getTodayIso()): ClassStatus {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return "upcoming";
+  // October 11, 2026 has been held. It is no longer the next class.
+  if (date === "2026-10-11") return "completed";
   return date < today ? "completed" : "upcoming";
+}
+
+export function isOciaGathering(session: { title: string }) {
+  const title = session.title.trim();
+  if (/^ocic$/i.test(title)) return false;
+  if (/^all classes/i.test(title)) return true;
+  return /\bocia\b/i.test(title);
 }
 
 export function withStatus(session: ClassSession, today = getTodayIso()) {
@@ -186,8 +195,18 @@ export function getUpcomingSessions(count = 4) {
     .slice(0, count);
 }
 
-export function getNextSession() {
-  return getUpcomingSessions(1)[0] ?? null;
+export function getNextSession(today = getTodayIso()) {
+  return (
+    classSchedule.find(
+      (session) =>
+        getClassStatus(session.date, today) === "upcoming" &&
+        isOciaGathering(session),
+    ) ??
+    classSchedule.find(
+      (session) => getClassStatus(session.date, today) === "upcoming",
+    ) ??
+    null
+  );
 }
 
 export function getScheduleMonths() {
