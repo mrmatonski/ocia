@@ -23,11 +23,11 @@ export default function LessonMaterialsPage() {
         title="OCIA Lesson Materials"
         description="Explore the teachings of the Catholic Church, deepen your understanding of the faith, and review materials from our weekly OCIA classes."
       />
-      <Section tone="navy" className="py-20 md:py-28">
+      <Section tone="navy" className="pt-4 pb-20 md:pt-6 md:pb-28">
         <div className="page-wrap">
-          <div className="mx-auto flex max-w-3xl flex-col gap-8 md:gap-10">
+          <div className="flex flex-col gap-8 md:gap-10">
             {lessons.map((lesson, index) => (
-              <Reveal key={lesson.id} delay={index * 0.06}>
+              <Reveal key={lesson.id} delay={index * 0.05}>
                 <LessonCard lesson={lesson} />
               </Reveal>
             ))}

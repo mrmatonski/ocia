@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { CloseIcon } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
+import { Ornament } from "@/components/ui/Ornament";
 import { LessonViewer } from "@/components/lessons/LessonViewer";
 import {
   canViewLessonPages,
@@ -54,13 +55,19 @@ export function LessonAccess({ lesson }: Props) {
   }, [accessUrl, open, pagesReady]);
 
   if (accessUrl) {
-    return <Button href={accessUrl}>Access Lesson Materials</Button>;
+    return (
+      <Button href={accessUrl} className="w-full sm:w-auto">
+        Access Lesson Materials
+      </Button>
+    );
   }
 
   if (pagesReady && lesson.pages) {
     return (
       <>
-        <Button onClick={() => setOpen(true)}>Access Lesson Materials</Button>
+        <Button onClick={() => setOpen(true)} className="w-full sm:w-auto">
+          Access Lesson Materials
+        </Button>
         <AnimatePresence>
           {open ? (
             <LessonViewer
@@ -76,7 +83,9 @@ export function LessonAccess({ lesson }: Props) {
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Access Lesson Materials</Button>
+      <Button onClick={() => setOpen(true)} className="w-full sm:w-auto">
+        Access Lesson Materials
+      </Button>
       <AnimatePresence>
         {open ? (
           <motion.div
@@ -119,6 +128,7 @@ export function LessonAccess({ lesson }: Props) {
               >
                 {lesson.title}
               </h2>
+              <Ornament className="mt-5" align="start" />
               <p className="mt-5 text-sm leading-7 text-stone-light md:text-[0.95rem] md:leading-8">
                 Lesson materials are provided through Liguori Publications.
                 Please contact your OCIA instructor for access.
