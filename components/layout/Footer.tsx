@@ -33,12 +33,12 @@ export function Footer() {
 
           <div className="md:col-span-2">
             <p className="eyebrow mb-5">Explore</p>
-            <ul className="space-y-3">
+            <ul className="space-y-0.5">
               {footerNavItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-ivory/80 transition-colors hover:text-gold"
+                    className="inline-flex min-h-11 items-center text-sm text-ivory/80 transition-colors hover:text-gold"
                   >
                     {item.label}
                   </Link>
@@ -49,12 +49,12 @@ export function Footer() {
 
           <div className="md:col-span-3">
             <p className="eyebrow mb-5">Formation</p>
-            <ul className="space-y-3">
+            <ul className="space-y-0.5">
               {educationNavItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-ivory/80 transition-colors hover:text-gold"
+                    className="inline-flex min-h-11 items-center text-sm text-ivory/80 transition-colors hover:text-gold"
                   >
                     {item.label}
                   </Link>
@@ -69,7 +69,7 @@ export function Footer() {
               href={site.parishUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-ivory/80 transition-colors hover:text-gold"
+              className="inline-flex min-h-11 items-center text-sm text-ivory/80 transition-colors hover:text-gold"
             >
               stmaryastoria.com
             </a>
@@ -78,7 +78,9 @@ export function Footer() {
               <br />
               {contactPlaceholders.cityLine}
               <br />
-              {contactPlaceholders.phone}
+              <a href="tel:+15033253671" className="text-ivory/80 hover:text-gold">
+                {contactPlaceholders.phone}
+              </a>
             </p>
           </div>
         </div>

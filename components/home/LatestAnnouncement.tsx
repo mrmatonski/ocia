@@ -37,7 +37,7 @@ export function LatestAnnouncement() {
         <p className="mt-5 max-w-2xl text-sm leading-7 text-stone-light md:text-[0.95rem] md:leading-8">
           {announcement.excerpt}
         </p>
-        <p className="mt-7">
+        <div className="mt-7 flex flex-col items-start gap-1 sm:flex-row sm:flex-wrap sm:gap-x-8">
           <Link
             href={announcementPath(announcement.slug)}
             className="inline-flex min-h-11 items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
@@ -47,7 +47,21 @@ export function LatestAnnouncement() {
               : "Read announcement"}
             <ArrowIcon />
           </Link>
-        </p>
+          <Link
+            href="/schedule"
+            className="inline-flex min-h-11 items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
+          >
+            View Upcoming Classes
+            <ArrowIcon />
+          </Link>
+          <Link
+            href="/lesson-materials"
+            className="inline-flex min-h-11 items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
+          >
+            Explore Lesson Materials
+            <ArrowIcon />
+          </Link>
+        </div>
       </div>
     </Section>
   );

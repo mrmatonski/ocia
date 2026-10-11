@@ -202,11 +202,11 @@ export function ChatWidget() {
                     )}
                   >
                     {message.role === "assistant" ? (
-                      <p className={cn("whitespace-pre-wrap", pending && index === messages.length - 1 && "chat-cursor")}>
+                      <p className={cn("break-words whitespace-pre-wrap", pending && index === messages.length - 1 && "chat-cursor")}>
                         {message.content}
                       </p>
                     ) : (
-                      <p>{message.content}</p>
+                      <p className="break-words">{message.content}</p>
                     )}
                   </div>
                 ))

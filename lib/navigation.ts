@@ -56,6 +56,7 @@ export const footerNavItems = [
   { href: "/about", label: "About OCIA" },
   { href: "/schedule", label: "Classes" },
   { href: "/topics", label: "Learn" },
+  { href: "/lesson-materials", label: "Lesson Materials" },
   { href: "/resources", label: "Resources" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
