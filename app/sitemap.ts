@@ -22,6 +22,7 @@ const routes = [
   ...getPublishedContentSlugs().map((slug) => contentPath(slug)),
   "/schedule",
   "/topics",
+  "/lesson-materials",
   "/journey",
   "/pray",
   "/resources",

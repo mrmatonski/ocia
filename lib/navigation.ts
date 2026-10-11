@@ -37,6 +37,7 @@ export const navItems: NavItem[] = [
       { href: "/topics", label: "Class Topics" },
       { href: "/religious-education/content", label: "Content & Videos" },
       { href: "/pray", label: "How to Pray" },
+      { href: "/lesson-materials", label: "Lesson Materials" },
     ],
   },
   {

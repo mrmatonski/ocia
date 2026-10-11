@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Copyrighted Liguori lesson photographs pending publisher permission
+/private/lesson-materials/
