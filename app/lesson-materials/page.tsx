@@ -25,13 +25,7 @@ export default function LessonMaterialsPage() {
       />
       <Section tone="navy" className="py-20 md:py-28">
         <div className="page-wrap">
-          <div
-            className={
-              lessons.length === 1
-                ? "mx-auto max-w-3xl"
-                : "grid gap-8 lg:grid-cols-2"
-            }
-          >
+          <div className="mx-auto flex max-w-3xl flex-col gap-8 md:gap-10">
             {lessons.map((lesson, index) => (
               <Reveal key={lesson.id} delay={index * 0.06}>
                 <LessonCard lesson={lesson} />

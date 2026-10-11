@@ -63,4 +63,26 @@ export const lessonMaterials: LessonMaterial[] = [
     accessUrl: null,
     publicationApproved: false,
   },
+  {
+    id: "q11-places-in-a-catholic-church",
+    slug: "places-in-a-catholic-church",
+    number: 11,
+    title: "Places in a Catholic Church",
+    publisher: "Journey of Faith — Liguori Publications",
+    description:
+      "Every Catholic church is a sacred space designed to bring us closer to God through worship, prayer, and the celebration of the sacraments. In this lesson, we will explore the important places and sacred objects found inside a Catholic church, including the sanctuary, altar, tabernacle, ambo, baptismal font, and Stations of the Cross. We will also discover the significance of sacred vessels, religious images, and other elements that enrich Catholic worship. By understanding these sacred spaces and symbols, we can develop a deeper appreciation for the Mass, the Eucharist, and the traditions of our Catholic faith.",
+    subjects: [
+      "The Sanctuary and Altar",
+      "The Ambo and Liturgy of the Word",
+      "The Tabernacle and Blessed Sacrament",
+      "The Baptismal Font",
+      "The Paschal Candle",
+      "The Crucifix and Stations of the Cross",
+      "Sacred Vessels and Vestments",
+      "Catholic Symbols and Religious Images",
+      "Shrines and Places of Pilgrimage",
+    ],
+    accessUrl: null,
+    publicationApproved: false,
+  },
 ];
