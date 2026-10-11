@@ -149,6 +149,35 @@ export function getPublishedAnnouncementSlugs(today?: string) {
 
 export const educationAnnouncements: Announcement[] = [
   {
+    id: "ocia-oct-18-church-year-places",
+    slug: "next-class-the-church-year-and-places-in-a-catholic-church",
+    title: "Next Class: The Church Year & Places in a Catholic Church",
+    kicker: "OCIA — October 18, 2026",
+    excerpt:
+      "Our next OCIA gathering will explore two important topics from Liguori Publications' Journey of Faith Inquiry program: The Church Year and Places in a Catholic Church. Together, we will look at the Church's liturgical calendar and the sacred spaces that shape Catholic worship.",
+    content: `Our next OCIA gathering will explore two important topics from Liguori Publications' Journey of Faith Inquiry program: The Church Year and Places in a Catholic Church. Together, we will look at the Church's liturgical calendar and the sacred spaces that shape Catholic worship.
+
+## The Church Year
+
+The Catholic Church follows a sacred calendar known as the liturgical year, which guides us through the life, death, and Resurrection of Jesus Christ. In this lesson, we will explore the major liturgical seasons, including Advent, Christmas, Lent, Easter, and Ordinary Time, and discover how each season helps us grow closer to God. We will also learn about important feast days, holy days, and the meaning of the different liturgical colors used throughout the year. Understanding the Church year helps us see how Catholics celebrate and experience the mysteries of our faith throughout every season.
+
+## Places in a Catholic Church
+
+Have you ever wondered why Catholic churches contain an altar, tabernacle, sanctuary, baptismal font, and other sacred furnishings? In this lesson, we will explore the important places and objects found inside a Catholic church and understand their spiritual significance. We will discuss the purpose of the altar, where the Eucharist is celebrated; the tabernacle, where the Blessed Sacrament is reserved; the ambo, where Scripture is proclaimed; and the baptismal font, where new Christians enter the Church through Baptism. We will also discover how Catholic church architecture and sacred spaces help direct our hearts and minds toward worship, prayer, and the presence of God.
+
+Come with your questions and an open heart as we continue exploring the life of the Church in time and in sacred space.`,
+    category: "Class Information",
+    author: "Religious Education",
+    publishedAt: "2026-10-11",
+    eventDate: "2026-10-18",
+    expiresAt: "2026-10-18",
+    status: "published",
+    externalLink: {
+      label: "View class schedule",
+      href: "/schedule",
+    },
+  },
+  {
     id: "ocia-oct-11-prayers-mass",
     slug: "next-class-catholic-prayers-and-practices-and-the-mass",
     title: "Next Class: Catholic Prayers and Practices & The Mass",
@@ -170,7 +199,7 @@ Come with your questions and an open heart as we continue exploring the prayer o
     author: "Religious Education",
     publishedAt: "2026-10-09",
     eventDate: "2026-10-11",
-    expiresAt: "2026-10-11",
+    expiresAt: "2026-10-10",
     status: "published",
     externalLink: {
       label: "View class schedule",
