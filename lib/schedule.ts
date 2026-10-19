@@ -211,6 +211,15 @@ export function isOciaGathering(session: { title: string }) {
   );
 }
 
+/** Sunday adult OCIA class, not a Saturday rehearsal or a weekday rite. */
+export function isSundayOciaClass(session: { title: string }) {
+  const title = session.title.trim();
+  if (/^rehearsal\b/i.test(title)) return false;
+  if (/^anointing of catechumens/i.test(title)) return false;
+  if (/^practicum\b/i.test(title)) return false;
+  return isOciaGathering(session);
+}
+
 export function withStatus(session: ClassSession, today = getTodayIso()) {
   return { ...session, status: getClassStatus(session.date, today) };
 }
@@ -223,15 +232,13 @@ export function getUpcomingSessions(count = 4) {
 }
 
 export function getNextSession(today = getTodayIso()) {
+  const upcoming = classSchedule.filter(
+    (session) => getClassStatus(session.date, today) === "upcoming",
+  );
   return (
-    classSchedule.find(
-      (session) =>
-        getClassStatus(session.date, today) === "upcoming" &&
-        isOciaGathering(session),
-    ) ??
-    classSchedule.find(
-      (session) => getClassStatus(session.date, today) === "upcoming",
-    ) ??
+    upcoming.find(isSundayOciaClass) ??
+    upcoming.find(isOciaGathering) ??
+    upcoming[0] ??
     null
   );
 }

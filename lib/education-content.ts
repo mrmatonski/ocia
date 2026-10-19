@@ -1,3 +1,4 @@
+import { sundayOciaClassTime } from "@/lib/schedule";
 import { getTodayIso } from "@/lib/utils";
 
 export const educationContentTypes = [
@@ -164,7 +165,7 @@ The parish describes this as a formation process focused on conversion. The Chur
 
 You do not need to arrive certain. Call the parish office at (503) 325-3671 or write to Marty Dursse, Director of Religious Education, at marty@stmaryastoria.com.
 
-The weekday and hour are not posted online. The office will tell you when the next gathering meets.`,
+${sundayOciaClassTime} Call the parish office or write to Marty Dursse with any question about the next gathering.`,
     type: "Article",
     category: "Faith Formation",
     thumbnail: {

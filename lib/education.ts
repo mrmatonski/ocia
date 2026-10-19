@@ -132,7 +132,7 @@ const parishFaqs: FaqItem[] = [
   {
     question: "When and where does this program meet?",
     answer:
-      "Weekly OCIA classes begin in the Fall; the parish has not published a weekday or hour online. Children's and youth gatherings are arranged through the Religious Education office. Call (503) 325-3671 for the current time and place.",
+      `Weekly OCIA classes begin in the Fall. ${sundayOciaClassTime} Children's and youth gatherings are arranged through the Religious Education office. Call (503) 325-3671 for the current time and place.`,
   },
   {
     question: "Who should I contact with questions?",

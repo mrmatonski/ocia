@@ -1,6 +1,6 @@
 import { faqItems } from "@/lib/faq";
 import { journeyStages } from "@/lib/journey";
-import { getNextSession } from "@/lib/schedule";
+import { getNextSession, sundayOciaClassTime } from "@/lib/schedule";
 import { contactPlaceholders, site } from "@/lib/site";
 import { topicCategories } from "@/lib/topics";
 import { formatClassWeekday, formatFullDate } from "@/lib/utils";
@@ -106,7 +106,7 @@ const catholicEntries: Array<{ keys: string[]; answer: string }> = [
 function buildParishNotes() {
   const next = getNextSession();
   const nextLine = next
-    ? `Next published OCIA gathering: ${formatClassWeekday(next.date) || "Sunday"}, ${formatFullDate(next.date)} — ${next.topic}. Weekly meeting hours are not posted online.`
+    ? `Next published OCIA class: ${formatClassWeekday(next.date) || "Sunday"}, ${formatFullDate(next.date)} — ${next.topic}. ${sundayOciaClassTime}`
     : "No upcoming OCIA gathering is currently listed on the published schedule.";
 
   return [
@@ -115,7 +115,7 @@ function buildParishNotes() {
     `Parish: ${contactPlaceholders.addressLine}, ${contactPlaceholders.cityLine}. Pastor: ${site.pastor}.`,
     `Religious Education: ${contactPlaceholders.coordinatorName}, ${contactPlaceholders.email}, ${contactPlaceholders.phone}. Parish office: ${contactPlaceholders.officeEmail}. Hours: ${contactPlaceholders.officeHours}.`,
     `Sunday Mass at St. Mary: 8:30 a.m., 10:30 a.m., and Noon in Spanish. Saturday vigil at St. Francis de Sales, Hammond: 4:00 p.m.`,
-    `OCIA classes are weekly and begin in the Fall. ${nextLine} Do not invent a weekday or hour. Invite a call to ${contactPlaceholders.phone} or an email to ${contactPlaceholders.email}.`,
+    `OCIA classes are weekly and begin in the Fall. ${nextLine} Invite a call to ${contactPlaceholders.phone} or an email to ${contactPlaceholders.email} if someone needs help finding the gathering.`,
     `Parish website: ${site.parishUrl}`,
   ].join("\n");
 }
@@ -179,9 +179,9 @@ At ${site.parishFull} in ${site.city}, classes are weekly and begin in the Fall.
 
   if (/(next class|next session|when (do|does) (class|ocia)|schedule|what time)/.test(query)) {
     if (!next) {
-      return `OCIA classes are weekly and begin in the Fall. The parish has not posted a weekday or hour online. Call ${contactPlaceholders.phone} or write to ${contactPlaceholders.email}, and the Religious Education office will tell you when the next gathering meets. Sunday Mass at St. Mary is 8:30 a.m., 10:30 a.m., and Noon in Spanish.`;
+      return `OCIA classes are weekly and begin in the Fall. ${sundayOciaClassTime} Call ${contactPlaceholders.phone} or write to ${contactPlaceholders.email} with any question about the next gathering. Sunday Mass at St. Mary is 8:30 a.m., 10:30 a.m., and Noon in Spanish.`;
     }
-    return `The next OCIA gathering is ${formatClassWeekday(next.date) || "Sunday"}, ${formatFullDate(next.date)}: ${next.topic}. Place: ${next.location}. The parish has not posted a weekly weekday or hour online — call ${contactPlaceholders.phone} to confirm. See the Schedule page for the published notes.`;
+    return `The next OCIA class is ${formatClassWeekday(next.date) || "Sunday"}, ${formatFullDate(next.date)}: ${next.topic}. Place: ${next.location}. ${sundayOciaClassTime} See the Schedule page for the published dates.`;
   }
 
   if (/(where are you|address|astoria|grand avenue|location of (the )?church)/.test(query)) {

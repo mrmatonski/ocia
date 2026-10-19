@@ -7,6 +7,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getEducationSchedules } from "@/lib/education-schedules";
+import { sundayOciaClassTime } from "@/lib/schedule";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -24,7 +25,7 @@ export default function EducationSchedulesPage() {
       <PageHero
         eyebrow="Religious Education"
         title="Class schedules."
-        description="Registration begins in August. Weekly OCIA classes begin in the Fall. Call the parish office for the current meeting day and time."
+        description={`Registration begins in August. Weekly OCIA classes begin in the Fall. ${sundayOciaClassTime}`}
       />
       <Section tone="ivory" className="py-12 md:py-16">
         <div className="page-wrap">

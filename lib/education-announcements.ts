@@ -1,3 +1,4 @@
+import { sundayOciaClassTime } from "@/lib/schedule";
 import { getTodayIso } from "@/lib/utils";
 
 export const announcementCategories = [
@@ -402,12 +403,12 @@ If you are new to the parish, please call the office.`,
     slug: "ocia-classes-begin-in-the-fall",
     title: "OCIA classes begin in the Fall",
     excerpt:
-      "Weekly adult formation for those exploring the Catholic faith begins in the Fall. Call the office for the current meeting day and time.",
+      `Weekly adult formation for those exploring the Catholic faith begins in the Fall. ${sundayOciaClassTime}`,
     content: `An adult who has not been baptized and wishes to learn about becoming Catholic may participate in **OCIA** — the Order of Christian Initiation of Adults.
 
 The parish describes this as a formation process focused on conversion. The Church celebrates that conversion through prayerful rites. **Classes are weekly and begin in the Fall.**
 
-The weekday and hour are not posted online. Call (503) 325-3671 or write to Marty Dursse at marty@stmaryastoria.com, and we will tell you when the next gathering meets.
+${sundayOciaClassTime} The 11:30 AM end is typical, not guaranteed. Call (503) 325-3671 or write to Marty Dursse at marty@stmaryastoria.com with any question about the next gathering.
 
 You do not need to arrive certain. Inquiry is welcome.`,
     category: "Class Information",

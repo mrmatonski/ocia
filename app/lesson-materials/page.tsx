@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "OCIA Lesson Materials",
   description:
-    "Explore the teachings of the Catholic Church, deepen your understanding of the faith, and review materials from our weekly OCIA classes.",
+    "Materials for the next OCIA class: Who Shepherds the Church, then The Church as Community.",
   path: "/lesson-materials",
 });
 
@@ -21,7 +21,7 @@ export default function LessonMaterialsPage() {
       <PageHero
         eyebrow="Weekly formation"
         title="OCIA Lesson Materials"
-        description="Explore the teachings of the Catholic Church, deepen your understanding of the faith, and review materials from our weekly OCIA classes."
+        description="Materials for the next OCIA class, in order: Who Shepherds the Church, then The Church as Community."
       />
       <Section tone="navy" className="pt-4 pb-20 md:pt-6 md:pb-28">
         <div className="page-wrap">

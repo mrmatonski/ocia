@@ -5,6 +5,7 @@ import {
   classSchedule,
   getScheduleMonths,
   isOciaGathering,
+  isSundayOciaClass,
   withStatus,
 } from "@/lib/schedule";
 import { cn } from "@/lib/utils";
@@ -27,12 +28,20 @@ export function ScheduleTimeline({ limit }: { limit?: number }) {
       list = list.filter((session) => session.date.startsWith(month));
     }
     if (limit) {
-      list = list.filter((session) => session.status === "upcoming").slice(0, limit);
+      const upcoming = list.filter((session) => session.status === "upcoming");
+      const featuredSunday = upcoming.find((session) => isSundayOciaClass(session));
+      const rest = upcoming.filter((session) => session.id !== featuredSunday?.id);
+      list = featuredSunday
+        ? [featuredSunday, ...rest.slice(0, Math.max(limit - 1, 0))]
+        : upcoming.slice(0, limit);
     }
     return list;
   }, [filter, month, limit]);
 
   const featured =
+    sessions.find(
+      (session) => session.status === "upcoming" && isSundayOciaClass(session),
+    ) ??
     sessions.find(
       (session) => session.status === "upcoming" && isOciaGathering(session),
     ) ??

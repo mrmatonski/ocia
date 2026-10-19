@@ -1,7 +1,9 @@
 import { StarOfTheSeaIcon } from "@/components/icons";
 import { LessonAccess } from "@/components/lessons/LessonAccess";
+import { ParishFillImage } from "@/components/ui/ImagePlaceholder";
 import { Ornament } from "@/components/ui/Ornament";
 import type { LessonMaterial } from "@/lib/lesson-materials";
+import { parishImagePosition } from "@/lib/site";
 
 export function LessonCard({ lesson }: { lesson: LessonMaterial }) {
   return (
@@ -16,10 +18,18 @@ export function LessonCard({ lesson }: { lesson: LessonMaterial }) {
             <p className="mt-3 font-serif text-lg leading-snug text-ivory/68 italic">
               {lesson.publisher}
             </p>
+            {lesson.image ? <LessonFigure lesson={lesson} /> : null}
             <Ornament className="mt-6" align="start" />
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-stone-light md:text-[0.98rem] md:leading-8">
-              {lesson.description}
-            </p>
+            <div className="mt-6 max-w-2xl space-y-5">
+              {lesson.description.split(/\n\n+/).map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="text-sm leading-7 text-stone-light md:text-[0.98rem] md:leading-8"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </div>
 
           <div className="min-w-0 border-gold/14 lg:border-l lg:pl-10">
@@ -42,5 +52,33 @@ export function LessonCard({ lesson }: { lesson: LessonMaterial }) {
         </div>
       </div>
     </article>
+  );
+}
+
+function LessonFigure({ lesson }: { lesson: LessonMaterial }) {
+  const image = lesson.image;
+  if (!image) return null;
+  const portrait = image.aspect === "portrait";
+
+  return (
+    <figure className={portrait ? "mt-8 w-full max-w-sm" : "mt-8 w-full max-w-2xl"}>
+      <div
+        className={`relative overflow-hidden border border-gold/15 ${
+          portrait ? "aspect-[2/3]" : "aspect-[3/2]"
+        }`}
+      >
+        <ParishFillImage
+          src={image.src}
+          alt={image.alt}
+          sizes={portrait ? "(min-width: 768px) 24rem, 100vw" : "(min-width: 768px) 42rem, 100vw"}
+          objectPosition={portrait ? "center" : parishImagePosition(image.src)}
+        />
+      </div>
+      {image.caption ? (
+        <figcaption className="mt-2 text-xs leading-relaxed text-stone">
+          {image.caption}
+        </figcaption>
+      ) : null}
+    </figure>
   );
 }
