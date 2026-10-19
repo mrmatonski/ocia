@@ -141,7 +141,7 @@ export function ChatWidget() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="chat-title"
-            className="pointer-events-auto flex h-[min(38rem,calc(100svh-6.5rem))] w-full max-w-[26rem] flex-col overflow-hidden border border-gold/30 bg-navy-deep/96 shadow-[0_28px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+            className="pointer-events-auto flex h-[min(38rem,calc(100svh-6.5rem))] w-full max-w-[26rem] flex-col overflow-hidden rounded-xl border border-gold/30 bg-navy-deep/96 shadow-[0_28px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
@@ -182,7 +182,7 @@ export function ChatWidget() {
                         <button
                           type="button"
                           onClick={() => void send(item)}
-                          className="w-full border border-gold/20 px-3 py-2.5 text-left text-sm text-stone-light transition-colors hover:border-gold/45 hover:text-ivory"
+                          className="min-h-11 w-full rounded-md border border-gold/20 px-3 py-2.5 text-left text-sm text-stone-light transition-colors hover:border-gold/45 hover:text-ivory"
                         >
                           {item}
                         </button>
@@ -244,7 +244,7 @@ export function ChatWidget() {
                 <button
                   type="submit"
                   disabled={pending || !input.trim()}
-                  className="mb-1 flex h-10 w-10 items-center justify-center border border-gold/40 text-gold transition-colors hover:bg-gold hover:text-ink disabled:opacity-40"
+                  className="mb-1 flex h-11 w-11 items-center justify-center rounded-md border border-gold/40 text-gold transition-colors hover:bg-gold hover:text-ink disabled:opacity-40"
                   aria-label="Send question"
                 >
                   <SendIcon />
@@ -257,7 +257,7 @@ export function ChatWidget() {
             key="launcher"
             type="button"
             onClick={() => openChat()}
-            className="pointer-events-auto flex items-center gap-3 border border-gold/40 bg-ink/90 px-4 py-3 text-ivory shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-md transition-colors hover:border-gold"
+            className="pointer-events-auto flex min-h-11 items-center gap-3 rounded-full border border-gold/40 bg-navy-deep/92 px-4 py-3 text-ivory shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-md transition-colors hover:border-gold"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}

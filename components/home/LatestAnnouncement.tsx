@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ArrowIcon } from "@/components/icons";
+import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import {
   announcementPath,
@@ -16,8 +15,8 @@ export function LatestAnnouncement() {
     : null;
 
   return (
-    <Section tone="navy" className="border-y border-gold/12 py-12 md:py-14">
-      <div className="page-wrap max-w-3xl">
+    <Section id="next-class" tone="navy" className="border-y border-gold/15 py-12 md:py-16">
+      <div className="page-wrap">
         <p className="eyebrow">
           {announcement.title.toLowerCase().startsWith("next class")
             ? "Next class"
@@ -37,30 +36,18 @@ export function LatestAnnouncement() {
         <p className="mt-5 max-w-2xl text-sm leading-7 text-stone-light md:text-[0.95rem] md:leading-8">
           {announcement.excerpt}
         </p>
-        <div className="mt-7 flex flex-col items-start gap-1 sm:flex-row sm:flex-wrap sm:gap-x-8">
-          <Link
-            href={announcementPath(announcement.slug)}
-            className="inline-flex min-h-11 items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
-          >
+        <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap">
+          <Button href={announcementPath(announcement.slug)}>
             {announcement.title.toLowerCase().startsWith("next class")
               ? "Read next class"
               : "Read announcement"}
-            <ArrowIcon />
-          </Link>
-          <Link
-            href="/schedule"
-            className="inline-flex min-h-11 items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
-          >
+          </Button>
+          <Button href="/schedule" variant="secondary">
             View Upcoming Classes
-            <ArrowIcon />
-          </Link>
-          <Link
-            href="/lesson-materials"
-            className="inline-flex min-h-11 items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
-          >
+          </Button>
+          <Button href="/lesson-materials" variant="secondary">
             Explore Lesson Materials
-            <ArrowIcon />
-          </Link>
+          </Button>
         </div>
       </div>
     </Section>

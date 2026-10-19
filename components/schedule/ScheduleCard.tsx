@@ -28,7 +28,7 @@ export function FeaturedSession({ session }: { session: Session }) {
 
   return (
     <motion.article
-      className="relative overflow-hidden border border-gold/22 bg-navy-lift/35 px-6 py-9 md:px-10 md:py-12"
+      className="relative overflow-hidden rounded-lg border border-gold/25 bg-navy-lift/50 px-6 py-9 md:px-10 md:py-12"
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -38,11 +38,15 @@ export function FeaturedSession({ session }: { session: Session }) {
       <div className="relative">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="eyebrow">Next gathering</p>
-          <span className="text-[0.6rem] tracking-[0.2em] text-gold uppercase">
-            {status === "upcoming" ? "Upcoming" : "Completed"}
+          <span
+            className={
+              status === "upcoming" ? "status-pill status-pill-upcoming" : "status-pill status-pill-past"
+            }
+          >
+            {status === "upcoming" ? "Upcoming" : "Past"}
           </span>
         </div>
-        <h3 className="mt-5 max-w-2xl font-serif text-4xl leading-tight text-ivory italic md:text-6xl">
+        <h3 className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-ivory italic md:text-5xl">
           {copy.heading}
         </h3>
         <p className="mt-4 font-serif text-xl text-gold/90 md:text-2xl">
@@ -91,11 +95,11 @@ export function OrdoRow({
   return (
     <motion.li
       className={cn(
-        "ordo-row border-b border-gold/12 py-5 md:grid md:grid-cols-[8.5rem_1fr_auto] md:items-baseline md:gap-8 md:py-6",
-        status === "completed" && "opacity-60",
+        "ordo-row border-b border-gold/12 px-4 py-5 md:px-5 md:py-6",
+        status === "upcoming" ? "bg-navy-lift/35" : "bg-transparent",
       )}
       initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: status === "completed" ? 0.6 : 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{
         duration: 0.55,
@@ -103,25 +107,45 @@ export function OrdoRow({
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <div>
-        <p className="font-serif text-xl text-ivory">{formatClassDate(session.date)}</p>
-        {formatClassWeekday(session.date) ? (
-          <p className="mt-0.5 text-[0.62rem] tracking-[0.16em] text-gold uppercase">
-            {formatClassWeekday(session.date)}
-          </p>
-        ) : null}
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="font-serif text-xl text-ivory">{formatClassDate(session.date)}</p>
+          {formatClassWeekday(session.date) ? (
+            <p className="mt-0.5 text-[0.62rem] tracking-[0.16em] text-gold uppercase">
+              {formatClassWeekday(session.date)}
+            </p>
+          ) : null}
+        </div>
+        <span
+          className={
+            status === "upcoming" ? "status-pill status-pill-upcoming" : "status-pill status-pill-past"
+          }
+        >
+          {status === "upcoming" ? "Upcoming" : "Past"}
+        </span>
       </div>
-      <div className="mt-3 md:mt-0">
-        <h3 className="font-serif text-2xl leading-snug text-ivory italic md:text-[1.7rem]">
-          {session.title}
-        </h3>
-        {session.topic && session.topic !== session.title ? (
-          <p className="mt-1 text-sm leading-6 text-stone-light">{session.topic}</p>
+      <h3 className="mt-3 font-serif text-2xl leading-snug text-ivory italic md:text-[1.7rem]">
+        {session.title}
+      </h3>
+      {session.topic && session.topic !== session.title ? (
+        <p className="mt-1 text-sm leading-6 text-stone-light">{session.topic}</p>
+      ) : null}
+      <dl className="mt-4 flex flex-col gap-2 text-sm sm:flex-row sm:flex-wrap sm:gap-x-8">
+        {session.time ? (
+          <div>
+            <dt className="text-[0.62rem] tracking-[0.16em] text-gold uppercase">Time</dt>
+            <dd className="mt-0.5 text-ivory/90">{session.time}</dd>
+          </div>
         ) : null}
-      </div>
-      <p className="mt-3 text-[0.68rem] tracking-[0.12em] text-stone-light uppercase md:mt-0 md:text-right">
-        {session.time}
-      </p>
+        <div>
+          <dt className="text-[0.62rem] tracking-[0.16em] text-gold uppercase">Location</dt>
+          <dd className="mt-0.5 text-ivory/90">{session.location}</dd>
+        </div>
+        <div>
+          <dt className="text-[0.62rem] tracking-[0.16em] text-gold uppercase">Instructor</dt>
+          <dd className="mt-0.5 text-ivory/90">{session.instructor}</dd>
+        </div>
+      </dl>
     </motion.li>
   );
 }

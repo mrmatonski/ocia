@@ -171,7 +171,7 @@ export function ContactAsk() {
                   type="button"
                   onClick={() => void send(item)}
                   disabled={pending}
-                  className="w-full border border-gold/20 px-3 py-2.5 text-left text-sm text-stone-light transition-colors hover:border-gold/45 hover:text-ivory disabled:opacity-60"
+                  className="min-h-11 w-full rounded-md border border-gold/20 px-3 py-2.5 text-left text-sm text-stone-light transition-colors hover:border-gold/45 hover:text-ivory disabled:opacity-60"
                 >
                   {item}
                 </button>
@@ -197,7 +197,7 @@ export function ContactAsk() {
               }
             }}
             placeholder="Ask a question..."
-            className="w-full resize-none border border-gold/20 bg-ink/50 px-4 py-3 text-ivory outline-none transition-colors placeholder:text-stone/70 focus:border-gold disabled:opacity-60"
+            className="w-full resize-none rounded-md border border-gold/20 bg-ink/50 px-4 py-3 text-ivory outline-none transition-colors placeholder:text-stone/70 focus:border-gold disabled:opacity-60"
           />
           <div className="mt-4">
             <Button

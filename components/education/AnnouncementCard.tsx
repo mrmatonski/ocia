@@ -19,8 +19,8 @@ export function AnnouncementCard({
   return (
     <article
       className={cn(
-        "card-hover min-w-0 overflow-hidden border border-gold/15 bg-navy-lift/20",
-        archived && "opacity-70",
+        "card-hover min-w-0 overflow-hidden border bg-navy-lift/25",
+        archived ? "border-gold/10" : "border-gold/20",
       )}
     >
       {announcement.image ? (

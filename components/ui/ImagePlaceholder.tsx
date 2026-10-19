@@ -96,7 +96,7 @@ export function ImagePlaceholder({
         )}
       </div>
       {caption ? (
-        <figcaption className="mt-3 text-xs tracking-wide text-stone">
+        <figcaption className="media-caption mt-3 text-xs tracking-wide">
           {caption}
         </figcaption>
       ) : null}

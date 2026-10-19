@@ -12,7 +12,7 @@ const fade = (delay: number) => ({
 
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-svh items-center overflow-hidden">
+    <section className="relative isolate flex flex-col items-center overflow-hidden">
       <div className="atmosphere atmosphere-hero" aria-hidden="true">
         <div className="light-shaft absolute inset-x-[8%] top-0 h-[78%] opacity-80" />
         <CathedralVault className="absolute inset-x-[-8%] top-[-6%] h-[92%] w-[116%] opacity-90" />
@@ -20,7 +20,7 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-ink to-transparent" />
       </div>
 
-      <div className="page-wrap relative z-10 flex w-full flex-col items-center py-28 text-center md:py-32">
+      <div className="page-wrap relative z-10 flex w-full flex-col items-center pt-32 pb-16 text-center md:pt-40 md:pb-20">
         <motion.p
           {...fade(0.15)}
           className="font-serif text-lg tracking-[0.18em] text-gold/90 italic md:text-xl"
@@ -29,7 +29,7 @@ export function Hero() {
         </motion.p>
         <motion.h1
           {...fade(0.32)}
-          className="mt-6 max-w-5xl font-serif text-[3.35rem] leading-[0.92] font-medium tracking-tight text-ivory italic sm:text-7xl md:text-8xl lg:text-[7.4rem]"
+          className="mt-6 max-w-5xl font-serif text-[3.15rem] leading-[0.96] font-medium tracking-tight text-ivory italic sm:text-6xl md:text-7xl lg:text-[5.75rem]"
         >
           Come and See.
         </motion.h1>
@@ -57,16 +57,16 @@ export function Hero() {
       </div>
 
       <motion.a
-        href="#introduction"
-        className="absolute bottom-7 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-gold"
-        aria-label="Scroll to explore"
+        href="#next-class"
+        className="relative z-10 mb-8 flex flex-col items-center gap-3 text-gold"
+        aria-label="Scroll to the next class"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.15, duration: 0.9 }}
       >
-        <span className="scroll-cue block h-10 w-px bg-gold/70" aria-hidden="true" />
+        <span className="scroll-cue block h-8 w-px bg-gold/70" aria-hidden="true" />
         <span className="font-display text-[0.58rem] tracking-[0.28em]">
-          Scroll
+          Next class
         </span>
       </motion.a>
     </section>

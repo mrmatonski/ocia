@@ -77,9 +77,16 @@ export function Footer() {
               {contactPlaceholders.addressLine}
               <br />
               {contactPlaceholders.cityLine}
-              <br />
-              <a href="tel:+15033253671" className="text-ivory/80 hover:text-gold">
+            </p>
+            <p className="mt-3 flex flex-col items-start gap-1 text-sm">
+              <a href="tel:+15033253671" className="inline-flex min-h-11 items-center text-ivory/85 hover:text-gold">
                 {contactPlaceholders.phone}
+              </a>
+              <a
+                href={`mailto:${contactPlaceholders.email}`}
+                className="inline-flex min-h-11 items-center text-ivory/85 hover:text-gold"
+              >
+                {contactPlaceholders.email}
               </a>
             </p>
           </div>

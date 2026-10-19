@@ -59,7 +59,7 @@ export function EducationCalendar() {
 
   return (
     <div>
-      <p className="border border-gold/20 bg-navy-lift/30 px-5 py-4 text-sm leading-7 text-stone-light">
+      <p className="rounded-lg border border-gold/20 bg-navy-lift/30 px-5 py-4 text-sm leading-7 text-stone-light">
         {calendarGuideline}
       </p>
 

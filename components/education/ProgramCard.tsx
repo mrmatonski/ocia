@@ -31,7 +31,7 @@ export function ProgramCard({ program, index }: Props) {
       <p className="mt-2 text-sm leading-6 text-ivory/80">{program.audience}</p>
       <Link
         href={`/religious-education/${program.slug}`}
-        className="mt-8 inline-flex items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
+        className="mt-8 inline-flex min-h-11 items-center gap-2 text-[0.68rem] tracking-[0.16em] text-gold uppercase transition-colors hover:text-gold-bright"
       >
         {program.cardCta}
         <ArrowIcon />

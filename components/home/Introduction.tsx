@@ -6,7 +6,7 @@ import { Ornament } from "@/components/ui/Ornament";
 
 export function Introduction() {
   return (
-    <Section id="introduction" tone="ivory" className="py-24 md:py-32">
+    <Section id="introduction" tone="ivory" className="py-20 md:py-28">
       <div className="page-wrap grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal>
           <p className="eyebrow text-gold-dim">An invitation</p>
@@ -36,7 +36,7 @@ export function Introduction() {
             </p>
           </div>
           <div className="mt-10">
-            <Button href="/about" className="bg-ink text-ivory hover:bg-navy">
+            <Button href="/about">
               Learn more about OCIA
             </Button>
           </div>

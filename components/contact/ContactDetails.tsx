@@ -47,7 +47,23 @@ export function ContactDetails() {
               <p className="text-[0.65rem] tracking-[0.2em] text-gold uppercase">
                 {item.label}
               </p>
-              <p className="mt-1 font-serif text-xl text-ivory">{item.value}</p>
+              {item.label === "Email" ? (
+                <a
+                  href={`mailto:${item.value}`}
+                  className="mt-1 inline-flex min-h-11 items-center font-serif text-xl text-ivory underline-offset-4 hover:text-gold hover:underline"
+                >
+                  {item.value}
+                </a>
+              ) : item.label === "Phone" ? (
+                <a
+                  href="tel:+15033253671"
+                  className="mt-1 inline-flex min-h-11 items-center font-serif text-xl text-ivory underline-offset-4 hover:text-gold hover:underline"
+                >
+                  {item.value}
+                </a>
+              ) : (
+                <p className="mt-1 font-serif text-xl text-ivory">{item.value}</p>
+              )}
             </div>
           </li>
         ))}

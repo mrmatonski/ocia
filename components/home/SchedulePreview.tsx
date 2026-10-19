@@ -8,7 +8,7 @@ export function SchedulePreview() {
   const upcoming = getUpcomingSessions(4);
 
   return (
-    <Section tone="dark" className="py-28 md:py-36">
+    <Section tone="dark" className="py-20 md:py-28">
       <div className="page-wrap">
         <SectionHeading
           eyebrow="Class schedule"

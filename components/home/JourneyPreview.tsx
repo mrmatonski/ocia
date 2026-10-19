@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 
 export function JourneyPreview() {
   return (
-    <Section tone="navy" className="py-28 md:py-36">
+    <Section tone="navy" className="py-20 md:py-28">
       <div className="page-wrap">
         <SectionHeading
           eyebrow="Your journey"

@@ -22,7 +22,7 @@ export function EducationSubnav({ light = false }: { light?: boolean }) {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "inline-flex min-h-11 items-center border-b text-[0.65rem] tracking-[0.18em] whitespace-nowrap uppercase transition-colors",
+                  "inline-flex min-h-11 items-center border-b text-[0.72rem] tracking-[0.12em] whitespace-nowrap uppercase transition-colors",
                   active
                     ? "border-gold text-gold"
                     : light

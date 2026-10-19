@@ -35,7 +35,7 @@ export function ClassScheduleTable({
   return (
     <div>
       {comingSoon ? (
-        <p className="mb-8 border border-gold/20 bg-navy-lift/30 px-5 py-4 text-sm leading-7 text-stone-light">
+        <p className="mb-8 rounded-lg border border-gold/20 bg-navy-lift/30 px-5 py-4 text-sm leading-7 text-stone-light">
           Weekly meeting days and hours are arranged through the Religious
           Education office. Call (503) 325-3671 for the current gathering time.
         </p>
@@ -49,7 +49,7 @@ export function ClassScheduleTable({
           {sessions.map((session, index) => (
             <li
               key={`${session.date}-${session.topic}-${index}`}
-              className="border border-gold/15 bg-navy-lift/20 p-5"
+              className="rounded-lg border border-gold/18 bg-navy-lift/30 p-5"
             >
               {showProgram && session.program ? (
                 <p className="text-[0.62rem] tracking-[0.18em] text-gold uppercase">

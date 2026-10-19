@@ -91,7 +91,7 @@ function DesktopItem({
         data-active={active}
         aria-current={active ? "page" : undefined}
         className={cn(
-          "nav-link shrink-0 text-[0.62rem] tracking-[0.16em] whitespace-nowrap uppercase transition-colors xl:text-[0.66rem] xl:tracking-[0.18em]",
+          "nav-link shrink-0 text-[0.72rem] tracking-[0.12em] whitespace-nowrap uppercase transition-colors",
           active ? "text-gold" : "text-ivory/75 hover:text-ivory",
         )}
       >
@@ -114,7 +114,7 @@ function DesktopItem({
         aria-expanded={open}
         aria-haspopup="true"
         className={cn(
-          "nav-link inline-flex min-h-11 shrink-0 items-center gap-1.5 text-[0.62rem] tracking-[0.16em] whitespace-nowrap uppercase transition-colors xl:text-[0.66rem] xl:tracking-[0.18em]",
+          "nav-link inline-flex min-h-11 shrink-0 items-center gap-1.5 text-[0.72rem] tracking-[0.12em] whitespace-nowrap uppercase transition-colors",
           active ? "text-gold" : "text-ivory/75 hover:text-ivory",
         )}
         onClick={() => (open ? onClose() : onOpen())}
@@ -133,7 +133,7 @@ function DesktopItem({
           >
             <ul
               role="menu"
-              className="border border-gold/18 bg-navy-deep/95 py-2 shadow-[0_24px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+              className="rounded-lg border border-gold/20 bg-navy-deep/96 py-2 shadow-[0_24px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl"
             >
               {item.children?.map((child) => {
                 const childActive = isNavHrefActive(child.href, pathname);
@@ -144,7 +144,7 @@ function DesktopItem({
                       role="menuitem"
                       aria-current={childActive ? "page" : undefined}
                       className={cn(
-                        "block min-h-11 px-5 py-3 text-[0.62rem] tracking-[0.16em] uppercase transition-colors",
+                        "block min-h-11 rounded-md px-5 py-3 text-[0.72rem] tracking-[0.12em] uppercase transition-colors",
                         childActive
                           ? "text-gold"
                           : "text-ivory/80 hover:text-gold",
@@ -240,22 +240,23 @@ export function Navbar() {
         <div className="page-wrap-wide flex h-[4.75rem] items-center justify-between gap-6 md:h-20">
           <Link
             href="/"
-            className="group flex items-center gap-3 text-ivory"
-            aria-label={`${site.name} home`}
+            className="group flex min-h-11 items-center gap-3 text-ivory"
+            aria-label={`${site.parish} ${site.name} home`}
           >
             <StarOfTheSeaIcon className="h-7 w-7 text-gold transition-transform duration-700 group-hover:rotate-[20deg]" />
             <span className="flex flex-col leading-none">
-              <span className="font-display text-[0.72rem] tracking-[0.32em]">
+              <span className="font-display text-[0.72rem] tracking-[0.28em]">
                 {site.name}
               </span>
-              <span className="mt-1 hidden text-[0.58rem] tracking-[0.14em] text-stone-light uppercase sm:block">
-                Astoria
+              <span className="mt-1 text-[0.58rem] tracking-[0.12em] text-stone-light uppercase">
+                <span className="xl:hidden">St. Mary</span>
+                <span className="hidden xl:inline">{site.parish}</span>
               </span>
             </span>
           </Link>
 
           <nav
-            className="hidden items-center gap-3.5 xl:flex xl:gap-5 2xl:gap-6"
+            className="hidden items-center gap-4 lg:flex xl:gap-6"
             aria-label="Primary"
           >
             {navItems.map((item) => (
@@ -274,7 +275,7 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden xl:block">
+          <div className="hidden lg:block">
             <Button href="/contact" className="px-5 py-3">
               Begin Your Journey
             </Button>
@@ -283,7 +284,7 @@ export function Navbar() {
           <button
             ref={buttonRef}
             type="button"
-            className="relative z-[80] flex h-11 w-11 items-center justify-center xl:hidden"
+            className="relative z-[80] flex h-11 w-11 items-center justify-center lg:hidden"
             aria-expanded={open}
             aria-controls={menuId}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -322,14 +323,17 @@ export function Navbar() {
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
-            className="fixed inset-0 z-[60] xl:hidden"
+            className="fixed inset-0 z-[60] lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <div className="absolute inset-0 bg-navy-deep/97" />
             <CathedralVault className="absolute inset-x-[-12%] top-8 h-[70%] w-[124%] opacity-50" />
-            <nav className="relative flex h-full flex-col justify-center overflow-y-auto px-8 py-24">
+            <nav className="relative flex h-full flex-col overflow-y-auto px-8 pt-28 pb-16">
+              <p className="mb-8 font-serif text-lg text-stone-light italic">
+                {site.parishFull}
+              </p>
               {navItems.map((item, index) => {
                 const navItem = withNextClass(item);
                 const active = isNavItemActive(navItem, pathname);
@@ -362,7 +366,7 @@ export function Navbar() {
                           <span className="font-display text-[0.62rem] tracking-[0.22em] text-gold/80">
                             {String(index + 1).padStart(2, "0")}
                           </span>
-                          <span className="flex-1 font-serif text-[2.15rem] leading-none italic md:text-5xl">
+                          <span className="flex-1 font-serif text-[1.85rem] leading-none italic md:text-4xl">
                             {item.label}
                           </span>
                           <Caret open={expanded} />
@@ -382,7 +386,7 @@ export function Navbar() {
                                       href={child.href}
                                       aria-current={childActive ? "page" : undefined}
                                       className={cn(
-                                        "flex min-h-11 items-center py-2 text-[0.78rem] tracking-[0.14em] uppercase transition-colors",
+                                        "flex min-h-11 items-center py-2 text-sm tracking-[0.08em] uppercase transition-colors",
                                         childActive
                                           ? "text-gold"
                                           : "text-ivory/80 hover:text-gold",
@@ -409,7 +413,7 @@ export function Navbar() {
                         <span className="font-display text-[0.62rem] tracking-[0.22em] text-gold/80">
                           {String(index + 1).padStart(2, "0")}
                         </span>
-                        <span className="font-serif text-[2.15rem] leading-none italic md:text-5xl">
+                        <span className="font-serif text-[1.85rem] leading-none italic md:text-4xl">
                           {item.label}
                         </span>
                       </Link>

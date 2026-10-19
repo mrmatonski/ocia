@@ -75,7 +75,7 @@ function LessonFigure({ lesson }: { lesson: LessonMaterial }) {
         />
       </div>
       {image.caption ? (
-        <figcaption className="mt-2 text-xs leading-relaxed text-stone">
+        <figcaption className="media-caption mt-2 text-xs leading-relaxed">
           {image.caption}
         </figcaption>
       ) : null}

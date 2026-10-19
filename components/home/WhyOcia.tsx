@@ -7,7 +7,7 @@ import { CathedralVault } from "@/components/ui/Ornament";
 
 export function WhyOcia() {
   return (
-    <Section tone="navy" className="py-28 md:py-36">
+    <Section tone="navy" className="py-20 md:py-28">
       <div className="atmosphere" aria-hidden="true">
         <CathedralVault className="absolute inset-x-0 -top-24 h-[70%] w-full opacity-40" />
       </div>

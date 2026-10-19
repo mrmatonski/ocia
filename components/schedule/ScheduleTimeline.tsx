@@ -71,7 +71,7 @@ export function ScheduleTimeline({ limit }: { limit?: number }) {
                     : "border-transparent text-stone-light hover:text-ivory",
                 )}
               >
-                {value === "all" ? "All" : value}
+                {value === "all" ? "All" : value === "completed" ? "Past" : "Upcoming"}
               </button>
             ))}
           </div>

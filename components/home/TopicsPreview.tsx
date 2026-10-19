@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 
 export function TopicsPreview() {
   return (
-    <Section tone="ivory" className="py-28 md:py-36">
+    <Section tone="ivory" className="py-20 md:py-28">
       <div className="page-wrap">
         <SectionHeading
           light
@@ -17,7 +17,7 @@ export function TopicsPreview() {
           <TopicAccordion compact tone="light" />
         </div>
         <div className="mt-12 flex justify-center">
-          <Button href="/topics" className="bg-ink text-ivory hover:bg-navy">
+          <Button href="/topics">
             Explore all topics
           </Button>
         </div>

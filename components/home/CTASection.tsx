@@ -11,7 +11,7 @@ export function CTASection() {
   const { openChat } = useChat();
 
   return (
-    <Section tone="cta" className="py-32 md:py-40">
+    <Section tone="cta" className="py-24 md:py-32">
       <div className="atmosphere" aria-hidden="true">
         <div className="light-shaft absolute inset-x-[20%] top-0 h-full opacity-60" />
         <CathedralVault className="absolute inset-x-[-10%] -top-16 h-[90%] w-[120%] opacity-50" />

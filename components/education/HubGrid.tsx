@@ -22,7 +22,7 @@ export function HubCard({ item, index }: { item: HubCardItem; index: number }) {
       <p className="mt-4 flex-1 text-sm leading-7 text-stone-light">{item.description}</p>
       <Link
         href={item.href}
-        className="mt-8 inline-flex items-center gap-2 text-[0.68rem] tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-bright"
+        className="mt-8 inline-flex min-h-11 items-center gap-2 text-[0.68rem] tracking-[0.16em] text-gold uppercase transition-colors hover:text-gold-bright"
         {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
         {item.cta}

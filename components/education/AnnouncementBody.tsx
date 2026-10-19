@@ -91,7 +91,7 @@ export function AnnouncementBody({
                 />
               </div>
               {block.caption && block.caption.length > 0 ? (
-                <figcaption className="mt-2 text-xs leading-relaxed text-stone">
+                <figcaption className="media-caption mt-2 text-xs leading-relaxed">
                   <Inline nodes={block.caption} />
                 </figcaption>
               ) : null}

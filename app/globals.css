@@ -1,21 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #0a0908;
-  --ink-soft: #12100e;
-  --navy: #0e1219;
-  --navy-deep: #080a0f;
-  --navy-lift: #151922;
-  --ivory: #f3eee4;
-  --ivory-dim: #e6ddd0;
-  --cream: #ebe3d3;
-  --gold: #b8954d;
-  --gold-bright: #c9a85c;
-  --gold-dim: #8a7040;
-  --stone: #8c867b;
-  --stone-light: #b8b1a4;
-  --burgundy: #4f242e;
-  --line: rgba(184, 149, 77, 0.22);
+  --ink: #101820;
+  --ink-soft: #182230;
+  --navy: #152033;
+  --navy-deep: #0c1422;
+  --navy-lift: #1c2a42;
+  --ivory: #f6f1e6;
+  --ivory-dim: #e8dfd0;
+  --cream: #efe6d6;
+  --gold: #c6a35a;
+  --gold-bright: #dbb96a;
+  --gold-dim: #7a6230;
+  --stone: #c4bdb2;
+  --stone-light: #e4ddd2;
+  --burgundy: #5c2a36;
+  --line: rgba(198, 163, 90, 0.28);
+  --radius: 0.5rem;
 }
 
 @theme inline {
@@ -43,6 +44,10 @@ html {
   scroll-behavior: smooth;
 }
 
+[id] {
+  scroll-margin-top: 5.75rem;
+}
+
 body {
   background: var(--ink);
   color: var(--ivory);
@@ -56,7 +61,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--gold-bright);
   outline-offset: 3px;
 }
 
@@ -101,30 +106,30 @@ body {
 
 .atmosphere-hero {
   background:
-    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(184, 149, 77, 0.16), transparent 52%),
-    radial-gradient(ellipse 40% 70% at 50% 0%, rgba(244, 238, 228, 0.06), transparent 48%),
-    radial-gradient(ellipse 55% 40% at 100% 100%, rgba(79, 36, 46, 0.28), transparent 55%),
-    radial-gradient(ellipse 45% 35% at 0% 90%, rgba(18, 32, 58, 0.4), transparent 50%),
-    linear-gradient(180deg, #070605 0%, #0e1219 58%, #0a0908 100%);
+    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(198, 163, 90, 0.16), transparent 52%),
+    radial-gradient(ellipse 40% 70% at 50% 0%, rgba(246, 241, 230, 0.07), transparent 48%),
+    radial-gradient(ellipse 55% 40% at 100% 100%, rgba(92, 42, 54, 0.28), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 0% 90%, rgba(21, 32, 51, 0.55), transparent 50%),
+    linear-gradient(180deg, #0c1422 0%, #152033 58%, #101820 100%);
 }
 
 .atmosphere-cta {
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(184, 149, 77, 0.18), transparent 50%),
-    radial-gradient(ellipse 40% 50% at 110% 110%, rgba(79, 36, 46, 0.32), transparent 55%),
-    linear-gradient(180deg, #080a0f 0%, #0e1219 100%);
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(198, 163, 90, 0.16), transparent 50%),
+    radial-gradient(ellipse 40% 50% at 110% 110%, rgba(92, 42, 54, 0.3), transparent 55%),
+    linear-gradient(180deg, #0c1422 0%, #152033 100%);
 }
 
 .atmosphere-navy {
   background:
-    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(184, 149, 77, 0.07), transparent 50%),
-    linear-gradient(180deg, #0e1219 0%, #0a0908 100%);
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(198, 163, 90, 0.08), transparent 50%),
+    linear-gradient(180deg, #152033 0%, #101820 100%);
 }
 
 .atmosphere-ivory {
   background:
-    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(184, 149, 77, 0.09), transparent 55%),
-    linear-gradient(180deg, #f6f1e8 0%, #ebe3d3 100%);
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(198, 163, 90, 0.1), transparent 55%),
+    linear-gradient(180deg, #f8f4ec 0%, #efe6d6 100%);
 }
 
 .parchment {
@@ -167,9 +172,10 @@ body {
 .btn-primary {
   position: relative;
   overflow: hidden;
+  border-radius: var(--radius);
   background: var(--gold);
   color: var(--ink);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .btn-primary::after {
@@ -190,17 +196,25 @@ body {
 }
 
 .btn-secondary {
-  border: 1px solid rgba(184, 149, 77, 0.45);
+  border: 1px solid rgba(198, 163, 90, 0.5);
+  border-radius: var(--radius);
   color: var(--ivory);
   background: transparent;
 }
 
 .btn-secondary:hover {
-  border-color: var(--gold);
-  background: rgba(184, 149, 77, 0.08);
+  border-color: var(--gold-bright);
+  background: rgba(198, 163, 90, 0.1);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--ivory);
+  outline-offset: 3px;
 }
 
 .card-hover {
+  border-radius: var(--radius);
   transition:
     border-color 0.4s ease,
     background-color 0.4s ease,
@@ -208,8 +222,38 @@ body {
 }
 
 .card-hover:hover {
-  border-color: rgba(184, 149, 77, 0.42);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  border-color: rgba(198, 163, 90, 0.48);
+  box-shadow: 0 16px 36px rgba(8, 12, 20, 0.28);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.status-pill-upcoming {
+  border: 1px solid rgba(198, 163, 90, 0.55);
+  background: rgba(198, 163, 90, 0.16);
+  color: var(--gold-bright);
+}
+
+.status-pill-past {
+  border: 1px solid rgba(228, 221, 210, 0.28);
+  color: var(--stone-light);
+}
+
+.media-caption {
+  color: color-mix(in srgb, var(--ivory) 78%, transparent);
+}
+
+.text-ink .media-caption {
+  color: color-mix(in srgb, var(--ink) 78%, transparent);
 }
 
 .image-frame:hover .image-frame-inner {
@@ -283,10 +327,10 @@ body {
 }
 
 .glass-nav {
-  background: rgba(10, 9, 8, 0.78);
+  background: rgba(12, 20, 34, 0.9);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(184, 149, 77, 0.14);
+  border-bottom: 1px solid rgba(198, 163, 90, 0.18);
 }
 
 .ordo-row {

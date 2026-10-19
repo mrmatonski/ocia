@@ -12,7 +12,7 @@ export function PageHero({ eyebrow, title, description, className }: Props) {
   return (
     <header
       className={cn(
-        "relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24",
+        "relative overflow-hidden pt-28 pb-14 md:pt-32 md:pb-20",
         className,
       )}
     >
@@ -23,7 +23,7 @@ export function PageHero({ eyebrow, title, description, className }: Props) {
       </div>
       <div className="page-wrap relative text-center">
         {eyebrow ? <p className="eyebrow mb-5">{eyebrow}</p> : null}
-        <h1 className="mx-auto max-w-4xl font-serif text-4xl leading-[1.08] font-medium tracking-tight text-ivory italic md:text-6xl">
+        <h1 className="mx-auto max-w-4xl font-serif text-4xl leading-[1.08] font-medium tracking-tight text-balance text-ivory italic md:text-6xl">
           {title}
         </h1>
         <Ornament className="mt-7" />
