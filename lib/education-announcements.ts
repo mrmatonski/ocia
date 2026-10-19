@@ -155,9 +155,9 @@ export const educationAnnouncements: Announcement[] = [
     title: "Next Class: Who Shepherds the Church & The Church as Community",
     kicker: "OCIA — November 1, 2026",
     excerpt:
-      "Important reminder: everyone needs to have a sponsor by next Sunday. If you need help finding or confirming a sponsor, please speak with the OCIA team. Our next gathering explores Who Shepherds the Church and The Church as Community, from Liguori Publications' Journey of Faith Inquiry program.",
+      "Important reminder: everybody in the adult OCIA program is to have a sponsor by next Sunday. If you need help finding or confirming a sponsor, please speak with the OCIA team. Our next gathering explores Who Shepherds the Church and The Church as Community, from Liguori Publications' Journey of Faith Inquiry program.",
     content: `:::note
-Everyone needs to have a sponsor by next Sunday.
+Everybody in the adult OCIA program is to have a sponsor by next Sunday.
 If you need help finding or confirming a sponsor, please speak with the [OCIA team](/contact).
 :::
 
