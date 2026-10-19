@@ -9,7 +9,9 @@ export type ContentBlock =
   | { type: "h2"; children: InlineNode[] }
   | { type: "h3"; children: InlineNode[] }
   | { type: "ul"; items: InlineNode[][] }
-  | { type: "ol"; items: InlineNode[][] };
+  | { type: "ol"; items: InlineNode[][] }
+  | { type: "note"; title: InlineNode[]; body: InlineNode[] }
+  | { type: "figure"; src: string; alt: string; caption?: InlineNode[] };
 
 export function isSafeHref(href: string) {
   return (
@@ -57,6 +59,39 @@ function isOrderedList(block: string) {
   return block.split("\n").every((line) => /^\d+\.\s+/.test(line.trim()));
 }
 
+function isLocalImageSrc(src: string) {
+  return src.startsWith("/") && !src.startsWith("//") && !src.includes("..");
+}
+
+function parseNote(block: string): ContentBlock | null {
+  if (!block.startsWith(":::note")) return null;
+  const inner = block.replace(/^:::note\s*/, "").replace(/\s*:::\s*$/, "").trim();
+  const lines = inner
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  if (lines.length === 0) return null;
+  return {
+    type: "note",
+    title: parseInline(lines[0]),
+    body: parseInline(lines.slice(1).join(" ")),
+  };
+}
+
+function parseFigure(block: string): ContentBlock | null {
+  const match = block.match(/^!\[([^\]]*)\]\((\S+?)(?:\s+"([^"]*)")?\)$/);
+  if (!match) return null;
+  const src = match[2];
+  if (!isLocalImageSrc(src)) return null;
+  const caption = match[3]?.trim();
+  return {
+    type: "figure",
+    src,
+    alt: match[1].trim(),
+    ...(caption ? { caption: parseInline(caption) } : {}),
+  };
+}
+
 export function parseAnnouncementContent(content: string): ContentBlock[] {
   return content
     .trim()
@@ -64,6 +99,10 @@ export function parseAnnouncementContent(content: string): ContentBlock[] {
     .map((raw) => raw.trim())
     .filter(Boolean)
     .map((block) => {
+      const note = parseNote(block);
+      if (note) return note;
+      const figure = parseFigure(block);
+      if (figure) return figure;
       if (block.startsWith("## ")) {
         return { type: "h2" as const, children: parseInline(block.slice(3).trim()) };
       }

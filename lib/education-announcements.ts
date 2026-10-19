@@ -149,6 +149,48 @@ export function getPublishedAnnouncementSlugs(today?: string) {
 
 export const educationAnnouncements: Announcement[] = [
   {
+    id: "ocia-nov-1-shepherds-community",
+    slug: "next-class-who-shepherds-the-church-and-the-church-as-community",
+    title: "Next Class: Who Shepherds the Church & The Church as Community",
+    kicker: "OCIA — November 1, 2026",
+    excerpt:
+      "Important reminder: everyone needs to have a sponsor by next Sunday. If you need help finding or confirming a sponsor, please speak with the OCIA team. Our next gathering explores Who Shepherds the Church and The Church as Community, from Liguori Publications' Journey of Faith Inquiry program.",
+    content: `:::note
+Everyone needs to have a sponsor by next Sunday.
+If you need help finding or confirming a sponsor, please speak with the [OCIA team](/contact).
+:::
+
+Our next OCIA gathering will explore two topics from Liguori Publications' Journey of Faith Inquiry program: Who Shepherds the Church and The Church as Community. Together we will look at how Jesus Christ continues to care for his people through the Church's pastors, and at the Church as a living community gathered by him.
+
+## Who Shepherds the Church
+
+![A Catholic bishop in choir dress preaches from the ambo, hands open, with the altar and crucifix behind him](/images/announcements/bishop-preaching.jpg "Bishop Robert Brennan preaching at St. Leo Oratory, Columbus. Photograph by Ken Snow, [public domain (CC0)](https://creativecommons.org/publicdomain/zero/1.0/).")
+
+Jesus Christ is the Good Shepherd and the head of the Church. He knows his people and lays down his life for them, and he has not left them without care. He continues to guide and tend the Church through the pastors he calls. Their ministry is not a rank to be enjoyed. It is a share in his own service: teaching the faith handed on from the apostles, celebrating the sacraments proper to each order, and walking with the people of God.
+
+That care takes a distinct shape in each ministry. The pope, the Bishop of Rome and successor of Saint Peter, serves the unity of the whole Church and confirms his brothers and sisters in the apostolic faith. Bishops, as successors of the apostles, are the chief shepherds of their dioceses. They teach, they oversee the sacramental life of the local Church, and they answer for the flock entrusted to them. Priests share in that work as coworkers of the bishop. In a parish they preach the Gospel, celebrate the Eucharist and the Sacrament of Reconciliation, and stay near the ordinary joys and sorrows of the people. Deacons are ordained for service. They proclaim the Gospel, assist at the liturgy, and give themselves to works of charity. For someone finding a way into the Catholic faith, these are not distant offices. They are how the Church teaches you, accompanies you, and helps you grow closer to Jesus Christ. The people walking with you in OCIA are part of that same shepherding.
+
+## The Church as Community
+
+![A bishop stands with parishioners gathered in the church at St. Mary, Star of the Sea](/images/parish/formation.jpg)
+
+The Church is more than the building where we meet, however much that building means to a parish. It is the People of God and the Body of Christ: a community Christ himself gathers in faith, in the worship of Sunday Mass, in the sacraments, in prayer, and in service. Catholics are one because they belong to him. That unity does not erase difference. The Church lives by many gifts, backgrounds, vocations, and responsibilities — longtime parishioners and newcomers, married and single, clergy and lay people. Each person has a place, and no one is asked to become someone else in order to belong.
+
+Belonging is both a gift and a way of life. In the community we receive what we cannot give ourselves: the Word of God, the sacraments, the prayers of people who carry us, and a home in which to grow in holiness. We also take part in the mission we have received. We welcome the person who is new. We support one another when life is heavy. We serve our neighbors. We return, week by week, to Sunday Mass. And when the moment is right, we share the Gospel with simplicity and respect. If you are walking through OCIA, you are already being drawn into this life. You do not have to have everything settled before you are welcome. The parish is learning your name, and you are learning what it means to belong to Christ together with his people.
+
+Come with your questions and an open heart as we continue to discover how Christ shepherds his people and gathers them as one.`,
+    category: "Class Information",
+    author: "Religious Education",
+    publishedAt: "2026-10-19",
+    eventDate: "2026-11-01",
+    expiresAt: "2026-11-01",
+    status: "published",
+    externalLink: {
+      label: "View class schedule",
+      href: "/schedule",
+    },
+  },
+  {
     id: "ocia-oct-18-church-year-places",
     slug: "next-class-the-church-year-and-places-in-a-catholic-church",
     title: "Next Class: The Church Year & Places in a Catholic Church",

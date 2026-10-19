@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { ParishFillImage } from "@/components/ui/ImagePlaceholder";
 import { parseAnnouncementContent, type InlineNode } from "@/lib/announcement-content";
+import { parishImagePosition } from "@/lib/site";
 
 function Inline({ nodes }: { nodes: InlineNode[] }) {
   return (
@@ -45,6 +47,57 @@ export function AnnouncementBody({
   return (
     <div className={`space-y-5 text-base leading-8 ${body}`}>
       {blocks.map((block, index) => {
+        if (block.type === "note") {
+          const labelId = `announcement-note-${index}`;
+          return (
+            <aside
+              key={index}
+              aria-labelledby={labelId}
+              className="border-l-2 border-gold bg-gold/[0.07] px-5 py-4 md:px-6 md:py-5"
+            >
+              <p
+                id={labelId}
+                className="text-[0.62rem] tracking-[0.16em] text-gold uppercase"
+              >
+                Important reminder
+              </p>
+              <p
+                className={`mt-2 font-serif text-[1.65rem] leading-snug italic md:text-[2rem] ${heading}`}
+              >
+                <Inline nodes={block.title} />
+              </p>
+              {block.body.length > 0 ? (
+                <p className="mt-3 max-w-2xl text-sm leading-7 md:text-[0.95rem] md:leading-8">
+                  <Inline nodes={block.body} />
+                </p>
+              ) : null}
+            </aside>
+          );
+        }
+        if (block.type === "figure") {
+          const portrait = block.src.endsWith("bishop-preaching.jpg");
+          return (
+            <figure key={index} className={portrait ? "mx-auto w-full max-w-sm" : undefined}>
+              <div
+                className={`relative overflow-hidden border border-gold/15 ${
+                  portrait ? "aspect-[2/3]" : "aspect-[3/2]"
+                }`}
+              >
+                <ParishFillImage
+                  src={block.src}
+                  alt={block.alt}
+                  sizes={portrait ? "(min-width: 768px) 24rem, 100vw" : "(min-width: 768px) 48rem, 100vw"}
+                  objectPosition={portrait ? "center" : parishImagePosition(block.src)}
+                />
+              </div>
+              {block.caption && block.caption.length > 0 ? (
+                <figcaption className="mt-2 text-xs leading-relaxed text-stone">
+                  <Inline nodes={block.caption} />
+                </figcaption>
+              ) : null}
+            </figure>
+          );
+        }
         if (block.type === "h2") {
           return (
             <h2
