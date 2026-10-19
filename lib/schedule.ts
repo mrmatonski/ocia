@@ -30,9 +30,14 @@ type ScheduleRow = {
 export const allClassesNote =
   "*all classes = Sacramental preparation, Confirmation, OCIA/OCIC";
 
+/** Adult Sunday OCIA. 11:30 AM is an approximate end time, not a guaranteed finish. */
+export const sundayOciaClassTime =
+  "Sundays, 9:30 AM–approximately 11:30 AM (following the 8:30 AM Mass).";
+
 /*
- * Official St. Mary Religious Education Calendar 2026–2027.
- * Weekly meeting hours are not posted for ordinary class days; do not invent them.
+ * Official St. Mary Religious Education Calendar 2026–2027,
+ * with the OCIA 2026–27 schedule of election, rites, and sacraments.
+ * Do not invent dates or lesson titles beyond those sources.
  */
 function row(
   date: string,
@@ -61,7 +66,8 @@ const office = { time: "", location: officeLocation, instructor: dre };
 const scheduleRows: ScheduleRow[] = [
   row("2026-08-16", "Religious Education registration begins", undefined, office),
   row("2026-09-06", "Final day for registration", undefined, office),
-  row("2026-09-13", "First day of classes"),
+  row("2026-09-09", "Come and See (introduction to OCIA)"),
+  row("2026-09-13", "First day of classes", "Period of Inquiry begins"),
   row("2026-09-16", "OCIA"),
   row("2026-09-17", "OCIC"),
   row("2026-09-19", "Catechist retreat & training"),
@@ -78,7 +84,12 @@ const scheduleRows: ScheduleRow[] = [
   row("2026-10-22", "OCIC"),
   row("2026-10-25", "RE classes — Child Safety Training"),
   row("2026-10-29", "OCIC"),
-  row("2026-11-01", "All classes"),
+  row("2026-10-31", "Rehearsal for Rite of Entry into the Catechumenate"),
+  row(
+    "2026-11-01",
+    "All classes",
+    "Rite of Entry into the Catechumenate/Period of the Catechumenate begins",
+  ),
   row("2026-11-05", "OCIC"),
   row("2026-11-08", "All classes"),
   row("2026-11-12", "OCIC"),
@@ -103,42 +114,54 @@ const scheduleRows: ScheduleRow[] = [
   row("2027-01-21", "OCIC"),
   row("2027-01-24", "All classes"),
   row("2027-01-28", "OCIC"),
-  row("2027-02-07", "All classes"),
+  row("2027-02-06", "Rehearsal for Rite of Sending Catechumens for Election"),
+  row("2027-02-07", "All classes", "Rite of Sending Catechumens for Election"),
   row("2027-02-10", "Ash Wednesday"),
   row("2027-02-11", "OCIC"),
   row(
     "2027-02-14",
     "No classes — President's Day weekend",
-    "First Sunday in Lent — OCIA/OCIC Rite of Election",
+    "First Sunday in Lent — OCIA/OCIC Rite of Election (tentative)",
   ),
-  row("2027-02-21", "All classes", "Second Sunday in Lent"),
+  row("2027-02-18", "Anointing of Catechumens & Candidates"),
+  row(
+    "2027-02-21",
+    "All classes",
+    "Second Sunday in Lent — Period of Purification & Enlightenment begins",
+  ),
   row("2027-02-25", "OCIC"),
+  row("2027-02-27", "Rehearsal for First Scrutiny"),
   row(
     "2027-02-28",
     "All classes",
     "Third Sunday in Lent — OCIA/OCIC First Scrutiny",
   ),
   row("2027-03-03", "OCIA"),
-  row("2027-03-04", "OCIC"),
+  row("2027-03-04", "OCIC", "Rite of Handing on of the Creed"),
   row(
     "2027-03-07",
     "All classes",
     "Fourth Sunday in Lent — OCIA/OCIC Second Scrutiny",
   ),
   row("2027-03-11", "OCIC"),
+  row("2027-03-13", "Practicum for the Sacrament of Reconciliation"),
   row(
     "2027-03-14",
     "All classes",
     "Fifth Sunday in Lent — OCIA/OCIC Third Scrutiny",
   ),
-  row("2027-03-18", "OCIC"),
-  row("2027-03-21", "No classes — Spring Break", "Palm Sunday"),
+  row("2027-03-18", "OCIC", "Rite of Handing on of the Lord's Prayer"),
+  row("2027-03-21", "No classes — Spring Break", "Palm Sunday & the Passion of the Lord"),
   row("2027-03-25", "Holy Thursday"),
   row("2027-03-26", "Good Friday"),
-  row("2027-03-27", "Holy Saturday"),
+  row(
+    "2027-03-27",
+    "Holy Saturday",
+    "Rehearsal for Sacraments at 9:00 a.m.; Easter Vigil Mass at 8:00 p.m.",
+  ),
   row("2027-03-28", "The Resurrection of the Lord", "No classes"),
   row("2027-04-04", "RE classes", "Divine Mercy Sunday — NO OCIA/OCIC"),
-  row("2027-04-11", "All classes"),
+  row("2027-04-11", "All classes", "Period of Mystagogy begins"),
   row("2027-04-14", "OCIA"),
   row("2027-04-15", "OCIC"),
   row("2027-04-18", "All classes"),
@@ -151,11 +174,11 @@ const scheduleRows: ScheduleRow[] = [
   row(
     "2027-05-16",
     "Pentecost Sunday",
-    "OCIA/OCIC — No RE classes — Mother's Day",
+    "OCIA/OCIC — commissioning of neophytes — No RE classes — Mother's Day",
   ),
   row("2027-05-22", "First Reconciliation"),
   row("2027-05-30", "No classes — Memorial Day weekend"),
-  row("2027-06-06", "Final day of class"),
+  row("2027-06-06", "Final day of classes"),
   row("2027-06-12", "First Holy Communion Rehearsal"),
   row("2027-06-13", "First Holy Communion"),
 ];
@@ -180,8 +203,12 @@ export function getClassStatus(date: string, today = getTodayIso()): ClassStatus
 export function isOciaGathering(session: { title: string }) {
   const title = session.title.trim();
   if (/^ocic$/i.test(title)) return false;
+  if (/^no classes/i.test(title)) return false;
   if (/^all classes/i.test(title)) return true;
-  return /\bocia\b/i.test(title);
+  if (/\bocia\b/i.test(title)) return true;
+  return /catechumen|scrutiny|anointing of catechumens|practicum for the sacrament of reconciliation/i.test(
+    title,
+  );
 }
 
 export function withStatus(session: ClassSession, today = getTodayIso()) {

@@ -1,5 +1,5 @@
 import { faqItems, type FaqItem } from "@/lib/faq";
-import { classSchedule } from "@/lib/schedule";
+import { classSchedule, sundayOciaClassTime } from "@/lib/schedule";
 import { contactPlaceholders, parishImages } from "@/lib/site";
 
 export type EducationIcon =
@@ -153,7 +153,7 @@ const ociaSchedule: ScheduleEntry[] = classSchedule.map((session) => ({
 
 /*
  * Formation programs as published by St. Mary, Star of the Sea.
- * Weekly class days and hours are not posted online; do not invent them.
+ * Sunday adult OCIA meets after the 8:30 a.m. Mass. Do not invent other class hours.
  */
 export const educationPrograms: EducationProgram[] = [
   {
@@ -166,7 +166,7 @@ export const educationPrograms: EducationProgram[] = [
     overview: [
       "OCIA — the Order of Christian Initiation of Adults — is the Church's way of walking with adults who wish to know Jesus Christ in the Catholic Church. It is ordered toward conversion, and toward the sacraments of initiation: Baptism, Confirmation, and the Eucharist.",
       "At St. Mary, Star of the Sea in Astoria, this path is meant to feel human. You will gather, pray, listen, and ask. You will be given time. No one is expected to arrive already certain.",
-      "An adult who has not been baptized and wishes to learn about becoming Catholic may participate in OCIA. Classes are weekly and begin in the Fall. Call the parish office for the current meeting day and time.",
+      `An adult who has not been baptized and wishes to learn about becoming Catholic may participate in OCIA. Classes are weekly and begin in the Fall. ${sundayOciaClassTime}`,
     ],
     audience: "Adults interested in learning about Catholicism.",
     audienceGroups: [
@@ -238,8 +238,7 @@ export const educationPrograms: EducationProgram[] = [
     topicsNote:
       "A fuller topical outline lives on the Topics page. Weekly class topics are set with the Religious Education office.",
     schedule: ociaSchedule,
-    scheduleNote:
-      "Classes are weekly and begin in the Fall. Call (503) 325-3671 for the current meeting day and time.",
+    scheduleNote: `Classes are weekly and begin in the Fall. ${sundayOciaClassTime}`,
     scheduleComingSoon: false,
     location: contactPlaceholders.location,
     locationNote:

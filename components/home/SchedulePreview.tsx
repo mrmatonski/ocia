@@ -1,4 +1,4 @@
-import { getUpcomingSessions } from "@/lib/schedule";
+import { getUpcomingSessions, sundayOciaClassTime } from "@/lib/schedule";
 import { ScheduleTimeline } from "@/components/schedule/ScheduleTimeline";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -13,7 +13,7 @@ export function SchedulePreview() {
         <SectionHeading
           eyebrow="Class schedule"
           title="A place at the table, week by week."
-          description="Registration begins in August. Weekly OCIA classes begin in the Fall. Call the parish office for the current meeting day and time."
+          description={`Registration begins in August. Weekly OCIA classes begin in the Fall. ${sundayOciaClassTime}`}
         />
         <div className="mt-16">
           <ScheduleTimeline limit={upcoming.length || 4} />
