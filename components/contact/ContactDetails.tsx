@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { contactPlaceholders } from "@/lib/site";
 import { MailIcon, PersonIcon, PhoneIcon, PinIcon } from "@/components/icons";
 
@@ -33,6 +34,14 @@ export function ContactDetails() {
       </h2>
       <p className="mt-6 max-w-md text-sm leading-7 text-stone-light md:text-base">
         Share a little of your story with Religious Education by phone or email. For ordinary questions about the Catholic faith and OCIA, you may also ask the AI assistant on this page. That assistant is not a parish staff member. Office hours: {contactPlaceholders.officeHours}.
+      </p>
+      <p className="mt-4">
+        <Link
+          href="/next-class"
+          className="inline-flex min-h-11 items-center text-[0.68rem] tracking-[0.18em] text-gold uppercase hover:text-gold-bright"
+        >
+          See the next class
+        </Link>
       </p>
       <ul className="mt-10 space-y-5">
         {details.map((item) => (

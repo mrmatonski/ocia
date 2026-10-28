@@ -50,56 +50,61 @@ export function getLessonBySlug(slug: string) {
   return lessonMaterials.find((lesson) => lesson.slug === slug);
 }
 
+/** Titles in teaching order, for announcements and the next-class summary. */
+export function formatLessonSequence(titles: readonly string[]) {
+  if (titles.length <= 1) return titles[0] ?? "";
+  if (titles.length === 2) return `${titles[0]}, then ${titles[1]}`;
+  return `${titles.slice(0, -1).join(", ")}, then ${titles[titles.length - 1]}`;
+}
+
+export function upcomingLessonSequence() {
+  return formatLessonSequence(lessonMaterials.map((lesson) => lesson.title));
+}
+
 export const lessonMaterials: LessonMaterial[] = [
   {
-    id: "who-shepherds-the-church",
-    slug: "who-shepherds-the-church",
+    id: "mary",
+    slug: "mary",
     number: 1,
-    title: "Who Shepherds the Church",
+    title: "Mary",
     publisher: "Journey of Faith — Liguori Publications",
-    description: `Jesus Christ is the Good Shepherd and the head of the Church. He knows his people and lays down his life for them, and he has not left them without care. He continues to guide the Church through the pastors he calls. Their ministry is not a rank to be enjoyed. It is a share in his own service: teaching the faith handed on from the apostles, celebrating the sacraments proper to each order, and walking with the people of God.
+    description: `Mary holds a singular place in God's plan of salvation. The eternal Son of God took flesh in her womb, and the Church honors her as the Mother of God. That title does not make her divine. It confesses who her child is: true God and true man. When the angel brought God's invitation, she answered in faith that she was the Lord's servant, and that it should be done to her according to his word. She carried that yes through the hidden years, to the foot of the Cross, and into the prayer of the first disciples.
 
-That care takes a distinct shape in each ministry. The pope, the Bishop of Rome and successor of Saint Peter, serves the unity of the whole Church. Bishops, as successors of the apostles, teach and shepherd the dioceses entrusted to them. Priests share that work as coworkers of the bishop: they preach the Gospel, celebrate the Eucharist and the Sacrament of Reconciliation, and stay near the life of a parish. Deacons are ordained for service. They proclaim the Gospel, assist at the liturgy, and give themselves to works of charity. For someone exploring the Catholic faith, these shepherds are how the Church teaches you, accompanies you, and helps you grow closer to Jesus Christ.`,
+Catholics honor Mary and ask her to pray for them because she is the first and most faithful disciple, and because she always leads people to her Son. Honor is not worship. Worship belongs to God alone — Father, Son, and Holy Spirit. Asking Mary's intercession is like asking a mother close to Christ to pray with us. It does not replace prayer to God. In this lesson we will look at her place in the story of salvation, her faithful response to God's will, and why love for Mary is a way of staying near Jesus.`,
     subjects: [
-      "Jesus Christ, the Good Shepherd",
-      "The pope and the unity of the Church",
-      "Bishops as successors of the apostles",
-      "Priests and the life of the parish",
-      "Deacons and the ministry of service",
-      "Leadership as a call to serve",
+      "Mary's place in God's plan of salvation",
+      "The Mother of God",
+      "Her faithful yes to God's will",
+      "Mary as the first disciple",
+      "Honor and intercession, not worship",
+      "How devotion to Mary leads to Christ",
     ],
     image: {
-      src: "/images/announcements/bishop-preaching.jpg",
-      alt: "A Catholic bishop preaches from the ambo, hands open, with the altar and crucifix behind him",
-      caption:
-        "Bishop Robert Brennan preaching at St. Leo Oratory, Columbus. Photograph by Ken Snow, public domain (CC0).",
+      src: "/images/parish/grotto-mary.jpg",
+      alt: "Statue of Mary with open hands at the outdoor grotto of St. Mary, Star of the Sea",
+      caption: "The Marian grotto at St. Mary, Star of the Sea.",
       aspect: "portrait",
     },
     accessUrl: null,
     publicationApproved: false,
   },
   {
-    id: "the-church-as-community",
-    slug: "the-church-as-community",
+    id: "the-saints",
+    slug: "the-saints",
     number: 2,
-    title: "The Church as Community",
+    title: "The Saints",
     publisher: "Journey of Faith — Liguori Publications",
-    description: `The Church is more than the building where we gather. It is the People of God and the Body of Christ: a community Jesus himself gathers in faith, in prayer, in the worship of the Mass, and in the sacraments. Catholics are one because they belong to him. That unity does not erase difference. The Church lives through many gifts, backgrounds, vocations, and responsibilities, and each person has a place.
+    description: `The saints are men and women made holy by the grace of God. The Church names some of them and keeps their feast days. Countless others are known to God alone. With the faithful still on earth, and with those who have died and are being purified, they belong to the communion of saints. Death does not break the Body of Christ. Heaven and earth remain one family in him.
 
-Belonging is both a gift and a way of life. In the community we receive the Word of God, the sacraments, and the encouragement of people who pray with us. We also share what we have received: welcoming the newcomer, serving one another, and carrying Christ's love into ordinary life. If you are in OCIA, you are already being invited into this living community. You are not asked only to attend a class. You are being welcomed among a people who are learning, with you, what it means to belong to Christ.`,
+Catholics honor the saints and learn from their lives because holiness has a human face. Their stories show what it looks like to follow Jesus in different centuries, vocations, and sufferings. Asking a saint to intercede is like asking a holy friend to pray. It does not set anyone beside God, and it does not replace Jesus Christ, the one mediator. Their prayer points toward him. Devotion to the saints is a way of remembering that the Church is larger than any one parish or any one lifetime: a people who already behold the Lord, and who help us on the way to him.`,
     subjects: [
-      "The People of God",
-      "The Body of Christ",
-      "Unity and many gifts",
-      "Prayer, worship, and the sacraments",
-      "Welcome, fellowship, and service",
-      "Sharing the Church's mission",
+      "Who the saints are",
+      "The communion of saints",
+      "Learning from their example",
+      "Why Catholics honor the saints",
+      "Asking for their intercession",
+      "How the saints point us to Jesus Christ",
     ],
-    image: {
-      src: "/images/parish/formation.jpg",
-      alt: "A bishop stands with parishioners gathered in the church at St. Mary, Star of the Sea",
-      aspect: "landscape",
-    },
     accessUrl: null,
     publicationApproved: false,
   },

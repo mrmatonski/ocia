@@ -150,39 +150,38 @@ export function getPublishedAnnouncementSlugs(today?: string) {
 
 export const educationAnnouncements: Announcement[] = [
   {
-    id: "ocia-nov-1-shepherds-community",
-    slug: "next-class-who-shepherds-the-church-and-the-church-as-community",
-    title: "Next Class: Who Shepherds the Church & The Church as Community",
+    id: "ocia-nov-1-mary-saints",
+    slug: "next-class-mary-and-the-saints",
+    title: "Next Class: Mary & The Saints.",
     kicker: "OCIA — November 1, 2026",
     excerpt:
-      "Important reminder: everybody in the adult OCIA program is to have a sponsor by next Sunday. If you need help finding or confirming a sponsor, please speak with the OCIA team. Our next gathering explores Who Shepherds the Church and The Church as Community, from Liguori Publications' Journey of Faith Inquiry program.",
+      "You are welcome at our next OCIA gathering as we look at Mary, then The Saints, from Liguori Publications' Journey of Faith. Everybody in the adult OCIA program is to have a sponsor by next Sunday. If you need help finding or confirming a sponsor, please speak with the OCIA team.",
     content: `:::note
 Everybody in the adult OCIA program is to have a sponsor by next Sunday.
 If you need help finding or confirming a sponsor, please speak with the [OCIA team](/contact).
 :::
 
-Our next OCIA gathering will explore two topics from Liguori Publications' Journey of Faith Inquiry program: Who Shepherds the Church and The Church as Community. Together we will look at how Jesus Christ continues to care for his people through the Church's pastors, and at the Church as a living community gathered by him.
+You are welcome at our next OCIA gathering on Sunday, November 1. We will spend time with two lessons from Liguori Publications' Journey of Faith: Mary, then The Saints. Together we will look at Mary's place in God's plan of salvation, and at the saints whose lives draw us closer to Jesus Christ.
 
-## Who Shepherds the Church
+## Mary
 
-![A Catholic bishop in choir dress preaches from the ambo, hands open, with the altar and crucifix behind him](/images/announcements/bishop-preaching.jpg "Bishop Robert Brennan preaching at St. Leo Oratory, Columbus. Photograph by Ken Snow, [public domain (CC0)](https://creativecommons.org/publicdomain/zero/1.0/).")
+![Statue of Mary with open hands at the outdoor grotto of St. Mary, Star of the Sea](/images/parish/grotto-mary.jpg "The Marian grotto at St. Mary, Star of the Sea.")
 
-Jesus Christ is the Good Shepherd and the head of the Church. He knows his people and lays down his life for them, and he has not left them without care. He continues to guide and tend the Church through the pastors he calls. Their ministry is not a rank to be enjoyed. It is a share in his own service: teaching the faith handed on from the apostles, celebrating the sacraments proper to each order, and walking with the people of God.
+Mary holds a singular place in God's plan of salvation. The eternal Son of God took flesh in her womb, and the Church honors her as the Mother of God. That title does not make her divine. It confesses who her child is: true God and true man. When the angel brought God's invitation, she answered in faith that she was the Lord's servant, and that it should be done to her according to his word. She carried that yes through the hidden years, to the foot of the Cross, and into the prayer of the first disciples.
 
-That care takes a distinct shape in each ministry. The pope, the Bishop of Rome and successor of Saint Peter, serves the unity of the whole Church and confirms his brothers and sisters in the apostolic faith. Bishops, as successors of the apostles, are the chief shepherds of their dioceses. They teach, they oversee the sacramental life of the local Church, and they answer for the flock entrusted to them. Priests share in that work as coworkers of the bishop. In a parish they preach the Gospel, celebrate the Eucharist and the Sacrament of Reconciliation, and stay near the ordinary joys and sorrows of the people. Deacons are ordained for service. They proclaim the Gospel, assist at the liturgy, and give themselves to works of charity. For someone finding a way into the Catholic faith, these are not distant offices. They are how the Church teaches you, accompanies you, and helps you grow closer to Jesus Christ. The people walking with you in OCIA are part of that same shepherding.
+Catholics honor Mary and ask her to pray for them because she is the first and most faithful disciple, and because she always leads people to her Son. Honor is not worship. Worship belongs to God alone — Father, Son, and Holy Spirit. Asking Mary's intercession is like asking a mother close to Christ to pray with us. It does not replace prayer to God. Her example is a way of staying near Jesus: trust, humility, and the courage to do the will of God.
 
-## The Church as Community
+## The Saints
 
-![A bishop stands with parishioners gathered in the church at St. Mary, Star of the Sea](/images/parish/formation.jpg)
+The saints are men and women made holy by the grace of God. The Church names some of them and keeps their feast days. Countless others are known to God alone. With the faithful still on earth, and with those who have died and are being purified, they belong to the communion of saints. Death does not break the Body of Christ. Heaven and earth remain one family in him.
 
-The Church is more than the building where we meet, however much that building means to a parish. It is the People of God and the Body of Christ: a community Christ himself gathers in faith, in the worship of Sunday Mass, in the sacraments, in prayer, and in service. Catholics are one because they belong to him. That unity does not erase difference. The Church lives by many gifts, backgrounds, vocations, and responsibilities — longtime parishioners and newcomers, married and single, clergy and lay people. Each person has a place, and no one is asked to become someone else in order to belong.
+Catholics honor the saints and learn from their lives because holiness has a human face. Their stories show what it looks like to follow Jesus in different centuries, vocations, and sufferings. Asking a saint to intercede is like asking a holy friend to pray. It does not set anyone beside God, and it does not replace Jesus Christ, the one mediator. Their prayer points toward him. Devotion to the saints is one way the Church remembers that we belong to a people larger than any one room: those who already behold the Lord, and those still on the way.
 
-Belonging is both a gift and a way of life. In the community we receive what we cannot give ourselves: the Word of God, the sacraments, the prayers of people who carry us, and a home in which to grow in holiness. We also take part in the mission we have received. We welcome the person who is new. We support one another when life is heavy. We serve our neighbors. We return, week by week, to Sunday Mass. And when the moment is right, we share the Gospel with simplicity and respect. If you are walking through OCIA, you are already being drawn into this life. You do not have to have everything settled before you are welcome. The parish is learning your name, and you are learning what it means to belong to Christ together with his people.
-
-Come with your questions and an open heart as we continue to discover how Christ shepherds his people and gathers them as one.`,
+Bring the questions you are actually carrying. There is room for them here, and room to keep growing in the Catholic faith. Short summaries of both lessons are on the [Lesson Materials](/lesson-materials) page.`,
     category: "Class Information",
     author: "Religious Education",
     publishedAt: "2026-10-19",
+    updatedAt: "2026-10-27",
     eventDate: "2026-11-01",
     expiresAt: "2026-11-01",
     status: "published",

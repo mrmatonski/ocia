@@ -1,5 +1,7 @@
+import { getLatestAnnouncement } from "@/lib/education-announcements";
 import { faqItems } from "@/lib/faq";
 import { journeyStages } from "@/lib/journey";
+import { formatLessonSequence, getPublishedLessons } from "@/lib/lesson-materials";
 import { getNextSession, sundayOciaClassTime } from "@/lib/schedule";
 import { contactPlaceholders, site } from "@/lib/site";
 import { topicCategories } from "@/lib/topics";
@@ -103,10 +105,22 @@ const catholicEntries: Array<{ keys: string[]; answer: string }> = [
   },
 ];
 
+function nextClassLessonLine(date: string) {
+  const announcement = getLatestAnnouncement();
+  if (!announcement?.eventDate || announcement.eventDate.slice(0, 10) !== date) return "";
+  if (!announcement.title.toLowerCase().startsWith("next class")) return "";
+  const titles = getPublishedLessons().map((lesson) => lesson.title);
+  if (titles.length === 0) return "";
+  const sponsor = /sponsor/i.test(announcement.content)
+    ? " Everybody in the adult OCIA program is to have a sponsor by next Sunday. The OCIA team can help someone find or confirm one."
+    : "";
+  return ` Lessons, in order: ${formatLessonSequence(titles)}.${sponsor}`;
+}
+
 function buildParishNotes() {
   const next = getNextSession();
   const nextLine = next
-    ? `Next published OCIA class: ${formatClassWeekday(next.date) || "Sunday"}, ${formatFullDate(next.date)} — ${next.topic}. ${sundayOciaClassTime}`
+    ? `Next published OCIA class: ${formatClassWeekday(next.date) || "Sunday"}, ${formatFullDate(next.date)}.${nextClassLessonLine(next.date)} Parish calendar note: ${next.topic}. ${sundayOciaClassTime}`
     : "No upcoming OCIA gathering is currently listed on the published schedule.";
 
   return [
@@ -181,7 +195,11 @@ At ${site.parishFull} in ${site.city}, classes are weekly and begin in the Fall.
     if (!next) {
       return `OCIA classes are weekly and begin in the Fall. ${sundayOciaClassTime} Call ${contactPlaceholders.phone} or write to ${contactPlaceholders.email} with any question about the next gathering. Sunday Mass at St. Mary is 8:30 a.m., 10:30 a.m., and Noon in Spanish.`;
     }
-    return `The next OCIA class is ${formatClassWeekday(next.date) || "Sunday"}, ${formatFullDate(next.date)}: ${next.topic}. Place: ${next.location}. ${sundayOciaClassTime} See the Schedule page for the published dates.`;
+    const calendar =
+      next.topic && next.topic !== next.title
+        ? ` The parish calendar also notes: ${next.topic}.`
+        : "";
+    return `The next OCIA class is ${formatClassWeekday(next.date) || "Sunday"}, ${formatFullDate(next.date)}.${nextClassLessonLine(next.date)} Place: ${next.location}. ${sundayOciaClassTime}${calendar} See the Schedule page for the published dates.`;
   }
 
   if (/(where are you|address|astoria|grand avenue|location of (the )?church)/.test(query)) {

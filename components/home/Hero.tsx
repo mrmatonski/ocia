@@ -35,25 +35,22 @@ export function Hero() {
         </motion.h1>
         <motion.p
           {...fade(0.5)}
-          className="mt-8 max-w-xl text-[0.98rem] leading-8 text-stone-light md:text-lg"
+          className="mt-8 max-w-2xl text-[0.98rem] leading-8 text-stone-light md:text-lg"
         >
-          Explore the Catholic faith, encounter Christ, and discover what it
-          means to enter into the life of the Church.
+          OCIA — the Order of Christian Initiation of Adults — is how adults at
+          St. Mary, Star of the Sea learn the Catholic faith. You are welcome
+          if you are curious, were baptized in another tradition, or are
+          returning to the Church.
         </motion.p>
         <motion.div
           {...fade(0.66)}
-          className="mt-11 flex flex-col items-center gap-3 sm:flex-row sm:gap-4"
+          className="mt-11 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
         >
-          <Button href="/about">Explore OCIA</Button>
-          <Button href="/schedule" variant="secondary">
-            View Class Schedule
+          <Button href="#next-class">See the next class</Button>
+          <Button href="/about" variant="secondary">
+            What is OCIA?
           </Button>
         </motion.div>
-        <motion.p {...fade(0.78)} className="mt-6">
-          <Button href="/about" variant="ghost">
-            New to OCIA? Start Here
-          </Button>
-        </motion.p>
       </div>
 
       <motion.a

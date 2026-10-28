@@ -1,7 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { getClassStatus, withStatus } from "@/lib/schedule";
+import { announcementPath, getLatestAnnouncement } from "@/lib/education-announcements";
+import { formatLessonSequence, getPublishedLessons } from "@/lib/lesson-materials";
+import { getClassStatus, isSundayOciaClass, sundayOciaClassTime, withStatus } from "@/lib/schedule";
 import { formatClassDate, formatClassWeekday, cn } from "@/lib/utils";
 
 type Session = ReturnType<typeof withStatus>;
@@ -21,10 +24,34 @@ function featuredCopy(session: Session) {
   };
 }
 
+function lessonsForSession(date: string) {
+  const announcement = getLatestAnnouncement();
+  if (!announcement?.eventDate || announcement.eventDate.slice(0, 10) !== date) return null;
+  if (!announcement.title.toLowerCase().startsWith("next class")) return null;
+  const titles = getPublishedLessons().map((lesson) => lesson.title);
+  if (titles.length === 0) return null;
+  return { titles, slug: announcement.slug };
+}
+
 export function FeaturedSession({ session }: { session: Session }) {
   const status = session.status ?? getClassStatus(session.date);
   const copy = featuredCopy(session);
+  const lessons = lessonsForSession(session.date);
+  const lessonHeading = lessons
+    ? lessons.titles.length === 2
+      ? `${lessons.titles[0]} & ${lessons.titles[1]}`
+      : lessons.titles.join(" & ")
+    : null;
+  const heading = lessonHeading ?? copy.heading;
+  const calendarNote = lessonHeading
+    ? [copy.heading, copy.detail].filter((line) => line && line !== lessonHeading).join(". ")
+    : copy.detail;
   const postedTime = session.time && session.time !== "Weekly";
+  const timeLabel = postedTime
+    ? session.time
+    : isSundayOciaClass(session)
+      ? sundayOciaClassTime
+      : null;
 
   return (
     <motion.article
@@ -47,21 +74,42 @@ export function FeaturedSession({ session }: { session: Session }) {
           </span>
         </div>
         <h3 className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-ivory italic md:text-5xl">
-          {copy.heading}
+          {heading}
         </h3>
+        {lessons ? (
+          <p className="mt-3 text-sm leading-6 text-stone-light">
+            In this order: {formatLessonSequence(lessons.titles)}.
+          </p>
+        ) : null}
         <p className="mt-4 font-serif text-xl text-gold/90 md:text-2xl">
           {formatClassWeekday(session.date)
             ? `${formatClassWeekday(session.date)} · ${formatClassDate(session.date)}`
             : formatClassDate(session.date)}
         </p>
-        {postedTime ? (
-          <p className="mt-2 text-sm tracking-[0.12em] text-stone-light uppercase">
-            {session.time}
+        {timeLabel ? (
+          <p className="mt-2 max-w-xl text-sm leading-6 text-stone-light">
+            {timeLabel}
           </p>
         ) : null}
-        {copy.detail ? (
+        {calendarNote ? (
           <p className="mt-6 max-w-xl text-base leading-8 text-stone-light">
-            {copy.detail}
+            {lessonHeading ? `Also on the parish calendar: ${calendarNote}.` : calendarNote}
+          </p>
+        ) : null}
+        {lessons ? (
+          <p className="mt-6 flex flex-col items-start gap-1 sm:flex-row sm:gap-6">
+            <Link
+              href="/lesson-materials"
+              className="inline-flex min-h-11 items-center text-[0.68rem] tracking-[0.18em] text-gold uppercase hover:text-gold-bright"
+            >
+              Lesson summaries
+            </Link>
+            <Link
+              href={announcementPath(lessons.slug)}
+              className="inline-flex min-h-11 items-center text-[0.68rem] tracking-[0.18em] text-gold uppercase hover:text-gold-bright"
+            >
+              Class announcement
+            </Link>
           </p>
         ) : null}
         <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-3 text-sm">

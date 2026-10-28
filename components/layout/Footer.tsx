@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-gold/12 bg-ink">
       <div className="atmosphere atmosphere-navy" aria-hidden="true" />
-      <div className="page-wrap relative py-16 md:py-20">
+      <div className="page-wrap relative py-16 pb-28 md:py-20 md:pb-24">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
             <div className="flex items-center gap-3">

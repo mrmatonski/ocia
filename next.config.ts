@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source:
+          "/religious-education/announcements/next-class-who-shepherds-the-church-and-the-church-as-community",
+        destination: "/religious-education/announcements/next-class-mary-and-the-saints",
+        permanent: false,
+      },
+      {
         source: "/:path*",
         has: [{ type: "host", value: "stmary-ocia.com" }],
         destination: "https://www.stmary-ocia.com/:path*",

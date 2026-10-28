@@ -71,7 +71,7 @@ function LessonFigure({ lesson }: { lesson: LessonMaterial }) {
           src={image.src}
           alt={image.alt}
           sizes={portrait ? "(min-width: 768px) 24rem, 100vw" : "(min-width: 768px) 42rem, 100vw"}
-          objectPosition={portrait ? "center" : parishImagePosition(image.src)}
+          objectPosition={parishImagePosition(image.src)}
         />
       </div>
       {image.caption ? (

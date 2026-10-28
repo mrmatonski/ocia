@@ -25,6 +25,7 @@ export const navItems: NavItem[] = [
     label: "Classes",
     children: [
       { href: "/next-class", label: "Next Class" },
+      { href: "/lesson-materials", label: "Lesson Materials" },
       { href: "/religious-education/announcements", label: "Announcements" },
       { href: "/schedule", label: "Class Schedule" },
       { href: "/religious-education/calendar", label: "2026–2027 Calendar" },
@@ -37,7 +38,6 @@ export const navItems: NavItem[] = [
       { href: "/topics", label: "Class Topics" },
       { href: "/religious-education/content", label: "Content & Videos" },
       { href: "/pray", label: "How to Pray" },
-      { href: "/lesson-materials", label: "Lesson Materials" },
     ],
   },
   {

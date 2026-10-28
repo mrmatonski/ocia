@@ -20,10 +20,11 @@ function Inline({ nodes }: { nodes: InlineNode[] }) {
             <Link
               key={key}
               href={node.href}
-              className="text-gold underline-offset-4 hover:underline"
+              className="text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             >
               {node.value}
+              {external ? <span className="sr-only"> (opens in a new tab)</span> : null}
             </Link>
           );
         }
@@ -75,7 +76,7 @@ export function AnnouncementBody({
           );
         }
         if (block.type === "figure") {
-          const portrait = block.src.endsWith("bishop-preaching.jpg");
+          const portrait = /(?:bishop-preaching|grotto-mary|statue)\.jpg$/.test(block.src);
           return (
             <figure key={index} className={portrait ? "mx-auto w-full max-w-sm" : undefined}>
               <div
@@ -87,7 +88,7 @@ export function AnnouncementBody({
                   src={block.src}
                   alt={block.alt}
                   sizes={portrait ? "(min-width: 768px) 24rem, 100vw" : "(min-width: 768px) 48rem, 100vw"}
-                  objectPosition={portrait ? "center" : parishImagePosition(block.src)}
+                  objectPosition={parishImagePosition(block.src)}
                 />
               </div>
               {block.caption && block.caption.length > 0 ? (
