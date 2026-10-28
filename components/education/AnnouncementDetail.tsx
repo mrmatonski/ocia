@@ -9,13 +9,18 @@ import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import type { Announcement } from "@/lib/education-announcements";
-import { formatFullDate } from "@/lib/utils";
+import { formatClassWeekday, formatFullDate } from "@/lib/utils";
 
 export function AnnouncementDetail({ announcement }: { announcement: Announcement }) {
   const published = announcement.publishedAt.slice(0, 10);
+  const classDate = announcement.eventDate?.slice(0, 10);
   const updated = announcement.updatedAt?.slice(0, 10);
-  const showUpdated = Boolean(updated && updated !== published);
+  const showUpdated = Boolean(updated && updated !== published && updated !== classDate);
   const attachmentReady = Boolean(announcement.attachment?.href);
+  const headlineDate = classDate ?? published;
+  const headlineLabel = classDate
+    ? `${formatClassWeekday(classDate)}, ${formatFullDate(classDate)}`
+    : formatFullDate(published);
 
   return (
     <>
@@ -23,9 +28,7 @@ export function AnnouncementDetail({ announcement }: { announcement: Announcemen
         eyebrow={announcement.category ?? "Announcement"}
         title={announcement.title}
         description={
-          announcement.author
-            ? `${formatFullDate(announcement.publishedAt)} · ${announcement.author}`
-            : formatFullDate(announcement.publishedAt)
+          announcement.author ? `${headlineLabel} · ${announcement.author}` : headlineLabel
         }
       />
       <Section tone="ivory" className="py-12 md:py-16">
@@ -61,8 +64,8 @@ export function AnnouncementDetail({ announcement }: { announcement: Announcemen
             <span className="text-gold/35" aria-hidden="true">
               ·
             </span>
-            <time className="text-stone" dateTime={published}>
-              {formatFullDate(announcement.publishedAt)}
+            <time className="text-stone" dateTime={headlineDate}>
+              {headlineLabel}
             </time>
             {showUpdated && updated ? (
               <>
